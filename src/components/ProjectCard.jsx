@@ -20,7 +20,7 @@ export default function ProjectCard({ project, onOpenModal }) {
 
         <div className="featured-grid">
           <div className="project-image-container featured-img-container">
-            <img src={project.image} alt={project.title} className="project-img" />
+            <img src={project.image} alt={`${project.title} App Showcase`} className="project-img featured-project-img" loading="lazy" />
             <div className="project-image-overlay">
               <span className="project-category-badge">{project.badge}</span>
             </div>
@@ -56,6 +56,7 @@ export default function ProjectCard({ project, onOpenModal }) {
               <button
                 className="btn btn-primary btn-sm flex-1"
                 onClick={() => onOpenModal(project)}
+                aria-label={`View case study details for ${project.title}`}
               >
                 <FaInfoCircle />
                 <span>View Detailed Case Study</span>
@@ -65,11 +66,25 @@ export default function ProjectCard({ project, onOpenModal }) {
                 <a
                   href={project.githubUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="btn btn-secondary btn-sm"
                   title="View Source on GitHub"
+                  aria-label={`View ${project.title} source code on GitHub`}
                 >
                   <FaGithub /> GitHub
+                </a>
+              )}
+
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  title="Live Demo"
+                  aria-label={`View ${project.title} live demo`}
+                >
+                  <FaExternalLinkAlt /> Demo
                 </a>
               )}
             </div>
@@ -118,6 +133,18 @@ export default function ProjectCard({ project, onOpenModal }) {
           .featured-img-container {
             height: 100%;
             min-height: 380px;
+            background: #080C14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+          }
+
+          .featured-project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-md);
           }
 
           .featured-body {
@@ -141,8 +168,8 @@ export default function ProjectCard({ project, onOpenModal }) {
               grid-template-columns: 1fr;
             }
             .featured-img-container {
-              height: 250px;
-              min-height: 250px;
+              height: 280px;
+              min-height: 280px;
             }
           }
         `}</style>
@@ -160,7 +187,7 @@ export default function ProjectCard({ project, onOpenModal }) {
       transition={{ duration: 0.4 }}
     >
       <div className="project-image-container">
-        <img src={project.image} alt={project.title} className="project-img" />
+        <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" loading="lazy" />
         <div className="project-image-overlay">
           <span className="project-category-badge">{project.badge}</span>
         </div>
@@ -193,6 +220,7 @@ export default function ProjectCard({ project, onOpenModal }) {
           <button
             className="btn btn-primary btn-sm flex-1"
             onClick={() => onOpenModal(project)}
+            aria-label={`View details for ${project.title}`}
           >
             <FaInfoCircle />
             <span>View Details</span>
@@ -202,9 +230,10 @@ export default function ProjectCard({ project, onOpenModal }) {
             <a
               href={project.githubUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-secondary btn-sm"
               title="View Source on GitHub"
+              aria-label={`View ${project.title} repository on GitHub`}
             >
               <FaGithub />
             </a>
@@ -214,9 +243,10 @@ export default function ProjectCard({ project, onOpenModal }) {
             <a
               href={project.liveUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-secondary btn-sm"
               title="Live Demo"
+              aria-label={`View ${project.title} live demo`}
             >
               <FaExternalLinkAlt />
             </a>

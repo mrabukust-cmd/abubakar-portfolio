@@ -1,7 +1,7 @@
 export const socialLinks = {
-  github: "https://github.com/AbubakarSiddique",
-  linkedin: "https://linkedin.com/in/abubakarsiddique",
-  email: "abubakar.siddique.dev@gmail.com",
-  mailto: "mailto:abubakar.siddique.dev@gmail.com",
+  github: "https://github.com/mrabukust-cmd",
+  linkedin: "https://www.linkedin.com/in/abu-bakar-siddique-a82747425/",
+  email: "abubakar1siddique2@gmail.com",
+  mailto: "mailto:abubakar1siddique2@gmail.com",
   productionUrl: "https://abubakar-siddique.vercel.app"
 };

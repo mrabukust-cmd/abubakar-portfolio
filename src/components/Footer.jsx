@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <a href="#home" className="footer-logo">
+            <a href="#home" className="footer-logo" aria-label="Abubakar Siddique Portfolio Home">
               <span className="logo-badge">{profileData.shortName}</span>
               <span className="logo-text">{profileData.name}</span>
             </a>
@@ -25,14 +25,14 @@ export default function Footer() {
           </div>
 
           <div className="footer-nav">
-            <h4 className="footer-heading">Quick Links</h4>
+            <h4 className="footer-heading">Navigation</h4>
             <ul className="footer-links">
               <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#skills">Skills</a></li>
+              <li><a href="#what-i-build">What I Build</a></li>
               <li><a href="#projects">Projects</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#process">Process</a></li>
               <li><a href="#experience">Journey</a></li>
-              <li><a href="#services">Services</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -43,8 +43,8 @@ export default function Footer() {
               <a
                 href={profileData.socials.github}
                 target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
                 className="social-icon-btn"
               >
                 <FaGithub />
@@ -52,21 +52,21 @@ export default function Footer() {
               <a
                 href={profileData.socials.linkedin}
                 target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
                 className="social-icon-btn"
               >
                 <FaLinkedin />
               </a>
               <a
-                href={profileData.socials.email}
-                aria-label="Email"
+                href={profileData.socials.mailto}
+                aria-label="Send Direct Email"
                 className="social-icon-btn"
               >
                 <FaEnvelope />
               </a>
             </div>
-            <button className="btn btn-outline btn-sm scroll-top-btn" onClick={scrollToTop}>
+            <button className="btn btn-outline btn-sm scroll-top-btn" onClick={scrollToTop} aria-label="Back to top of page">
               <FaArrowUp /> Back to top
             </button>
           </div>

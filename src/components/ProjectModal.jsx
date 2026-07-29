@@ -22,7 +22,7 @@ export default function ProjectModal({ project, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <motion.div
           className="modal-content glass-panel"
           onClick={(e) => e.stopPropagation()}
@@ -34,7 +34,7 @@ export default function ProjectModal({ project, onClose }) {
           {/* Modal Header Bar */}
           <div className="modal-header">
             <div className="modal-badge">{project.badge}</div>
-            <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">
+            <button className="modal-close-btn" onClick={onClose} aria-label="Close project modal">
               <FaTimes />
             </button>
           </div>
@@ -43,10 +43,10 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal-body">
             {/* Banner Image */}
             <div className="modal-image-wrapper">
-              <img src={project.image} alt={project.title} className="modal-banner-img" />
+              <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" />
               <div className="modal-image-gradient" />
               <div className="modal-banner-info">
-                <h2 className="modal-title">{project.title}</h2>
+                <h2 id="modal-title" className="modal-title">{project.title}</h2>
                 <p className="modal-tagline">{project.tagline}</p>
               </div>
             </div>
@@ -60,19 +60,31 @@ export default function ProjectModal({ project, onClose }) {
               </div>
               <div className="modal-action-btns">
                 {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary btn-sm"
+                    aria-label={`View ${project.title} GitHub repository`}
+                  >
                     <FaGithub /> View Source
                   </a>
                 )}
                 {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-sm"
+                    aria-label={`View ${project.title} live demo`}
+                  >
                     <FaExternalLinkAlt /> Live Demo
                   </a>
                 )}
               </div>
             </div>
 
-            {/* Overview / Short Description */}
+            {/* Overview */}
             <div className="modal-section">
               <h3 className="modal-section-title">Overview</h3>
               <p className="modal-text">{project.shortDescription}</p>
@@ -131,7 +143,7 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="modal-footer">
-            <button className="btn btn-outline" onClick={onClose}>
+            <button className="btn btn-outline" onClick={onClose} aria-label="Close case study details">
               Close Details
             </button>
           </div>

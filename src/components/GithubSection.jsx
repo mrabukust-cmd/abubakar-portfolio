@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaCodeBranch, FaFolderOpen, FaTerminal } from 'react-icons/fa';
+import { FaGithub, FaCodeBranch, FaFolderOpen } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
 export default function GithubSection() {
@@ -18,7 +18,7 @@ export default function GithubSection() {
             <div className="github-content">
               <div className="github-badge">
                 <FaCodeBranch />
-                <span>Open Source & Public Repos</span>
+                <span>Open Source & Code Quality</span>
               </div>
 
               <h2 className="github-title">Building in Public</h2>
@@ -31,8 +31,9 @@ export default function GithubSection() {
                 <a
                   href={profileData.socials.github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="btn btn-primary"
+                  aria-label="View Abubakar Siddique GitHub Profile"
                 >
                   <FaGithub />
                   <span>View GitHub Profile</span>

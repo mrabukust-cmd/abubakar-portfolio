@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaArrowRight, FaCode } from 'react-icons/fa';
 import { SiFlutter, SiDart, SiFirebase } from 'react-icons/si';
 import { profileData } from '../data/profile';
-import mentoraImg from '../assets/images/mentora.png';
+import mentoraImg from '../assets/images/mentora_real.png';
 
 export default function Hero() {
   return (
@@ -71,7 +71,7 @@ export default function Hero() {
             <a
               href={profileData.socials.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-outline btn-icon-only"
               aria-label="GitHub Profile"
               title="GitHub Profile"
@@ -126,7 +126,7 @@ export default function Hero() {
 
               {/* Mobile App Preview Overlay Composition */}
               <div className="app-preview-composition">
-                <img src={mentoraImg} alt="Flutter Application Preview" className="app-preview-img" />
+                <img src={mentoraImg} alt="Flutter Application Preview" className="app-preview-img" loading="eager" />
                 <div className="app-preview-badge">
                   <span className="badge-dot" />
                   <span>Flutter App Preview</span>
@@ -376,14 +376,18 @@ export default function Hero() {
           position: relative;
           border-radius: var(--radius-md);
           overflow: hidden;
-          height: 180px;
+          height: 190px;
           border: 1px solid var(--border-color);
+          background: #080C14;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .app-preview-img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
 
         .app-preview-badge {

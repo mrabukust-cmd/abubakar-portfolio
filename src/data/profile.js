@@ -1,4 +1,5 @@
 import { socialLinks } from './socialLinks';
+import profileImg from '../assets/images/profile.png';
 
 export const profileData = {
   name: "Abubakar Siddique",
@@ -8,6 +9,7 @@ export const profileData = {
   education: "BS Software Engineering",
   email: socialLinks.email,
   location: "Pakistan",
+  profileImage: profileImg,
   
   heroBadge: "Building → Testing → Improving",
   heroHeading: "I Build Real-World Mobile Apps With Flutter.",
