@@ -41,10 +41,9 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Modal Body */}
           <div className="modal-body">
-            {/* Banner Image */}
+            {/* Banner Image Container */}
             <div className="modal-image-wrapper">
               <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" />
-              <div className="modal-image-gradient" />
               <div className="modal-banner-info">
                 <h2 id="modal-title" className="modal-title">{project.title}</h2>
                 <p className="modal-tagline">{project.tagline}</p>
@@ -227,39 +226,44 @@ export default function ProjectModal({ project, onClose }) {
         .modal-image-wrapper {
           position: relative;
           width: 100%;
-          height: 280px;
+          height: 320px;
           border-radius: var(--radius-md);
           overflow: hidden;
-          background: #0B0F19;
+          background: #070B12;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.5rem;
+          border: 1px solid var(--border-color);
         }
 
         .modal-banner-img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
-        }
-
-        .modal-image-gradient {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(180deg, transparent 30%, rgba(17, 24, 39, 0.95) 100%);
+          object-fit: contain;
+          border-radius: var(--radius-sm);
         }
 
         .modal-banner-info {
           position: absolute;
-          bottom: 1.25rem;
-          left: 1.5rem;
-          right: 1.5rem;
+          bottom: 0.75rem;
+          left: 1rem;
+          right: 1rem;
+          background: rgba(15, 23, 42, 0.85);
+          backdrop-filter: blur(8px);
+          padding: 0.6rem 1rem;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--border-color-glow);
         }
 
         .modal-title {
-          font-size: 2rem;
+          font-size: 1.65rem;
           font-weight: 800;
           color: var(--text-primary);
         }
 
         .modal-tagline {
-          font-size: 1rem;
+          font-size: 0.9rem;
           color: var(--accent-secondary);
           font-weight: 500;
         }
@@ -388,10 +392,10 @@ export default function ProjectModal({ project, onClose }) {
             align-items: flex-start;
           }
           .modal-image-wrapper {
-            height: 200px;
+            height: 220px;
           }
           .modal-title {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
           }
         }
       `}</style>

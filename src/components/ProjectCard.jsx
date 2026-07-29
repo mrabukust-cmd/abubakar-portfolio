@@ -91,36 +91,40 @@ export default function ProjectCard({ project, onOpenModal }) {
         .project-image-container {
           position: relative;
           width: 100%;
-          height: 220px;
+          height: 250px;
           overflow: hidden;
-          background: #0B0F19;
+          background: #070B12;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 0.5rem;
+          border-bottom: 1px solid var(--border-color);
         }
 
         .project-img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
+          border-radius: var(--radius-sm);
           transition: transform var(--transition-slow);
         }
 
         .project-card:hover .project-img {
-          transform: scale(1.05);
+          transform: scale(1.03);
         }
 
         .project-image-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 50%, rgba(15, 23, 42, 0.9) 100%);
+          background: linear-gradient(180deg, transparent 60%, rgba(15, 23, 42, 0.95) 100%);
           display: flex;
           align-items: flex-start;
-          padding: 1rem;
+          padding: 0.85rem;
+          pointer-events: none;
         }
 
         .project-category-badge {
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(15, 23, 42, 0.9);
           backdrop-filter: blur(8px);
           border: 1px solid var(--border-color-glow);
           color: var(--accent-secondary);
@@ -129,6 +133,7 @@ export default function ProjectCard({ project, onOpenModal }) {
           font-weight: 600;
           padding: 0.3rem 0.75rem;
           border-radius: var(--radius-full);
+          pointer-events: auto;
         }
 
         .project-card-body {
@@ -212,6 +217,12 @@ export default function ProjectCard({ project, onOpenModal }) {
 
         .flex-1 {
           flex: 1;
+        }
+
+        @media (max-width: 640px) {
+          .project-image-container {
+            height: 200px;
+          }
         }
       `}</style>
     </motion.div>
