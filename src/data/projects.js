@@ -7,7 +7,7 @@ import { socialLinks } from './socialLinks';
 export const projectsData = [
   {
     id: "mentora",
-    featured: true,
+    featured: false,
     title: "Mentora",
     tagline: "Peer Learning & Campus Skill Exchange Platform",
     category: "Education & Peer Learning",
