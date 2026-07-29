@@ -1,0 +1,104 @@
+import { socialLinks } from './socialLinks';
+
+export const profileData = {
+  name: "Abubakar Siddique",
+  shortName: "AS",
+  title: "Software Engineering Student & Flutter Developer",
+  status: "Available for Opportunities",
+  education: "BS Software Engineering",
+  email: socialLinks.email,
+  location: "Pakistan",
+  
+  heroBadge: "Building → Testing → Improving",
+  heroHeading: "I Build Real-World Mobile Apps With Flutter.",
+  heroSubheading: "Software Engineering Student & Flutter Developer",
+  heroDescription: "I'm Abubakar Siddique, a Software Engineering student and Flutter Developer focused on turning ideas into polished, functional mobile applications with Flutter, Firebase, APIs, and modern UI/UX.",
+  
+  aboutText: [
+    "I am a Software Engineering student with a strong focus on mobile application development. My passion lies in building practical, user-centered applications that solve real-world problems.",
+    "My primary development stack centers around Flutter and Dart, backed by Firebase services and REST API integration. I emphasize clean software architecture, modular widget structures, and intuitive UI/UX design.",
+    "As a student who actively builds real applications rather than just theoretical exercises, I focus on turning complex requirements into functional, maintainable code using Git and GitHub.",
+    "I am continuously improving my software engineering practices and seeking opportunities to contribute to real-world products through internships, junior developer roles, and freelance projects."
+  ],
+  
+  philosophy: {
+    heading: "My Engineering Mindset",
+    bullets: [
+      "Understand the problem first.",
+      "Write clean, modular code.",
+      "Never stop refining the user experience."
+    ]
+  },
+  
+  stats: [
+    {
+      label: "Flutter",
+      value: "Primary Development",
+      detail: "Cross-Platform Mobile Apps"
+    },
+    {
+      label: "Firebase",
+      value: "Backend & Services",
+      detail: "Auth, Firestore, Storage & FCM"
+    },
+    {
+      label: "REST APIs",
+      value: "Integration",
+      detail: "HTTP, JSON & Network Handling"
+    },
+    {
+      label: "Real Projects",
+      value: "Hands-on Development",
+      detail: "Practical App Engineering"
+    }
+  ],
+  
+  journey: [
+    {
+      period: "Academic Foundation",
+      role: "Software Engineering Student",
+      institution: "BS Software Engineering Program",
+      description: "Building strong fundamentals in software architecture, object-oriented design, data structures, requirements engineering, database management, and software quality.",
+      skills: ["Software Architecture", "OOP", "Data Structures", "Requirements", "Database Design"]
+    },
+    {
+      period: "Mobile Specialization",
+      role: "Flutter Developer",
+      institution: "Hands-on Mobile Engineering",
+      description: "Specializing in cross-platform mobile engineering with Flutter & Dart. Crafting responsive widget interfaces, managing app state, and creating reusable component architectures.",
+      skills: ["Flutter", "Dart", "State Management", "Widget Architecture", "Responsive UI"]
+    },
+    {
+      period: "Full-Stack Mobile Apps",
+      role: "Real-World Application Development",
+      institution: "Building & Refining Complete Apps",
+      description: "Developing end-to-end mobile applications like Mentora, ZiloLive, Copono, and a School Management System, connecting Flutter frontends with Firebase, APIs, and real-time features.",
+      skills: ["Firebase Auth", "Firestore", "REST APIs", "Real-Time Chat", "Git & GitHub"]
+    }
+  ],
+
+  howIBuild: [
+    {
+      step: "01",
+      title: "Understand",
+      description: "Understand the core problem, target audience, functional requirements, and application goals before writing code."
+    },
+    {
+      step: "02",
+      title: "Design",
+      description: "Plan the UI/UX layout, widget hierarchy, state management approach, and database/API data flows."
+    },
+    {
+      step: "03",
+      title: "Build",
+      description: "Develop the application using Flutter & Dart, integrating Firebase services, REST APIs, and clean architecture patterns."
+    },
+    {
+      step: "04",
+      title: "Improve",
+      description: "Test functionality, debug edge cases, optimize performance frame rates, and continuously refine the user experience."
+    }
+  ],
+  
+  socials: socialLinks
+};
