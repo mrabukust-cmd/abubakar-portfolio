@@ -1,7 +1,7 @@
 import ziloliveImg from '../assets/images/zilolive.png';
 import coponoImg from '../assets/images/copono.png';
 import mentoraImg from '../assets/images/mentora_real.png';
-import schoolSystemImg from '../assets/images/school_system.png';
+import schoolSystemImg from '../assets/images/edu_manage_mockup.png';
 import { socialLinks } from './socialLinks';
 
 export const projectsData = [
