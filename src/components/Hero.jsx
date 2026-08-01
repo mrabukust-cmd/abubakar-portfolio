@@ -202,19 +202,19 @@ export default function Hero() {
         }
 
         .glow-1 {
-          top: 10%;
-          left: -10%;
-          width: 500px;
-          height: 500px;
-          background: rgba(37, 99, 235, 0.18);
+          top: 5%;
+          left: -8%;
+          width: 550px;
+          height: 550px;
+          background: rgba(99, 102, 241, 0.24);
         }
 
         .glow-2 {
-          bottom: 10%;
-          right: -10%;
-          width: 450px;
-          height: 450px;
-          background: rgba(56, 189, 248, 0.12);
+          bottom: 5%;
+          right: -8%;
+          width: 500px;
+          height: 500px;
+          background: rgba(56, 189, 248, 0.2);
         }
 
         .hero-container {

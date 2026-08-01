@@ -172,8 +172,8 @@ export default function Skills() {
           width: 48px;
           height: 48px;
           border-radius: var(--radius-md);
-          background: rgba(37, 99, 235, 0.12);
-          border: 1px solid rgba(56, 189, 248, 0.25);
+          background: rgba(139, 92, 246, 0.12);
+          border: 1px solid rgba(6, 182, 212, 0.3);
           color: var(--accent-secondary);
           font-size: 1.35rem;
           flex-shrink: 0;
