@@ -1,9 +1,9 @@
 :root {
-  /* High-End Developer Portfolio Tokens — Golden Amber & Sunset Bronze */
-  --bg-primary: #0A0908;         /* Deep Warm Midnight Black */
-  --bg-secondary: #12100E;       /* Warm Dark Bronze Slate */
-  --bg-card: rgba(28, 23, 19, 0.65); /* Glassmorphism Warm Card Surface */
-  --bg-card-hover: rgba(42, 34, 27, 0.85); /* Luminous Amber Hover Surface */
+  /* High-End Developer Portfolio Tokens */
+  --bg-primary: #060608;         /* Dark Carbon Black */
+  --bg-secondary: #0D0C10;       /* Dark Metallic Surface */
+  --bg-card: rgba(22, 19, 25, 0.65); /* Glassmorphism Card Surface */
+  --bg-card-hover: rgba(36, 30, 42, 0.85); /* Luminous Hover Surface */
   
   /* Primary & Accent Gradients */
   --accent-primary: #F59E0B;       /* Amber Gold */
@@ -25,9 +25,10 @@
   --border-color-hover: rgba(249, 115, 22, 0.42);
   --border-color-glow: rgba(245, 158, 11, 0.52);
   
-  /* Typography & Layout */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  /* Typography & Layout - High-End Font Families */
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -53,15 +54,18 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: #050507;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.16) 0%, transparent 50%),
-    radial-gradient(circle at 100% 40%, rgba(249, 115, 22, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 0% 80%, rgba(234, 179, 8, 0.10) 0%, transparent 40%);
+    radial-gradient(ellipse 80% 50% at 75% -10%, rgba(217, 119, 6, 0.24) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 20% 90%, rgba(180, 83, 9, 0.20) 0%, transparent 65%),
+    radial-gradient(circle at 100% 50%, rgba(251, 191, 36, 0.10) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M-100%20150%20C%20300%20-50%20900%20350%201600%20100' stroke='url(%23goldGrad1)' stroke-width='1.5' opacity='0.4'/%3E%3Cpath d='M-100%20220%20C%20350%2020%20850%20420%201600%20180' stroke='url(%23goldGrad2)' stroke-width='2.2' opacity='0.55'/%3E%3Cpath d='M-100%20300%20C%20400%20100%20800%20500%201600%20260' stroke='url(%23goldGrad1)' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M-100%20600%20C%20300%20400%201000%20800%201600%20550' stroke='url(%23goldGrad2)' stroke-width='2.5' opacity='0.45'/%3E%3Cpath d='M-100%20680%20C%20350%20480%20950%20860%201600%20630' stroke='url(%23goldGrad1)' stroke-width='1.5' opacity='0.35'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='goldGrad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23F59E0B' stop-opacity='0.1'/%3E%3Cstop offset='50%25' stop-color='%23F97316' stop-opacity='0.85'/%3E%3Cstop offset='100%25' stop-color='%23D97706' stop-opacity='0.1'/%3E%3C/linearGradient%3E%3ClinearGradient id='goldGrad2' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23D97706' stop-opacity='0.1'/%3E%3Cstop offset='50%25' stop-color='%23F59E0B' stop-opacity='0.95'/%3E%3Cstop offset='100%25' stop-color='%23F97316' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   color: var(--text-primary);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -70,13 +74,31 @@ body {
 /* Typography Helpers */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
 
 p {
   color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 code, pre {
