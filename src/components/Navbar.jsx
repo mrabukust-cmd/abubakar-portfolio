@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, FaMoon, FaSun } from 'react-icons/fa';
+import { 
+  FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, 
+  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase 
+} from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'What I Build', href: '#what-i-build' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Process', href: '#process' },
-  { name: 'Journey', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#home', icon: FaHome },
+  { name: 'About', href: '#about', icon: FaUser },
+  { name: 'Skills', href: '#skills', icon: FaMicrochip },
+  { name: 'Projects', href: '#projects', icon: FaCode },
+  { name: 'Experience', href: '#experience', icon: FaBriefcase },
+  { name: 'Contact', href: '#contact', icon: FaEnvelope },
 ];
 
 export default function Navbar() {
@@ -53,69 +55,64 @@ export default function Navbar() {
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
-  const handleThemeChange = (newTheme) => {
+  const toggleTheme = (newTheme) => {
     setTheme(newTheme);
   };
 
   return (
     <header className={`navbar-header ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
+        {/* Left: Logo Badge */}
         <a href="#home" className="navbar-logo" aria-label="Abubakar Siddique Homepage">
           <span className="logo-badge">{profileData.shortName}</span>
           <span className="logo-text">{profileData.name}</span>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Center: Floating Glass Capsule Navigation Bar */}
         <nav className="navbar-desktop" aria-label="Main Navigation">
-          <ul className="nav-links">
+          <div className="navbar-floating-capsule">
             {navLinks.map((link) => {
+              const IconComp = link.icon;
               const isActive = activeSection === link.href.substring(1);
               return (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className={`nav-link ${isActive ? 'active' : ''}`}
-                  >
-                    {link.name}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeIndicator"
-                        className="nav-active-pill"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </a>
-                </li>
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`capsule-nav-link ${isActive ? 'active' : ''}`}
+                >
+                  <IconComp className="nav-item-icon" />
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="capsuleActivePill"
+                      className="capsule-active-bg"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </a>
               );
             })}
-          </ul>
+          </div>
         </nav>
 
+        {/* Right: Theme Switch Capsule */}
         <div className="navbar-actions">
-          <a href="#contact" className="btn btn-primary btn-sm btn-talk">
-            <FaEnvelope className="btn-icon" />
-            <span>Let's Talk</span>
-          </a>
-
-          {/* Theme Switcher Toggle (Dark Theme & White Theme) */}
-          <div className="theme-toggle-container" aria-label="Theme Switcher">
+          <div className="theme-capsule-toggle">
             <button
-              className={`theme-toggle-btn ${theme === 'dark' ? 'active' : ''}`}
-              onClick={() => handleThemeChange('dark')}
+              className={`theme-circle-btn ${theme === 'dark' ? 'active' : ''}`}
+              onClick={() => toggleTheme('dark')}
               title="Dark Theme"
               aria-label="Switch to Dark Theme"
             >
-              <FaMoon className="theme-icon" />
-              <span className="theme-text">Dark</span>
+              <FaMoon />
             </button>
             <button
-              className={`theme-toggle-btn ${theme === 'light' ? 'active' : ''}`}
-              onClick={() => handleThemeChange('light')}
+              className={`theme-circle-btn ${theme === 'light' ? 'active' : ''}`}
+              onClick={() => toggleTheme('light')}
               title="White Theme"
               aria-label="Switch to White Theme"
             >
-              <FaSun className="theme-icon" />
-              <span className="theme-text">White</span>
+              <FaSun />
             </button>
           </div>
 
@@ -142,17 +139,21 @@ export default function Navbar() {
           >
             <div className="container mobile-drawer-content">
               <ul className="mobile-nav-links">
-                {navLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="mobile-nav-link"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
+                {navLinks.map((link) => {
+                  const IconComp = link.icon;
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="mobile-nav-link"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <IconComp style={{ fontSize: '1rem' }} />
+                        <span>{link.name}</span>
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className="mobile-drawer-footer">
@@ -190,18 +191,10 @@ export default function Navbar() {
         }
 
         .navbar-scrolled {
-          padding: 0.85rem 0;
-          background: rgba(18, 14, 11, 0.88);
+          padding: 0.75rem 0;
+          background: rgba(6, 6, 8, 0.75);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border-bottom: 1px solid var(--border-color);
-          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        }
-
-        [data-theme="light"] .navbar-scrolled {
-          background: rgba(255, 255, 255, 0.92);
-          border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
         .navbar-container {
@@ -238,94 +231,130 @@ export default function Navbar() {
           letter-spacing: -0.02em;
         }
 
+        /* Center Floating Glass Capsule Bar */
         .navbar-desktop {
           display: flex;
           align-items: center;
+          justify-content: center;
         }
 
-        .nav-links {
+        .navbar-floating-capsule {
           display: flex;
           align-items: center;
-          gap: 1.75rem;
-          list-style: none;
+          gap: 0.25rem;
+          background: rgba(14, 18, 28, 0.75);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 9999px;
+          padding: 0.35rem 0.5rem;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
         }
 
-        .nav-link {
+        [data-theme="light"] .navbar-floating-capsule {
+          background: rgba(255, 255, 255, 0.88);
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .capsule-nav-link {
           position: relative;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1.1rem;
+          border-radius: 9999px;
           color: var(--text-secondary);
-          font-size: 0.9rem;
+          font-size: 0.875rem;
           font-weight: 500;
-          padding: 0.35rem 0;
           transition: color var(--transition-fast);
+          z-index: 1;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
+        .capsule-nav-link:hover {
           color: var(--text-primary);
         }
 
-        .nav-active-pill {
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: var(--accent-secondary);
-          border-radius: 2px;
-          box-shadow: 0 0 8px var(--accent-secondary);
+        .capsule-nav-link.active {
+          color: #FFFFFF;
+          font-weight: 600;
         }
 
+        .nav-item-icon {
+          font-size: 0.95rem;
+        }
+
+        .capsule-active-bg {
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(30, 58, 138, 0.95) 100%);
+          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+          z-index: -1;
+        }
+
+        [data-theme="light"] .capsule-active-bg {
+          background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Rightmost Circular Theme Switch Capsule */
         .navbar-actions {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.75rem;
         }
 
-        /* Theme Switcher Button Styling */
-        .theme-toggle-container {
+        .theme-capsule-toggle {
           display: flex;
           align-items: center;
-          background: rgba(38, 30, 23, 0.7);
-          border: 1px solid var(--border-color);
-          border-radius: var(--radius-full);
+          background: rgba(14, 18, 28, 0.85);
+          backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 9999px;
           padding: 3px;
-          gap: 2px;
-          backdrop-filter: blur(10px);
+          gap: 4px;
         }
 
-        [data-theme="light"] .theme-toggle-container {
+        [data-theme="light"] .theme-capsule-toggle {
           background: rgba(241, 245, 249, 0.95);
           border-color: rgba(15, 23, 42, 0.15);
         }
 
-        .theme-toggle-btn {
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          padding: 0.38rem 0.8rem;
-          border-radius: var(--radius-full);
+        .theme-circle-btn {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
           border: none;
           background: transparent;
-          color: var(--text-secondary);
-          font-size: 0.825rem;
-          font-weight: 600;
+          color: rgba(255, 255, 255, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.9rem;
           cursor: pointer;
           transition: all var(--transition-fast);
         }
 
-        .theme-toggle-btn.active {
-          background: var(--accent-primary);
-          color: #FFFFFF;
-          box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+        [data-theme="light"] .theme-circle-btn {
+          color: rgba(15, 23, 42, 0.5);
         }
 
-        .theme-icon {
-          font-size: 0.85rem;
+        .theme-circle-btn.active {
+          background: #FFFFFF;
+          color: #2563EB;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="light"] .theme-circle-btn.active {
+          background: #0F172A;
+          color: #F59E0B;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .mobile-toggle-btn {
           display: none;
-          background: rgba(38, 30, 23, 0.6);
+          background: rgba(14, 18, 28, 0.8);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
           width: 40px;
@@ -354,14 +383,16 @@ export default function Navbar() {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.75rem;
         }
 
         .mobile-nav-link {
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           font-weight: 600;
           color: var(--text-secondary);
-          display: block;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
           padding: 0.5rem 0;
         }
 
@@ -395,25 +426,16 @@ export default function Navbar() {
         }
 
         @media (max-width: 960px) {
-          .navbar-desktop,
-          .btn-talk {
+          .navbar-desktop {
             display: none;
           }
           .mobile-toggle-btn {
             display: flex;
           }
         }
-
-        @media (max-width: 640px) {
-          .theme-text {
-            display: none;
-          }
-          .theme-toggle-btn {
-            padding: 0.38rem 0.55rem;
-          }
-        }
       `}</style>
     </header>
   );
 }
+
 
