@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, FaMoon, FaSun } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
 const navLinks = [
@@ -17,6 +17,15 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +52,10 @@ export default function Navbar() {
   }, []);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+  };
 
   return (
     <header className={`navbar-header ${scrolled ? 'navbar-scrolled' : ''}`}>
@@ -83,6 +96,28 @@ export default function Navbar() {
             <FaEnvelope className="btn-icon" />
             <span>Let's Talk</span>
           </a>
+
+          {/* Theme Switcher Toggle (Dark Theme & White Theme) */}
+          <div className="theme-toggle-container" aria-label="Theme Switcher">
+            <button
+              className={`theme-toggle-btn ${theme === 'dark' ? 'active' : ''}`}
+              onClick={() => handleThemeChange('dark')}
+              title="Dark Theme"
+              aria-label="Switch to Dark Theme"
+            >
+              <FaMoon className="theme-icon" />
+              <span className="theme-text">Dark</span>
+            </button>
+            <button
+              className={`theme-toggle-btn ${theme === 'light' ? 'active' : ''}`}
+              onClick={() => handleThemeChange('light')}
+              title="White Theme"
+              aria-label="Switch to White Theme"
+            >
+              <FaSun className="theme-icon" />
+              <span className="theme-text">White</span>
+            </button>
+          </div>
 
           <button
             className="mobile-toggle-btn"
@@ -163,6 +198,12 @@ export default function Navbar() {
           box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
+        [data-theme="light"] .navbar-scrolled {
+          background: rgba(255, 255, 255, 0.92);
+          border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
         .navbar-container {
           display: flex;
           align-items: center;
@@ -238,6 +279,48 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           gap: 1rem;
+        }
+
+        /* Theme Switcher Button Styling */
+        .theme-toggle-container {
+          display: flex;
+          align-items: center;
+          background: rgba(38, 30, 23, 0.7);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-full);
+          padding: 3px;
+          gap: 2px;
+          backdrop-filter: blur(10px);
+        }
+
+        [data-theme="light"] .theme-toggle-container {
+          background: rgba(241, 245, 249, 0.95);
+          border-color: rgba(15, 23, 42, 0.15);
+        }
+
+        .theme-toggle-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.38rem 0.8rem;
+          border-radius: var(--radius-full);
+          border: none;
+          background: transparent;
+          color: var(--text-secondary);
+          font-size: 0.825rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all var(--transition-fast);
+        }
+
+        .theme-toggle-btn.active {
+          background: var(--accent-primary);
+          color: #FFFFFF;
+          box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+        }
+
+        .theme-icon {
+          font-size: 0.85rem;
         }
 
         .mobile-toggle-btn {
@@ -320,7 +403,17 @@ export default function Navbar() {
             display: flex;
           }
         }
+
+        @media (max-width: 640px) {
+          .theme-text {
+            display: none;
+          }
+          .theme-toggle-btn {
+            padding: 0.38rem 0.55rem;
+          }
+        }
       `}</style>
     </header>
   );
 }
+
