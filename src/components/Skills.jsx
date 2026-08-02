@@ -248,6 +248,20 @@ export default function Skills() {
             grid-template-columns: 1fr;
           }
         }
+
+        @media (max-width: 640px) {
+          .skills-chips-wrapper {
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.65rem;
+          }
+          .skills-tab-bar {
+            gap: 0.5rem;
+          }
+          .skills-tab {
+            padding: 0.5rem 0.95rem;
+            font-size: 0.825rem;
+          }
+        }
       `}</style>
     </section>
   );

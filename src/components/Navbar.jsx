@@ -466,12 +466,31 @@ export default function Navbar() {
           color: var(--accent-secondary);
         }
 
+        @media (max-width: 1120px) {
+          .capsule-nav-link {
+            padding: 0.45rem 0.75rem;
+            font-size: 0.825rem;
+            gap: 0.35rem;
+          }
+        }
+
         @media (max-width: 960px) {
           .navbar-desktop {
             display: none;
           }
           .mobile-toggle-btn {
             display: flex;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .logo-text {
+            font-size: 0.95rem;
+          }
+          .logo-badge {
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
           }
         }
       `}</style>

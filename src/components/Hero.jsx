@@ -522,6 +522,14 @@ export default function Hero() {
           .hero-subtitle {
             font-size: 1.05rem;
           }
+          .hero-actions {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .hero-actions .btn {
+            width: 100%;
+            justify-content: center;
+          }
           .hero-stats-grid {
             grid-template-columns: 1fr;
           }
