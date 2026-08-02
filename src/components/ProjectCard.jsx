@@ -93,7 +93,7 @@ export default function ProjectCard({ project, onOpenModal }) {
           width: 100%;
           height: 250px;
           overflow: hidden;
-          background: #070B12;
+          background: #0D0A07;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -116,7 +116,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         .project-image-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 60%, rgba(15, 23, 42, 0.95) 100%);
+          background: linear-gradient(180deg, transparent 60%, rgba(20, 16, 13, 0.95) 100%);
           display: flex;
           align-items: flex-start;
           padding: 0.85rem;
@@ -124,7 +124,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .project-category-badge {
-          background: rgba(15, 23, 42, 0.9);
+          background: rgba(24, 20, 16, 0.9);
           backdrop-filter: blur(8px);
           border: 1px solid var(--border-color-glow);
           color: var(--accent-secondary);
@@ -184,7 +184,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .feature-check {
-          color: #10B981;
+          color: #F59E0B;
           font-size: 0.75rem;
           flex-shrink: 0;
         }
@@ -200,7 +200,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .tech-badge {
-          background: rgba(30, 41, 59, 0.6);
+          background: rgba(38, 30, 23, 0.6);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
           font-size: 0.75rem;

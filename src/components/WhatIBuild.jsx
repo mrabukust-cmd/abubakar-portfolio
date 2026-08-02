@@ -81,8 +81,8 @@ export default function WhatIBuild() {
           width: 52px;
           height: 52px;
           border-radius: var(--radius-md);
-          background: rgba(37, 99, 235, 0.12);
-          border: 1px solid rgba(56, 189, 248, 0.25);
+          background: rgba(245, 158, 11, 0.12);
+          border: 1px solid rgba(249, 115, 22, 0.3);
           color: var(--accent-secondary);
           font-size: 1.5rem;
           margin-bottom: 1.25rem;

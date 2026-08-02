@@ -73,10 +73,10 @@ export default function HowIBuild() {
           font-weight: 800;
           font-size: 1.25rem;
           color: var(--accent-secondary);
-          background: rgba(56, 189, 248, 0.1);
+          background: rgba(245, 158, 11, 0.12);
           padding: 0.25rem 0.65rem;
           border-radius: var(--radius-sm);
-          border: 1px solid rgba(56, 189, 248, 0.2);
+          border: 1px solid rgba(249, 115, 22, 0.25);
         }
 
         .process-line {

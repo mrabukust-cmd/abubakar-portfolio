@@ -148,7 +148,7 @@ export default function Journey() {
           font-size: 0.775rem;
           font-weight: 600;
           color: var(--accent-secondary);
-          background: rgba(56, 189, 248, 0.1);
+          background: rgba(245, 158, 11, 0.12);
           padding: 0.2rem 0.6rem;
           border-radius: var(--radius-sm);
           margin-bottom: 0.5rem;

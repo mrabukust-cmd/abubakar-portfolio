@@ -156,7 +156,7 @@ export default function Navbar() {
 
         .navbar-scrolled {
           padding: 0.85rem 0;
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(18, 14, 11, 0.88);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           border-bottom: 1px solid var(--border-color);
@@ -185,11 +185,11 @@ export default function Navbar() {
           width: 38px;
           height: 38px;
           border-radius: 10px;
-          background: linear-gradient(135deg, var(--accent-primary) 0%, #1D4ED8 100%);
+          background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
           color: #FFFFFF;
           font-weight: 800;
           font-size: 0.95rem;
-          box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+          box-shadow: 0 0 15px rgba(245, 158, 11, 0.45);
         }
 
         .logo-text {
@@ -242,7 +242,7 @@ export default function Navbar() {
 
         .mobile-toggle-btn {
           display: none;
-          background: rgba(30, 41, 59, 0.6);
+          background: rgba(38, 30, 23, 0.6);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
           width: 40px;

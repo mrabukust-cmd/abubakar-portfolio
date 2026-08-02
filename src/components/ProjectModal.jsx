@@ -186,8 +186,8 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-badge {
-          background: rgba(37, 99, 235, 0.15);
-          border: 1px solid rgba(56, 189, 248, 0.3);
+          background: rgba(245, 158, 11, 0.15);
+          border: 1px solid rgba(249, 115, 22, 0.3);
           color: var(--accent-secondary);
           font-family: var(--font-mono);
           font-size: 0.8rem;
@@ -197,7 +197,7 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-close-btn {
-          background: rgba(30, 41, 59, 0.6);
+          background: rgba(38, 30, 23, 0.6);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
           width: 36px;
@@ -229,7 +229,7 @@ export default function ProjectModal({ project, onClose }) {
           height: 320px;
           border-radius: var(--radius-md);
           overflow: hidden;
-          background: #070B12;
+          background: #0E0B08;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -249,7 +249,7 @@ export default function ProjectModal({ project, onClose }) {
           bottom: 0.75rem;
           left: 1rem;
           right: 1rem;
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(24, 20, 16, 0.85);
           backdrop-filter: blur(8px);
           padding: 0.6rem 1rem;
           border-radius: var(--radius-md);
@@ -285,7 +285,7 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-tech-tag {
-          background: rgba(30, 41, 59, 0.7);
+          background: rgba(38, 30, 23, 0.7);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
           font-size: 0.8rem;
@@ -323,7 +323,7 @@ export default function ProjectModal({ project, onClose }) {
 
         .modal-card {
           padding: 1.25rem;
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(24, 20, 16, 0.6);
         }
 
         .modal-card-header {
@@ -355,7 +355,7 @@ export default function ProjectModal({ project, onClose }) {
           gap: 0.6rem;
           font-size: 0.9rem;
           color: var(--text-secondary);
-          background: rgba(30, 41, 59, 0.4);
+          background: rgba(38, 30, 23, 0.4);
           padding: 0.65rem;
           border-radius: var(--radius-md);
           border: 1px solid var(--border-color);

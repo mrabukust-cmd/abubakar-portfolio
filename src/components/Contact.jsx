@@ -244,8 +244,8 @@ export default function Contact() {
           width: 46px;
           height: 46px;
           border-radius: var(--radius-md);
-          background: rgba(37, 99, 235, 0.12);
-          border: 1px solid rgba(56, 189, 248, 0.25);
+          background: rgba(245, 158, 11, 0.12);
+          border: 1px solid rgba(249, 115, 22, 0.3);
           color: var(--accent-secondary);
           font-size: 1.25rem;
           flex-shrink: 0;
@@ -270,7 +270,7 @@ export default function Contact() {
         }
 
         .contact-availability-card {
-          background: rgba(15, 23, 42, 0.7);
+          background: rgba(24, 20, 16, 0.7);
           border-color: var(--border-color);
           margin-top: 0.5rem;
         }
@@ -346,7 +346,7 @@ export default function Contact() {
 
         .form-input {
           width: 100%;
-          background: rgba(15, 23, 42, 0.8);
+          background: rgba(24, 20, 16, 0.8);
           border: 1px solid var(--border-color);
           border-radius: var(--radius-md);
           padding: 0.75rem 1rem;
@@ -358,7 +358,7 @@ export default function Contact() {
 
         .form-input:focus {
           border-color: var(--accent-secondary);
-          background: rgba(15, 23, 42, 1);
+          background: rgba(32, 26, 20, 1);
         }
 
         .form-textarea {

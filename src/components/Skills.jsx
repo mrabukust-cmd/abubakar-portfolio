@@ -121,7 +121,7 @@ export default function Skills() {
           gap: 0.5rem;
           padding: 0.6rem 1.25rem;
           border-radius: var(--radius-full);
-          background: rgba(23, 32, 51, 0.6);
+          background: rgba(38, 30, 23, 0.6);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
           font-weight: 600;
@@ -139,7 +139,7 @@ export default function Skills() {
           background: var(--accent-primary);
           color: #FFFFFF;
           border-color: var(--accent-primary);
-          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+          box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
         }
 
         .tab-icon {
@@ -172,8 +172,8 @@ export default function Skills() {
           width: 48px;
           height: 48px;
           border-radius: var(--radius-md);
-          background: rgba(139, 92, 246, 0.12);
-          border: 1px solid rgba(6, 182, 212, 0.3);
+          background: rgba(245, 158, 11, 0.12);
+          border: 1px solid rgba(249, 115, 22, 0.35);
           color: var(--accent-secondary);
           font-size: 1.35rem;
           flex-shrink: 0;
@@ -203,14 +203,14 @@ export default function Skills() {
           gap: 0.75rem;
           padding: 0.65rem 0.85rem;
           border-radius: var(--radius-md);
-          background: rgba(15, 23, 42, 0.7);
+          background: rgba(24, 20, 16, 0.7);
           border: 1px solid var(--border-color);
           transition: all var(--transition-fast);
         }
 
         .skill-chip:hover {
           border-color: var(--border-color-glow);
-          background: rgba(30, 41, 59, 0.8);
+          background: rgba(38, 30, 23, 0.85);
           transform: translateY(-2px);
         }
 

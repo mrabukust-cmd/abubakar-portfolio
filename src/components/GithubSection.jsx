@@ -80,7 +80,7 @@ export default function GithubSection() {
 
         .github-card {
           padding: 3rem;
-          background: linear-gradient(135deg, rgba(23, 32, 51, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+          background: linear-gradient(135deg, rgba(38, 30, 23, 0.9) 0%, rgba(24, 20, 16, 0.95) 100%);
           border-color: var(--border-color-glow);
         }
 
@@ -95,8 +95,8 @@ export default function GithubSection() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(37, 99, 235, 0.1);
-          border: 1px solid rgba(56, 189, 248, 0.25);
+          background: rgba(245, 158, 11, 0.12);
+          border: 1px solid rgba(249, 115, 22, 0.3);
           color: var(--accent-secondary);
           padding: 0.35rem 0.85rem;
           border-radius: var(--radius-full);
@@ -127,7 +127,7 @@ export default function GithubSection() {
 
         /* Terminal Window */
         .terminal-box {
-          background: #0B0F19;
+          background: #120E0A;
           border: 1px solid var(--border-color);
           border-radius: var(--radius-md);
           overflow: hidden;
@@ -141,7 +141,7 @@ export default function GithubSection() {
           align-items: center;
           gap: 1rem;
           padding: 0.65rem 1rem;
-          background: #111827;
+          background: #1B1510;
           border-bottom: 1px solid var(--border-color);
         }
 
@@ -159,11 +159,11 @@ export default function GithubSection() {
         }
 
         .term-line { display: block; }
-        .term-prompt { color: #38BDF8; font-weight: 700; }
+        .term-prompt { color: #F59E0B; font-weight: 700; }
         .term-output { color: #94A3B8; font-size: 0.8rem; padding-left: 0.5rem; }
         .term-log { display: block; padding-left: 0.5rem; font-size: 0.8rem; }
-        .commit-hash { color: #F59E0B; }
-        .term-cursor { animation: blink 1s infinite; color: #38BDF8; }
+        .commit-hash { color: #F97316; }
+        .term-cursor { animation: blink 1s infinite; color: #F59E0B; }
 
         @keyframes blink {
           0%, 100% { opacity: 1; }
