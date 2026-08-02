@@ -206,7 +206,7 @@ export default function Hero() {
           left: -8%;
           width: 550px;
           height: 550px;
-          background: rgba(99, 102, 241, 0.24);
+          background: rgba(245, 158, 11, 0.22);
         }
 
         .glow-2 {
@@ -214,7 +214,7 @@ export default function Hero() {
           right: -8%;
           width: 500px;
           height: 500px;
-          background: rgba(56, 189, 248, 0.2);
+          background: rgba(249, 115, 22, 0.18);
         }
 
         .hero-container {
@@ -239,7 +239,7 @@ export default function Hero() {
         }
 
         .text-gradient {
-          background: linear-gradient(135deg, #F8FAFC 0%, var(--accent-secondary) 100%);
+          background: linear-gradient(135deg, #FFFBEB 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -293,7 +293,7 @@ export default function Hero() {
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
-          background: rgba(30, 41, 59, 0.5);
+          background: rgba(38, 30, 23, 0.6);
           border: 1px solid var(--border-color);
           padding: 0.35rem 0.75rem;
           border-radius: var(--radius-full);
@@ -302,8 +302,8 @@ export default function Hero() {
           font-weight: 500;
         }
 
-        .flutter-icon { color: #38BDF8; }
-        .dart-icon { color: #0175C2; }
+        .flutter-icon { color: #F59E0B; }
+        .dart-icon { color: #F97316; }
         .firebase-icon { color: #FFCA28; }
         .api-icon { color: var(--accent-secondary); }
 
@@ -314,7 +314,7 @@ export default function Hero() {
 
         .hero-card-window {
           padding: 0;
-          background: rgba(17, 24, 39, 0.95);
+          background: rgba(24, 20, 16, 0.95);
           border: 1px solid var(--border-color);
           border-radius: var(--radius-lg);
           box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
@@ -325,7 +325,7 @@ export default function Hero() {
           align-items: center;
           gap: 1rem;
           padding: 0.85rem 1.25rem;
-          background: rgba(15, 23, 42, 0.95);
+          background: rgba(18, 14, 11, 0.95);
           border-bottom: 1px solid var(--border-color);
         }
 
@@ -357,7 +357,7 @@ export default function Hero() {
         }
 
         .code-snippet {
-          background: #0B0F19;
+          background: #120E0A;
           padding: 1rem;
           border-radius: var(--radius-md);
           font-family: var(--font-mono);
@@ -369,8 +369,8 @@ export default function Hero() {
         .code-line { display: block; }
         .code-keyword { color: #F43F5E; }
         .code-string { color: #10B981; }
-        .code-func { color: #38BDF8; }
-        .code-type { color: #F59E0B; }
+        .code-func { color: #F59E0B; }
+        .code-type { color: #F97316; }
 
         .app-preview-composition {
           position: relative;
@@ -378,7 +378,7 @@ export default function Hero() {
           overflow: hidden;
           height: 190px;
           border: 1px solid var(--border-color);
-          background: #080C14;
+          background: #0E0B08;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -397,7 +397,7 @@ export default function Hero() {
           display: flex;
           align-items: center;
           gap: 0.4rem;
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(24, 20, 16, 0.85);
           backdrop-filter: blur(8px);
           padding: 0.3rem 0.65rem;
           border-radius: var(--radius-full);
@@ -413,7 +413,7 @@ export default function Hero() {
           gap: 0.75rem;
           padding: 0.65rem 0.9rem;
           border-radius: var(--radius-md);
-          background: rgba(23, 32, 51, 0.95);
+          background: rgba(38, 30, 23, 0.95);
           backdrop-filter: blur(12px);
           border: 1px solid var(--border-color-glow);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
