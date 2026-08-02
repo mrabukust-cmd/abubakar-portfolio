@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, 
@@ -23,6 +23,9 @@ export default function Navbar() {
     return localStorage.getItem('theme') || 'dark';
   });
 
+  const isNavClicking = useRef(false);
+  const clickTimeoutRef = useRef(null);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
@@ -36,6 +39,9 @@ export default function Navbar() {
       } else {
         setScrolled(false);
       }
+
+      // Skip scroll position recalculations while smooth scrolling from a nav link click
+      if (isNavClicking.current) return;
 
       const scrollPosition = window.scrollY + 180;
       const sectionElements = navLinks
@@ -52,9 +58,12 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    };
   }, []);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
@@ -67,9 +76,22 @@ export default function Navbar() {
     e.preventDefault();
     const targetId = href.substring(1);
     const targetEl = document.getElementById(targetId);
+
     if (targetEl) {
+      // Lock scroll listener to prevent intermediate flickering during smooth scroll
+      isNavClicking.current = true;
       setActiveSection(targetId);
+
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+
       targetEl.scrollIntoView({ behavior: 'smooth' });
+
+      // Unlock scroll listener after smooth scroll finishes
+      clickTimeoutRef.current = setTimeout(() => {
+        isNavClicking.current = false;
+      }, 800);
     }
   };
 
