@@ -37,19 +37,23 @@ export default function Navbar() {
         setScrolled(false);
       }
 
-      const sections = navLinks.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 180;
+      const sectionElements = navLinks
+        .map(link => document.getElementById(link.href.substring(1)))
+        .filter(Boolean)
+        .sort((a, b) => a.offsetTop - b.offsetTop);
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
           break;
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -57,6 +61,16 @@ export default function Navbar() {
 
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
+  };
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      setActiveSection(targetId);
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -73,12 +87,14 @@ export default function Navbar() {
           <div className="navbar-floating-capsule">
             {navLinks.map((link) => {
               const IconComp = link.icon;
-              const isActive = activeSection === link.href.substring(1);
+              const targetId = link.href.substring(1);
+              const isActive = activeSection === targetId;
               return (
                 <a
                   key={link.name}
                   href={link.href}
                   className={`capsule-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
                 >
                   <IconComp className="nav-item-icon" />
                   <span>{link.name}</span>
@@ -146,7 +162,10 @@ export default function Navbar() {
                       <a
                         href={link.href}
                         className="mobile-nav-link"
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={(e) => {
+                          setMobileMenuOpen(false);
+                          handleNavClick(e, link.href);
+                        }}
                       >
                         <IconComp style={{ fontSize: '1rem' }} />
                         <span>{link.name}</span>

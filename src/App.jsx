@@ -17,11 +17,11 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <WhatIBuild />
         <Projects />
         <Skills />
         <HowIBuild />
-        <About />
         <Journey />
         <GithubSection />
         <Contact />
