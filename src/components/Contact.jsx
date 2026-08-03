@@ -26,7 +26,16 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const triggerMailtoFallback = () => {
+    const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
+    setStatus('success');
+    confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.message) {
@@ -36,15 +45,40 @@ export default function Contact() {
 
     setStatus('submitting');
 
-    setTimeout(() => {
-      setStatus('success');
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.8 }
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 800);
+    const apiKey = import.meta.env.VITE_WEB3FORMS_KEY;
+
+    if (apiKey) {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: apiKey,
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || `Portfolio Contact from ${formData.name}`,
+            message: formData.message
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setStatus('success');
+          confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        } else {
+          triggerMailtoFallback();
+        }
+      } catch (err) {
+        triggerMailtoFallback();
+      }
+    } else {
+      triggerMailtoFallback();
+    }
   };
 
   return (
