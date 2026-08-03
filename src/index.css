@@ -359,6 +359,23 @@ textarea:focus-visible {
   z-index: 0;
 }
 
+.resume-nav-btn {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: var(--text-primary);
+}
+
+.resume-nav-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: var(--accent-secondary);
+}
+
+@media (max-width: 520px) {
+  .resume-btn-text {
+    display: none;
+  }
+}
+
 /* Animation reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

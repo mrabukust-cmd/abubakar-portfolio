@@ -1,11 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaArrowRight, FaCode } from 'react-icons/fa';
+import { FaGithub, FaArrowRight, FaCode, FaCopy, FaCheck } from 'react-icons/fa';
 import { SiFlutter, SiDart, SiFirebase } from 'react-icons/si';
 import { profileData } from '../data/profile';
 import mentoraImg from '../assets/images/mentora_real.png';
 
+const codeSnippets = {
+  'main.dart': {
+    title: 'App Init',
+    code: [
+      { line: "import 'package:flutter/material.dart';", type: 'import' },
+      { line: "import 'package:firebase_core/firebase_core.dart';", type: 'import' },
+      { line: "", type: 'empty' },
+      { line: "void main() async {", type: 'func' },
+      { line: "  WidgetsFlutterBinding.ensureInitialized();", type: 'body' },
+      { line: "  await Firebase.initializeApp();", type: 'body' },
+      { line: "  runApp(const MentoraApp());", type: 'body' },
+      { line: "}", type: 'func' }
+    ],
+    rawText: `import 'package:flutter/material.dart';\nimport 'package:firebase_core/firebase_core.dart';\n\nvoid main() async {\n  WidgetsFlutterBinding.ensureInitialized();\n  await Firebase.initializeApp();\n  runApp(const MentoraApp());\n}`
+  },
+  'provider.dart': {
+    title: 'State Mgmt',
+    code: [
+      { line: "class AuthNotifier extends ChangeNotifier {", type: 'class' },
+      { line: "  final FirebaseAuth _auth = FirebaseAuth.instance;", type: 'body' },
+      { line: "  User? _currentUser;", type: 'body' },
+      { line: "", type: 'empty' },
+      { line: "  Future<void> signIn(String email, String pass) async {", type: 'func' },
+      { line: "    await _auth.signInWithEmailAndPassword(email: email, password: pass);", type: 'body' },
+      { line: "    notifyListeners();", type: 'body' },
+      { line: "  }", type: 'func' },
+      { line: "}", type: 'class' }
+    ],
+    rawText: `class AuthNotifier extends ChangeNotifier {\n  final FirebaseAuth _auth = FirebaseAuth.instance;\n  User? _currentUser;\n\n  Future<void> signIn(String email, String pass) async {\n    await _auth.signInWithEmailAndPassword(email: email, password: pass);\n    notifyListeners();\n  }\n}`
+  },
+  'api_client.dart': {
+    title: 'REST API',
+    code: [
+      { line: "class ApiClient {", type: 'class' },
+      { line: "  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://api.app/v1'));", type: 'body' },
+      { line: "", type: 'empty' },
+      { line: "  Future<Response> fetchUserProfile(String userId) async {", type: 'func' },
+      { line: "    return await _dio.get('/users/$userId');", type: 'body' },
+      { line: "  }", type: 'func' },
+      { line: "}", type: 'class' }
+    ],
+    rawText: `class ApiClient {\n  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://api.app/v1'));\n\n  Future<Response> fetchUserProfile(String userId) async {\n    return await _dio.get('/users/$userId');\n  }\n}`
+  }
+};
+
 export default function Hero() {
+  const [activeTab, setActiveTab] = useState('main.dart');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(codeSnippets[activeTab].rawText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section id="home" className="hero-section section">
       {/* Background Ambient Glows */}
@@ -109,19 +163,32 @@ export default function Hero() {
                 <span className="dot yellow" />
                 <span className="dot green" />
               </div>
-              <span className="window-title">main.dart — Flutter App Engineering</span>
+
+              {/* Code Tabs */}
+              <div className="code-tabs-bar">
+                {Object.keys(codeSnippets).map((tabKey) => (
+                  <button
+                    key={tabKey}
+                    className={`code-tab-btn ${activeTab === tabKey ? 'active' : ''}`}
+                    onClick={() => setActiveTab(tabKey)}
+                  >
+                    {tabKey}
+                  </button>
+                ))}
+              </div>
+
+              <button className="code-copy-btn" onClick={handleCopyCode} title="Copy code snippet">
+                {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+              </button>
             </div>
 
             <div className="window-body">
               <div className="code-snippet">
-                <span className="code-line"><span className="code-keyword">import</span> <span className="code-string">'package:flutter/material.dart'</span>;</span>
-                <span className="code-line"><span className="code-keyword">import</span> <span className="code-string">'package:firebase_core/firebase_core.dart'</span>;</span>
-                <span className="code-line">&nbsp;</span>
-                <span className="code-line"><span className="code-keyword">void</span> <span className="code-func">main</span>() <span className="code-keyword">async</span> &#123;</span>
-                <span className="code-line">&nbsp;&nbsp;<span className="code-func">WidgetsFlutterBinding</span>.<span className="code-func">ensureInitialized</span>();</span>
-                <span className="code-line">&nbsp;&nbsp;<span className="code-keyword">await</span> <span className="code-func">Firebase</span>.<span className="code-func">initializeApp</span>();</span>
-                <span className="code-line">&nbsp;&nbsp;<span className="code-func">runApp</span>(<span className="code-keyword">const</span> <span className="code-type">MentoraApp</span>());</span>
-                <span className="code-line">&#125;</span>
+                {codeSnippets[activeTab].code.map((item, idx) => (
+                  <span key={idx} className="code-line">
+                    {item.line}
+                  </span>
+                ))}
               </div>
 
               {/* Mobile App Preview Overlay Composition */}
@@ -323,8 +390,9 @@ export default function Hero() {
         .window-header {
           display: flex;
           align-items: center;
-          gap: 1rem;
-          padding: 0.85rem 1.25rem;
+          justify-content: space-between;
+          gap: 0.75rem;
+          padding: 0.75rem 1.25rem;
           background: rgba(18, 14, 11, 0.95);
           border-bottom: 1px solid var(--border-color);
         }
@@ -332,6 +400,7 @@ export default function Hero() {
         .window-dots {
           display: flex;
           gap: 0.4rem;
+          flex-shrink: 0;
         }
 
         .dot {
@@ -343,10 +412,56 @@ export default function Hero() {
         .dot.yellow { background: #F59E0B; }
         .dot.green { background: #10B981; }
 
-        .window-title {
-          font-family: var(--font-mono);
-          font-size: 0.8rem;
+        .code-tabs-bar {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          overflow-x: auto;
+        }
+
+        .code-tab-btn {
+          background: transparent;
+          border: 1px solid transparent;
           color: var(--text-muted);
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          padding: 0.25rem 0.6rem;
+          border-radius: var(--radius-sm);
+          cursor: pointer;
+          transition: all var(--transition-fast);
+        }
+
+        .code-tab-btn:hover {
+          color: var(--text-primary);
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .code-tab-btn.active {
+          color: var(--accent-secondary);
+          background: rgba(245, 158, 11, 0.12);
+          border-color: rgba(249, 115, 22, 0.3);
+          font-weight: 600;
+        }
+
+        .code-copy-btn {
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid var(--border-color);
+          color: var(--text-secondary);
+          width: 28px;
+          height: 28px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 0.8rem;
+          flex-shrink: 0;
+          transition: all var(--transition-fast);
+        }
+
+        .code-copy-btn:hover {
+          color: var(--text-primary);
+          background: rgba(255, 255, 255, 0.12);
         }
 
         .window-body {

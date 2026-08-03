@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, 
-  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase 
+  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase, FaFileAlt 
 } from 'react-icons/fa';
 import { profileData } from '../data/profile';
+import ResumeModal from './ResumeModal';
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: FaHome },
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark';
   });
@@ -133,8 +135,17 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Right: Theme Switch Capsule */}
+        {/* Right: Actions & Theme Switch Capsule */}
         <div className="navbar-actions">
+          <button 
+            className="btn btn-secondary btn-sm resume-nav-btn" 
+            onClick={() => setIsResumeOpen(true)}
+            aria-label="Open Resume CV"
+          >
+            <FaFileAlt style={{ color: 'var(--accent-secondary)' }} />
+            <span className="resume-btn-text">CV / Resume</span>
+          </button>
+
           <div className="theme-capsule-toggle">
             <button
               className={`theme-circle-btn ${theme === 'dark' ? 'active' : ''}`}
@@ -198,6 +209,15 @@ export default function Navbar() {
               </ul>
 
               <div className="mobile-drawer-footer">
+                <button
+                  className="btn btn-secondary btn-full"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setIsResumeOpen(true);
+                  }}
+                >
+                  <FaFileAlt /> View Resume / CV
+                </button>
                 <a
                   href="#contact"
                   className="btn btn-primary btn-full"
@@ -218,6 +238,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
       <style>{`
         .navbar-header {

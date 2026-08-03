@@ -1,0 +1,521 @@
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  FaTimes, FaPrint, FaEnvelope, FaGithub, FaLinkedin, 
+  FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaCode, FaCheckCircle, FaCopy, FaCheck 
+} from 'react-icons/fa';
+import { profileData } from '../data/profile';
+import { projectsData } from '../data/projects';
+import { skillCategories } from '../data/skills';
+
+export default function ResumeModal({ isOpen, onClose }) {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(profileData.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  return (
+    <AnimatePresence>
+      <div className="resume-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="resume-title">
+        <motion.div
+          className="resume-modal-container glass-panel"
+          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.95, y: 25 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 25 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        >
+          {/* Modal Top Toolbar */}
+          <div className="resume-toolbar no-print">
+            <div className="toolbar-title">
+              <FaBriefcase className="toolbar-icon" />
+              <span>Developer Curriculum Vitae</span>
+            </div>
+            <div className="toolbar-actions">
+              <button className="btn btn-secondary btn-sm" onClick={handleCopyEmail} title="Copy Email">
+                {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+                <span>{copied ? 'Copied!' : 'Copy Email'}</span>
+              </button>
+
+              <button className="btn btn-primary btn-sm" onClick={handlePrint} title="Print or Save as PDF">
+                <FaPrint />
+                <span>Print / Save PDF</span>
+              </button>
+
+              <button className="resume-close-btn" onClick={onClose} aria-label="Close Resume Modal">
+                <FaTimes />
+              </button>
+            </div>
+          </div>
+
+          {/* Printable Resume Document Wrapper */}
+          <div className="resume-document-wrapper">
+            <div className="resume-document">
+              {/* Header Section */}
+              <header className="resume-header">
+                <div className="resume-header-main">
+                  <h1 id="resume-title" className="resume-name">{profileData.name}</h1>
+                  <h2 className="resume-headline">{profileData.title}</h2>
+                  <p className="resume-summary">
+                    Software Engineering student and dedicated Flutter Developer skilled in building cross-platform mobile applications, integrating Firebase backend services, connecting RESTful APIs, and implementing scalable application architecture.
+                  </p>
+                </div>
+
+                <div className="resume-contact-meta">
+                  <div className="contact-meta-item">
+                    <FaEnvelope className="meta-icon" />
+                    <span>{profileData.email}</span>
+                  </div>
+                  <div className="contact-meta-item">
+                    <FaMapMarkerAlt className="meta-icon" />
+                    <span>{profileData.location}</span>
+                  </div>
+                  <div className="contact-meta-item">
+                    <FaGraduationCap className="meta-icon" />
+                    <span>{profileData.education}</span>
+                  </div>
+                  <div className="contact-meta-item">
+                    <FaGithub className="meta-icon" />
+                    <a href={profileData.socials.github} target="_blank" rel="noreferrer">github.com/mrabukust-cmd</a>
+                  </div>
+                  <div className="contact-meta-item">
+                    <FaLinkedin className="meta-icon" />
+                    <a href={profileData.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn Profile</a>
+                  </div>
+                </div>
+              </header>
+
+              <hr className="resume-divider" />
+
+              {/* Main Body Grid */}
+              <div className="resume-body-grid">
+                {/* Left Column: Education, Core Tech, Key Attributes */}
+                <aside className="resume-sidebar">
+                  {/* Education */}
+                  <section className="resume-section">
+                    <h3 className="section-heading">
+                      <FaGraduationCap className="heading-icon" /> Education
+                    </h3>
+                    <div className="resume-block">
+                      <h4 className="block-title">BS Software Engineering</h4>
+                      <span className="block-meta">University Degree Program</span>
+                      <p className="block-desc">
+                        Focusing on Software Architecture, OOP, Data Structures, Requirements Engineering, Database Management, and Software Testing.
+                      </p>
+                    </div>
+                  </section>
+
+                  {/* Core Technical Stack */}
+                  <section className="resume-section">
+                    <h3 className="section-heading">
+                      <FaCode className="heading-icon" /> Technical Stack
+                    </h3>
+                    {skillCategories.map(cat => (
+                      <div key={cat.id} className="skill-cat-block">
+                        <h4 className="cat-block-name">{cat.title}</h4>
+                        <div className="skill-tags">
+                          {cat.skills.map((s, idx) => (
+                            <span key={idx} className="resume-skill-badge">{s.name}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+                </aside>
+
+                {/* Right Column: Experience, Featured Projects */}
+                <main className="resume-main-content">
+                  {/* Experience & Practical Journey */}
+                  <section className="resume-section">
+                    <h3 className="section-heading">
+                      <FaBriefcase className="heading-icon" /> Engineering Experience
+                    </h3>
+                    {profileData.journey.map((item, idx) => (
+                      <div key={idx} className="resume-block mb-3">
+                        <div className="block-header-row">
+                          <h4 className="block-title">{item.role}</h4>
+                          <span className="block-badge">{item.period}</span>
+                        </div>
+                        <span className="block-meta">{item.institution}</span>
+                        <p className="block-desc">{item.description}</p>
+                        <div className="block-tags">
+                          {item.skills.map((sk, sIdx) => (
+                            <span key={sIdx} className="mini-tag">#{sk}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+
+                  {/* Featured Projects Showcase */}
+                  <section className="resume-section">
+                    <h3 className="section-heading">
+                      <FaCheckCircle className="heading-icon" /> Featured Mobile Applications
+                    </h3>
+                    {projectsData.slice(0, 3).map((proj) => (
+                      <div key={proj.id} className="resume-block mb-3">
+                        <div className="block-header-row">
+                          <h4 className="block-title">{proj.title}</h4>
+                          <span className="block-badge">{proj.category}</span>
+                        </div>
+                        <span className="block-meta">{proj.tagline}</span>
+                        <p className="block-desc">{proj.shortDescription}</p>
+                        <div className="block-tags">
+                          {proj.technologies.map((tech, tIdx) => (
+                            <span key={tIdx} className="resume-skill-badge">{tech}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+                </main>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <style>{`
+        .resume-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 2100;
+          background: rgba(10, 12, 18, 0.88);
+          backdrop-filter: blur(12px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.5rem;
+          overflow-y: auto;
+        }
+
+        .resume-modal-container {
+          width: 100%;
+          max-width: 960px;
+          max-height: 92vh;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color-glow);
+          border-radius: var(--radius-lg);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
+        }
+
+        .resume-toolbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.85rem 1.5rem;
+          background: var(--bg-primary);
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        .toolbar-title {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-weight: 700;
+          font-size: 0.95rem;
+          color: var(--text-primary);
+        }
+
+        .toolbar-icon {
+          color: var(--accent-secondary);
+        }
+
+        .toolbar-actions {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .resume-close-btn {
+          background: rgba(38, 30, 23, 0.7);
+          border: 1px solid var(--border-color);
+          color: var(--text-primary);
+          width: 34px;
+          height: 34px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: all var(--transition-fast);
+        }
+
+        .resume-close-btn:hover {
+          background: rgba(239, 68, 68, 0.2);
+          color: #EF4444;
+        }
+
+        .resume-document-wrapper {
+          padding: 2rem;
+          overflow-y: auto;
+          background: var(--bg-secondary);
+        }
+
+        .resume-document {
+          background: rgba(20, 16, 13, 0.7);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          padding: 2.25rem;
+        }
+
+        [data-theme="light"] .resume-document {
+          background: #FFFFFF;
+          border-color: rgba(15, 23, 42, 0.12);
+        }
+
+        .resume-header-main {
+          margin-bottom: 1.25rem;
+        }
+
+        .resume-name {
+          font-size: 2.25rem;
+          font-weight: 800;
+          color: var(--text-primary);
+          margin-bottom: 0.2rem;
+        }
+
+        .resume-headline {
+          font-size: 1.1rem;
+          color: var(--accent-secondary);
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+        }
+
+        .resume-summary {
+          font-size: 0.95rem;
+          color: var(--text-secondary);
+          line-height: 1.65;
+        }
+
+        .resume-contact-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+          background: rgba(38, 30, 23, 0.5);
+          padding: 0.85rem 1.25rem;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--border-color);
+          font-size: 0.85rem;
+        }
+
+        [data-theme="light"] .resume-contact-meta {
+          background: #F1F5F9;
+        }
+
+        .contact-meta-item {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          color: var(--text-secondary);
+        }
+
+        .meta-icon {
+          color: var(--accent-primary);
+        }
+
+        .resume-divider {
+          border: none;
+          border-top: 1px solid var(--border-color);
+          margin: 1.75rem 0;
+        }
+
+        .resume-body-grid {
+          display: grid;
+          grid-template-columns: 0.85fr 1.15fr;
+          gap: 2rem;
+        }
+
+        .resume-section {
+          margin-bottom: 1.75rem;
+        }
+
+        .section-heading {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          border-bottom: 2px solid var(--accent-primary);
+          padding-bottom: 0.35rem;
+        }
+
+        .heading-icon {
+          color: var(--accent-secondary);
+        }
+
+        .resume-block {
+          background: rgba(38, 30, 23, 0.4);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          padding: 1rem 1.15rem;
+        }
+
+        [data-theme="light"] .resume-block {
+          background: #F8FAFC;
+        }
+
+        .mb-3 { margin-bottom: 1rem; }
+
+        .block-header-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.5rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .block-title {
+          font-size: 0.975rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .block-badge {
+          font-size: 0.725rem;
+          font-family: var(--font-mono);
+          background: rgba(245, 158, 11, 0.15);
+          color: var(--accent-secondary);
+          padding: 0.2rem 0.55rem;
+          border-radius: var(--radius-full);
+          border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .block-meta {
+          display: block;
+          font-size: 0.825rem;
+          color: var(--accent-secondary);
+          font-weight: 500;
+          margin-bottom: 0.4rem;
+        }
+
+        .block-desc {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          line-height: 1.55;
+          margin-bottom: 0.6rem;
+        }
+
+        .block-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+        }
+
+        .mini-tag {
+          font-size: 0.75rem;
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+        }
+
+        .skill-cat-block {
+          margin-bottom: 1rem;
+        }
+
+        .cat-block-name {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--text-secondary);
+          margin-bottom: 0.4rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .skill-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+        }
+
+        .resume-skill-badge {
+          font-size: 0.775rem;
+          background: rgba(24, 20, 16, 0.8);
+          border: 1px solid var(--border-color);
+          color: var(--text-primary);
+          padding: 0.2rem 0.55rem;
+          border-radius: var(--radius-sm);
+        }
+
+        [data-theme="light"] .resume-skill-badge {
+          background: #E2E8F0;
+          color: #0F172A;
+        }
+
+        /* Print Media Style Rules */
+        @media print {
+          .no-print, .resume-backdrop {
+            position: static !important;
+            background: white !important;
+            padding: 0 !important;
+            overflow: visible !important;
+          }
+          .resume-modal-container {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            box-shadow: none !important;
+            border: none !important;
+            background: white !important;
+            color: black !important;
+          }
+          .resume-document {
+            border: none !important;
+            background: white !important;
+            color: black !important;
+            padding: 0 !important;
+          }
+          .resume-name, .block-title, .section-heading, .cat-block-name {
+            color: #000 !important;
+          }
+          .resume-summary, .block-desc, .contact-meta-item {
+            color: #333 !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .resume-body-grid {
+            grid-template-columns: 1fr;
+          }
+          .resume-contact-meta {
+            flex-direction: column;
+            gap: 0.6rem;
+          }
+          .resume-document-wrapper {
+            padding: 1rem;
+          }
+          .resume-document {
+            padding: 1.25rem;
+          }
+        }
+      `}</style>
+    </AnimatePresence>
+  );
+}

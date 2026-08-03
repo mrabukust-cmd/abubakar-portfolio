@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
 export default function Contact() {
@@ -13,6 +13,13 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState('idle');
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(profileData.email);
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,16 +67,24 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="card contact-method-card">
+            <div className="card contact-method-card contact-email-card">
               <div className="method-icon-box">
                 <FaEnvelope />
               </div>
-              <div>
+              <div className="method-text-box">
                 <span className="method-label">Direct Email</span>
                 <a href={profileData.socials.mailto} className="method-value">
                   {profileData.email}
                 </a>
               </div>
+              <button 
+                className="contact-copy-btn" 
+                onClick={handleCopyEmail}
+                title="Copy Email Address"
+                aria-label="Copy Email Address"
+              >
+                {emailCopied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+              </button>
             </div>
 
             <div className="card contact-method-card">
@@ -235,6 +250,36 @@ export default function Contact() {
           align-items: center;
           gap: 1.25rem;
           padding: 1.25rem 1.5rem;
+        }
+
+        .contact-email-card {
+          justify-content: space-between;
+        }
+
+        .method-text-box {
+          flex: 1;
+        }
+
+        .contact-copy-btn {
+          background: rgba(38, 30, 23, 0.7);
+          border: 1px solid var(--border-color);
+          color: var(--text-secondary);
+          width: 36px;
+          height: 36px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 0.95rem;
+          transition: all var(--transition-fast);
+          flex-shrink: 0;
+        }
+
+        .contact-copy-btn:hover {
+          color: var(--text-primary);
+          border-color: var(--accent-secondary);
+          background: rgba(54, 42, 31, 0.9);
         }
 
         .method-icon-box {
