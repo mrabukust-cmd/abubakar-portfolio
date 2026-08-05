@@ -101,7 +101,7 @@ export default function Navbar() {
     <header className={`navbar-header ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
         {/* Left: Logo Badge */}
-        <a href="#home" className="navbar-logo" aria-label="Abubakar Siddique Homepage">
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="navbar-logo" aria-label="Abubakar Siddique Homepage">
           <span className="logo-badge">{profileData.shortName}</span>
           <span className="logo-text">{profileData.name}</span>
         </a>

@@ -386,5 +386,34 @@ textarea:focus-visible {
   }
 }
 
+/* Floating Toast Feedback Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: rgba(13, 12, 16, 0.92);
+  border: 1px solid var(--accent-secondary);
+  color: var(--text-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(249, 115, 22, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+[data-theme="light"] .toast-notification {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
 
 

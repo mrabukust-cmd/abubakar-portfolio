@@ -73,7 +73,7 @@ export default function Contact() {
         } else {
           triggerMailtoFallback();
         }
-      } catch (err) {
+      } catch {
         triggerMailtoFallback();
       }
     } else {

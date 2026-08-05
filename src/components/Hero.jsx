@@ -60,6 +60,15 @@ export default function Hero() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="hero-section section">
       {/* Background Ambient Glows */}
@@ -113,12 +122,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <a href="#projects" className="btn btn-primary">
+            <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} className="btn btn-primary">
               <span>View Projects</span>
               <FaArrowRight className="btn-icon" />
             </a>
 
-            <a href="#contact" className="btn btn-secondary">
+            <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="btn btn-secondary">
               <span>Let's Connect</span>
             </a>
 

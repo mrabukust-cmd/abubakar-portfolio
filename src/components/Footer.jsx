@@ -7,12 +7,21 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="footer-container">
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <a href="#home" className="footer-logo" aria-label="Abubakar Siddique Portfolio Home">
+            <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="footer-logo" aria-label="Abubakar Siddique Portfolio Home">
               <span className="logo-badge">{profileData.shortName}</span>
               <span className="logo-text">{profileData.name}</span>
             </a>
@@ -27,13 +36,13 @@ export default function Footer() {
           <div className="footer-nav">
             <h4 className="footer-heading">Navigation</h4>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#what-i-build">What I Build</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#process">Process</a></li>
-              <li><a href="#experience">Journey</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home" onClick={(e) => handleNavClick(e, '#home')}>Home</a></li>
+              <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
+              <li><a href="#what-i-build" onClick={(e) => handleNavClick(e, '#what-i-build')}>What I Build</a></li>
+              <li><a href="#projects" onClick={(e) => handleNavClick(e, '#projects')}>Projects</a></li>
+              <li><a href="#skills" onClick={(e) => handleNavClick(e, '#skills')}>Skills</a></li>
+              <li><a href="#experience" onClick={(e) => handleNavClick(e, '#experience')}>Journey</a></li>
+              <li><a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a></li>
             </ul>
           </div>
 
@@ -74,7 +83,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p className="copyright-text">
-            © 2026 Abubakar Siddique. All rights reserved.
+            © {new Date().getFullYear()} Abubakar Siddique. All rights reserved.
           </p>
           <p className="built-tag">
             Built with <span className="highlight">React.js</span> & <span className="highlight">Framer Motion</span>

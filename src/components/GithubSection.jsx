@@ -4,6 +4,15 @@ import { FaGithub, FaCodeBranch, FaFolderOpen } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
 export default function GithubSection() {
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="section github-section">
       <div className="container">
@@ -39,7 +48,7 @@ export default function GithubSection() {
                   <span>View GitHub Profile</span>
                 </a>
 
-                <a href="#projects" className="btn btn-secondary">
+                <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} className="btn btn-secondary">
                   <FaFolderOpen />
                   <span>View Projects</span>
                 </a>
