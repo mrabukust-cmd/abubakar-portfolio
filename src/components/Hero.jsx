@@ -95,7 +95,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            I Build <span className="text-gradient">Real-World Mobile Apps</span> With Flutter.
+            I Build <span className="text-gradient shimmer-text">Real-World Mobile Apps</span> With Flutter.
           </motion.h1>
 
           <motion.h2
@@ -122,14 +122,26 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} className="btn btn-primary">
+            <motion.a
+              href="#projects"
+              onClick={(e) => handleNavClick(e, '#projects')}
+              className="btn btn-primary"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+            >
               <span>View Projects</span>
               <FaArrowRight className="btn-icon" />
-            </a>
+            </motion.a>
 
-            <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="btn btn-secondary">
+            <motion.a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="btn btn-secondary"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+            >
               <span>Let's Connect</span>
-            </a>
+            </motion.a>
 
             <a
               href={profileData.socials.github}
