@@ -4,6 +4,8 @@ import confetti from 'canvas-confetti';
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,6 +15,7 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
@@ -37,8 +40,15 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
+      setErrorMessage('Please fill out all required fields (Name, Email, Message).');
+      setStatus('error');
+      return;
+    }
+
+    if (!EMAIL_REGEX.test(formData.email.trim())) {
+      setErrorMessage('Please enter a valid email address.');
       setStatus('error');
       return;
     }
@@ -111,8 +121,8 @@ export default function Contact() {
                   {profileData.email}
                 </a>
               </div>
-              <button 
-                className="contact-copy-btn" 
+              <button
+                className="contact-copy-btn"
                 onClick={handleCopyEmail}
                 title="Copy Email Address"
                 aria-label="Copy Email Address"
@@ -161,7 +171,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <form className="card contact-form glass-panel" onSubmit={handleSubmit}>
+            <form className="card contact-form glass-panel" onSubmit={handleSubmit} noValidate>
               <h3 className="form-heading">Send A Message</h3>
 
               {status === 'success' && (
@@ -174,7 +184,7 @@ export default function Contact() {
               {status === 'error' && (
                 <div className="form-alert alert-error">
                   <FaExclamationCircle />
-                  <span>Please fill out all required fields (Name, Email, Message).</span>
+                  <span>{errorMessage}</span>
                 </div>
               )}
 

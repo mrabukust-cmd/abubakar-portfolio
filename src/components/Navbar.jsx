@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin, 
-  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase, FaFileAlt 
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import {
+  FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin,
+  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase, FaFileAlt
 } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 import ResumeModal from './ResumeModal';
@@ -16,14 +16,24 @@ const navLinks = [
   { name: 'Contact', href: '#contact', icon: FaEnvelope },
 ];
 
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem('theme') || 'dark';
+  } catch {
+    // localStorage may be unavailable (privacy mode, restricted embeds, etc.)
+    return 'dark';
+  }
+};
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
-  });
+  const [theme, setTheme] = useState(getStoredTheme);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const isNavClicking = useRef(false);
   const clickTimeoutRef = useRef(null);
@@ -31,7 +41,11 @@ export default function Navbar() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Ignore write failures (e.g. storage disabled) — theme still applies for this session
+    }
   }, [theme]);
 
   useEffect(() => {
@@ -99,6 +113,9 @@ export default function Navbar() {
 
   return (
     <header className={`navbar-header ${scrolled ? 'navbar-scrolled' : ''}`}>
+      {/* Top Scroll Progress Bar */}
+      <motion.div className="scroll-progress-bar" style={{ scaleX }} />
+
       <div className="container navbar-container">
         {/* Left: Logo Badge */}
         <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="navbar-logo" aria-label="Abubakar Siddique Homepage">
@@ -137,8 +154,8 @@ export default function Navbar() {
 
         {/* Right: Actions & Theme Switch Capsule */}
         <div className="navbar-actions">
-          <button 
-            className="btn btn-secondary btn-sm resume-nav-btn" 
+          <button
+            className="btn btn-secondary btn-sm resume-nav-btn"
             onClick={() => setIsResumeOpen(true)}
             aria-label="Open Resume CV"
           >
@@ -519,5 +536,3 @@ export default function Navbar() {
     </header>
   );
 }
-
-

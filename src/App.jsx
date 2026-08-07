@@ -10,10 +10,13 @@ import Journey from './components/Journey';
 import GithubSection from './components/GithubSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MouseSpotlight from './components/MouseSpotlight';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <div className="portfolio-app">
+      <MouseSpotlight />
       <Navbar />
       <main>
         <Hero />
@@ -27,6 +30,8 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
+

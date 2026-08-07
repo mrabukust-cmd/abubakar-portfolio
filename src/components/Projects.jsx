@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 import { projectsData, projectCategories } from '../data/projects';
@@ -48,8 +49,16 @@ export default function Projects() {
                 key={cat}
                 className={`filter-btn ${selectedCategory === cat ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(cat)}
+                style={{ position: 'relative' }}
               >
-                {cat}
+                <span style={{ zIndex: 2, position: 'relative' }}>{cat}</span>
+                {selectedCategory === cat && (
+                  <motion.div
+                    layoutId="projectCategoryPill"
+                    className="filter-btn-active-bg"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -86,17 +95,27 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Projects Grid or Empty State */}
+        {/* Projects Grid with AnimatePresence */}
         {filteredProjects.length > 0 ? (
-          <div className="projects-grid">
-            {filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onOpenModal={(proj) => setActiveModalProject(proj)}
-              />
-            ))}
-          </div>
+          <motion.div layout className="projects-grid">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProjectCard
+                    project={project}
+                    onOpenModal={(proj) => setActiveModalProject(proj)}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         ) : (
           <div className="projects-empty-state card glass-panel">
             <FaInbox className="empty-icon" />
@@ -252,6 +271,7 @@ export default function Projects() {
         }
 
         .filter-btn {
+          position: relative;
           padding: 0.5rem 1.25rem;
           border-radius: var(--radius-full);
           background: rgba(38, 30, 23, 0.6);
@@ -260,19 +280,27 @@ export default function Projects() {
           font-weight: 600;
           font-size: 0.875rem;
           cursor: pointer;
-          transition: all var(--transition-fast);
+          transition: color var(--transition-fast);
+          overflow: hidden;
         }
 
         .filter-btn:hover {
           color: var(--text-primary);
-          border-color: var(--text-secondary);
+          border-color: var(--accent-secondary);
         }
 
         .filter-btn.active {
-          background: var(--accent-primary);
           color: #FFFFFF;
           border-color: var(--accent-primary);
+        }
+
+        .filter-btn-active-bg {
+          position: absolute;
+          inset: 0;
+          border-radius: var(--radius-full);
+          background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
           box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+          z-index: 1;
         }
 
         .projects-grid {

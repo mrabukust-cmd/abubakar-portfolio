@@ -47,26 +47,43 @@ export default function Skills() {
           <button
             className={`skills-tab ${activeTab === 'all' ? 'active' : ''}`}
             onClick={() => setActiveTab('all')}
+            style={{ position: 'relative' }}
           >
-            All Skills
+            <span style={{ zIndex: 2, position: 'relative' }}>All Skills</span>
+            {activeTab === 'all' && (
+              <motion.div
+                layoutId="skillTabPill"
+                className="skills-tab-active-bg"
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              />
+            )}
           </button>
           {skillCategories.map(cat => (
             <button
               key={cat.id}
               className={`skills-tab ${activeTab === cat.id ? 'active' : ''}`}
               onClick={() => setActiveTab(cat.id)}
+              style={{ position: 'relative' }}
             >
-              <span className="tab-icon">{getCategoryIcon(cat.iconName)}</span>
-              <span>{cat.title}</span>
+              <span className="tab-icon" style={{ zIndex: 2, position: 'relative' }}>{getCategoryIcon(cat.iconName)}</span>
+              <span style={{ zIndex: 2, position: 'relative' }}>{cat.title}</span>
+              {activeTab === cat.id && (
+                <motion.div
+                  layoutId="skillTabPill"
+                  className="skills-tab-active-bg"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
             </button>
           ))}
         </div>
 
         {/* Category Cards Grid */}
-        <div className="skills-grid">
+        <motion.div layout className="skills-grid">
           {filteredCategories.map((category, idx) => (
             <motion.div
               key={category.id}
+              layout
               className="card category-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +102,12 @@ export default function Skills() {
 
               <div className="skills-chips-wrapper">
                 {category.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="skill-chip">
+                  <motion.div
+                    key={sIdx}
+                    className="skill-chip"
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
+                  >
                     <div className="chip-icon">
                       {getSkillTechIcon(skill.name)}
                     </div>
@@ -93,12 +115,12 @@ export default function Skills() {
                       <span className="chip-name">{skill.name}</span>
                       <span className="chip-level">{skill.level}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
@@ -116,6 +138,7 @@ export default function Skills() {
         }
 
         .skills-tab {
+          position: relative;
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
@@ -127,19 +150,27 @@ export default function Skills() {
           font-weight: 600;
           font-size: 0.9rem;
           cursor: pointer;
-          transition: all var(--transition-fast);
+          transition: color var(--transition-fast);
+          overflow: hidden;
         }
 
         .skills-tab:hover {
           color: var(--text-primary);
-          border-color: var(--text-secondary);
+          border-color: var(--accent-secondary);
         }
 
         .skills-tab.active {
-          background: var(--accent-primary);
           color: #FFFFFF;
           border-color: var(--accent-primary);
+        }
+
+        .skills-tab-active-bg {
+          position: absolute;
+          inset: 0;
+          border-radius: var(--radius-full);
+          background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
           box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+          z-index: 1;
         }
 
         .tab-icon {

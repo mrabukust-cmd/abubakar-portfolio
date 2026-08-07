@@ -429,6 +429,96 @@ textarea:focus-visible {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Mouse Spotlight Interactive Glow Effect */
+.mouse-spotlight {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(249, 115, 22, 0.04) 45%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.08s ease-out, opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+[data-theme="light"] .mouse-spotlight {
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.10) 0%, rgba(249, 115, 22, 0.03) 45%, transparent 70%);
+  mix-blend-mode: multiply;
+}
+
+/* Header Scroll Progress Bar */
+.scroll-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F59E0B 0%, #F97316 50%, #EF4444 100%);
+  transform-origin: 0%;
+  z-index: 1001;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+}
+
+/* Floating Back To Top Button */
+.floating-scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(249, 115, 22, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 990;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.floating-scroll-top:hover {
+  box-shadow: 0 12px 35px rgba(245, 158, 11, 0.7), 0 0 20px rgba(249, 115, 22, 0.6);
+}
+
+.scroll-icon {
+  font-size: 1.1rem;
+}
+
+.scroll-glow-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  animation: pulse-ring 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Smooth Shimmer Text Effect */
+.shimmer-text {
+  background: linear-gradient(90deg, #FFFBEB 0%, #F59E0B 50%, #FFFBEB 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
 
 
 
