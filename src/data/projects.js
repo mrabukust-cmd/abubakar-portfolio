@@ -2,7 +2,6 @@ import ziloliveImg from '../assets/images/zilolive.png';
 import coponoImg from '../assets/images/copono.png';
 import mentoraImg from '../assets/images/mentora_real.png';
 import schoolSystemImg from '../assets/images/edu_manage_mockup.png';
-import { socialLinks } from './socialLinks';
 
 export const projectsData = [
   {
@@ -23,7 +22,7 @@ export const projectsData = [
       "Real-time messaging & push notifications via FCM",
       "Dark mode UI theme & intuitive screen navigation"
     ],
-    githubUrl: socialLinks.github,
+    githubUrl: "",
     liveUrl: "",
     modalData: {
       problem: "University students frequently struggle to find accessible peer tutors or study partners within their campus courses without relying on informal message boards or fragmented chats.",
@@ -53,7 +52,7 @@ export const projectsData = [
       "Custom Flutter widget architecture optimized for smooth FPS",
       "Cloud Firestore synchronization for room state and user profiles"
     ],
-    githubUrl: socialLinks.github,
+    githubUrl: "",
     liveUrl: "",
     modalData: {
       problem: "Handling live audio/video feeds and active chat streams on mobile devices requires low latency, efficient memory management, and responsive UI rebuilds.",
@@ -81,7 +80,7 @@ export const projectsData = [
       "Firebase backend services for secure user profile persistence",
       "Local state handling for offline-friendly user experience"
     ],
-    githubUrl: socialLinks.github,
+    githubUrl: "",
     liveUrl: "",
     modalData: {
       problem: "Users require utility applications that load rapidly, function predictably under varying network conditions, and feature simple navigation.",
@@ -109,7 +108,7 @@ export const projectsData = [
       "Academic performance & grade dashboard views",
       "Digital assignment announcements & notice board stream"
     ],
-    githubUrl: socialLinks.github,
+    githubUrl: "",
     liveUrl: "",
     modalData: {
       problem: "Traditional academic management relies on fragmented paper records and non-mobile systems that are difficult for students and teachers to access on mobile devices.",

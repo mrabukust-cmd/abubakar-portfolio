@@ -51,7 +51,7 @@ export default function ProjectCard({ project, onOpenModal }) {
             <span>View Details</span>
           </button>
 
-          {project.githubUrl && (
+          {Boolean(project.githubUrl) && (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -64,7 +64,7 @@ export default function ProjectCard({ project, onOpenModal }) {
             </a>
           )}
 
-          {project.liveUrl && (
+          {Boolean(project.liveUrl) && (
             <a
               href={project.liveUrl}
               target="_blank"

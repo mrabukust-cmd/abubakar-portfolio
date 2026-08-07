@@ -57,30 +57,32 @@ export default function ProjectModal({ project, onClose }) {
                   <span key={i} className="modal-tech-tag">{tech}</span>
                 ))}
               </div>
-              <div className="modal-action-btns">
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary btn-sm"
-                    aria-label={`View ${project.title} GitHub repository`}
-                  >
-                    <FaGithub /> View Source
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm"
-                    aria-label={`View ${project.title} live demo`}
-                  >
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
-                )}
-              </div>
+              {(project.githubUrl || project.liveUrl) && (
+                <div className="modal-action-btns">
+                  {Boolean(project.githubUrl) && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm"
+                      aria-label={`View ${project.title} GitHub repository`}
+                    >
+                      <FaGithub /> View Source
+                    </a>
+                  )}
+                  {Boolean(project.liveUrl) && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-sm"
+                      aria-label={`View ${project.title} live demo`}
+                    >
+                      <FaExternalLinkAlt /> Live Demo
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Overview */}
