@@ -97,7 +97,7 @@ export const projectsData = [
     featured: false,
     title: "School Management System",
     tagline: "Academic Portal & Operations System",
-    category: "Education / Academic",
+    category: "Education & Peer Learning",
     badge: "Academic Project",
     image: schoolSystemImg,
     technologies: ["Flutter", "Firebase", "Cloud Firestore", "Firebase Storage"],

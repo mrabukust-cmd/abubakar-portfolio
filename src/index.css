@@ -57,7 +57,7 @@
   
   --text-primary: #0F172A;        /* Rich Deep Slate Header Text */
   --text-secondary: #334155;      /* Crisp Dark Slate Body Text */
-  --text-muted: #64748B;          /* Muted Label Slate */
+  --text-muted: #475569;          /* Muted Label Slate (WCAG AA Compliant) */
   
   --border-color: rgba(15, 23, 42, 0.12);
   --border-color-hover: rgba(217, 119, 6, 0.45);

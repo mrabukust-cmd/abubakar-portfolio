@@ -106,4 +106,8 @@ Edit `src/data/skills.js` and `src/data/services.js`.
 ---
 
 ## 📄 License
-© 2026 Abubakar Siddique. All rights reserved.
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+- **Source Code**: You are free to use, modify, and distribute the application code under the terms of the MIT License.
+- **Personal Content & Imagery**: All personal content, bio details, project descriptions, imagery, and personal branding remain © 2026 Abubakar Siddique. All rights reserved.

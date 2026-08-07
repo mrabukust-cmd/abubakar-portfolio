@@ -7,6 +7,7 @@ import {
 import { profileData } from '../data/profile';
 import { projectsData } from '../data/projects';
 import { skillCategories } from '../data/skills';
+import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -55,12 +56,12 @@ export default function ResumeModal({ isOpen, onClose }) {
               <span>Developer Curriculum Vitae</span>
             </div>
             <div className="toolbar-actions">
-              <button className="btn btn-secondary btn-sm" onClick={handleCopyEmail} title="Copy Email">
+              <button className="btn btn-secondary btn-sm" onClick={handleCopyEmail} title="Copy Email" aria-label="Copy email address">
                 {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
                 <span>{copied ? 'Copied!' : 'Copy Email'}</span>
               </button>
 
-              <button className="btn btn-primary btn-sm" onClick={handlePrint} title="Print or Save as PDF">
+              <button className="btn btn-primary btn-sm" onClick={handlePrint} title="Print or Save as PDF" aria-label="Print or save resume as PDF">
                 <FaPrint />
                 <span>Print / Save PDF</span>
               </button>
@@ -99,11 +100,11 @@ export default function ResumeModal({ isOpen, onClose }) {
                   </div>
                   <div className="contact-meta-item">
                     <FaGithub className="meta-icon" />
-                    <a href={profileData.socials.github} target="_blank" rel="noreferrer">github.com/mrabukust-cmd</a>
+                    <a href={socialLinks.github} target="_blank" rel="noreferrer">{formatSocialDisplay(socialLinks.github)}</a>
                   </div>
                   <div className="contact-meta-item">
                     <FaLinkedin className="meta-icon" />
-                    <a href={profileData.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn Profile</a>
+                    <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn Profile</a>
                   </div>
                 </div>
               </header>

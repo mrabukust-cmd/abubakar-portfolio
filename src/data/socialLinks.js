@@ -5,3 +5,9 @@ export const socialLinks = {
   mailto: "mailto:abubakar1siddique2@gmail.com",
   productionUrl: "https://abubakar-siddique.vercel.app"
 };
+
+export const formatSocialDisplay = (url) => {
+  if (!url) return '';
+  return url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+};
+

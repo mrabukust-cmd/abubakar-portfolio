@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
+import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -144,8 +145,8 @@ export default function Contact() {
               </div>
               <div>
                 <span className="method-label">LinkedIn Profile</span>
-                <a href={profileData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="method-value">
-                  linkedin.com/in/abu-bakar-siddique-a82747425
+                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="method-value">
+                  {formatSocialDisplay(socialLinks.linkedin)}
                 </a>
               </div>
             </div>
@@ -156,8 +157,8 @@ export default function Contact() {
               </div>
               <div>
                 <span className="method-label">GitHub Repositories</span>
-                <a href={profileData.socials.github} target="_blank" rel="noopener noreferrer" className="method-value">
-                  github.com/mrabukust-cmd
+                <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="method-value">
+                  {formatSocialDisplay(socialLinks.github)}
                 </a>
               </div>
             </div>

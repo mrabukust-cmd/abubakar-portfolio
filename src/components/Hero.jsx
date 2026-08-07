@@ -198,7 +198,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <button className="code-copy-btn" onClick={handleCopyCode} title="Copy code snippet">
+              <button className="code-copy-btn" onClick={handleCopyCode} title="Copy code snippet" aria-label="Copy code snippet">
                 {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
               </button>
             </div>
