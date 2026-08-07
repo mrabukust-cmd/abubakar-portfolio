@@ -32,10 +32,17 @@ export default function Contact() {
   const triggerMailtoFallback = () => {
     const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
-    setStatus('success');
+    
+    setStatus('fallback');
     confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    setTimeout(() => {
+      try {
+        window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
+      } catch {
+        // Handle environments where mailto execution fails
+      }
+    }, 100);
   };
 
   const handleSubmit = async (e) => {
@@ -178,6 +185,21 @@ export default function Contact() {
                 <div className="form-alert alert-success">
                   <FaCheckCircle />
                   <span>Thank you! Your message has been sent. I will respond as soon as possible.</span>
+                </div>
+              )}
+
+              {status === 'fallback' && (
+                <div className="form-alert alert-info">
+                  <FaEnvelope />
+                  <span>
+                    Opening your email client... If your email application does not open, send directly to{' '}
+                    <a
+                      href={`mailto:${profileData.email}?subject=${encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`}
+                      className="alert-link"
+                    >
+                      {profileData.email}
+                    </a>.
+                  </span>
                 </div>
               )}
 
@@ -403,6 +425,22 @@ export default function Contact() {
           background: rgba(16, 185, 129, 0.15);
           border: 1px solid rgba(16, 185, 129, 0.4);
           color: #10B981;
+        }
+
+        .alert-info {
+          background: rgba(59, 130, 246, 0.15);
+          border: 1px solid rgba(59, 130, 246, 0.4);
+          color: #60A5FA;
+        }
+
+        .alert-link {
+          color: #93C5FD;
+          text-decoration: underline;
+          font-weight: 600;
+        }
+
+        .alert-link:hover {
+          color: #ffffff;
         }
 
         .alert-error {
