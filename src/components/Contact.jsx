@@ -30,12 +30,19 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const triggerConfettiEffect = () => {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+    }
+  };
+
   const triggerMailtoFallback = () => {
     const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
     
     setStatus('fallback');
-    confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+    triggerConfettiEffect();
 
     setTimeout(() => {
       try {
@@ -86,7 +93,7 @@ export default function Contact() {
 
         if (data.success) {
           setStatus('success');
-          confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+          triggerConfettiEffect();
           setFormData({ name: '', email: '', subject: '', message: '' });
         } else {
           triggerMailtoFallback();
