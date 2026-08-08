@@ -439,9 +439,9 @@ export default function Contact() {
         }
 
         .alert-info {
-          background: rgba(59, 130, 246, 0.15);
-          border: 1px solid rgba(59, 130, 246, 0.4);
-          color: #60A5FA;
+          background: rgba(56, 189, 248, 0.12);
+          border: 1px solid rgba(56, 189, 248, 0.35);
+          color: var(--accent-cool);
         }
 
         .alert-fallback {
@@ -455,7 +455,7 @@ export default function Contact() {
           display: flex;
           align-items: center;
           gap: 0.65rem;
-          color: #93C5FD;
+          color: var(--text-primary);
           font-weight: 500;
           line-height: 1.45;
         }
@@ -463,7 +463,7 @@ export default function Contact() {
         .alert-fallback-icon {
           font-size: 1.1rem;
           flex-shrink: 0;
-          color: #60A5FA;
+          color: var(--accent-cool);
         }
 
         .alert-fallback-actions {
@@ -473,29 +473,29 @@ export default function Contact() {
           gap: 0.75rem;
           width: 100%;
           padding-top: 0.75rem;
-          border-top: 1px solid rgba(59, 130, 246, 0.25);
+          border-top: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         .alert-fallback-btn {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: #3B82F6;
-          color: #FFFFFF;
+          background: var(--accent-cool);
+          color: #0F172A;
           font-weight: 600;
           font-size: 0.85rem;
           padding: 0.5rem 0.95rem;
           border-radius: var(--radius-sm);
           text-decoration: none;
           transition: all var(--transition-fast);
-          box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+          box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
         }
 
         .alert-fallback-btn:hover {
-          background: #2563EB;
+          background: var(--accent-cool-hover);
           color: #FFFFFF;
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+          box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
         }
 
         .fallback-copy-wrapper {
@@ -503,7 +503,7 @@ export default function Contact() {
           align-items: center;
           gap: 0.5rem;
           background: rgba(15, 23, 42, 0.6);
-          border: 1px solid rgba(59, 130, 246, 0.3);
+          border: 1px solid rgba(56, 189, 248, 0.3);
           padding: 0.25rem 0.35rem 0.25rem 0.75rem;
           border-radius: var(--radius-sm);
         }
@@ -520,12 +520,12 @@ export default function Contact() {
           height: 30px;
           font-size: 0.85rem;
           background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(59, 130, 246, 0.3);
+          border-color: rgba(56, 189, 248, 0.3);
         }
 
         .fallback-copy-wrapper .contact-copy-btn:hover {
-          background: rgba(59, 130, 246, 0.25);
-          border-color: #60A5FA;
+          background: rgba(56, 189, 248, 0.2);
+          border-color: var(--accent-cool);
           color: #FFFFFF;
         }
 

@@ -72,9 +72,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero-section section">
-      {/* Background Ambient Glows */}
+      {/* Background Ambient Glow */}
       <div className="ambient-glow glow-1" />
-      <div className="ambient-glow glow-2" />
       <div className="ambient-grid-overlay" />
 
       <div className="container hero-container">
@@ -303,19 +302,11 @@ export default function Hero() {
         }
 
         .glow-1 {
-          top: 5%;
-          left: -8%;
-          width: 550px;
-          height: 550px;
-          background: rgba(245, 158, 11, 0.22);
-        }
-
-        .glow-2 {
-          bottom: 5%;
-          right: -8%;
-          width: 500px;
-          height: 500px;
-          background: rgba(249, 115, 22, 0.18);
+          top: 10%;
+          left: -5%;
+          width: 300px;
+          height: 300px;
+          background: rgba(245, 158, 11, 0.10);
         }
 
         .hero-container {
@@ -406,7 +397,7 @@ export default function Hero() {
         .flutter-icon { color: #F59E0B; }
         .dart-icon { color: #F97316; }
         .firebase-icon { color: #FFCA28; }
-        .api-icon { color: var(--accent-secondary); }
+        .api-icon { color: var(--accent-cool); }
 
         /* Visual Composition Window Box */
         .hero-visual-wrapper {

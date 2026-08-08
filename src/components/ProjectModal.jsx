@@ -493,7 +493,7 @@ export default function ProjectModal({ project, onClose }) {
           margin-bottom: 0.5rem;
         }
         .text-red { color: #F43F5E; }
-        .text-cyan { color: var(--accent-secondary); }
+        .text-cyan { color: var(--accent-cool); }
 
         .modal-card-text {
           font-size: 0.875rem;

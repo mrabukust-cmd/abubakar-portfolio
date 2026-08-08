@@ -368,14 +368,14 @@ export default function Navbar() {
           position: absolute;
           inset: 0;
           border-radius: 9999px;
-          background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(30, 58, 138, 0.95) 100%);
-          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+          background: linear-gradient(135deg, var(--accent-cool) 0%, var(--accent-cool-hover) 100%);
+          box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
           z-index: -1;
         }
 
         [data-theme="light"] .capsule-active-bg {
-          background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+          background: linear-gradient(135deg, var(--accent-cool) 0%, var(--accent-cool-hover) 100%);
+          box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
         }
 
         /* Rightmost Circular Theme Switch Capsule */
@@ -422,7 +422,7 @@ export default function Navbar() {
 
         .theme-circle-btn.active {
           background: #FFFFFF;
-          color: #2563EB;
+          color: var(--accent-cool);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
 
