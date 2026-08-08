@@ -1,8 +1,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaInfoCircle, FaCheck } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaExternalLinkAlt, 
+  FaInfoCircle, 
+  FaCheck, 
+  FaLock, 
+  FaVideo, 
+  FaAndroid, 
+  FaBookOpen 
+} from 'react-icons/fa';
 
 export default function ProjectCard({ project, onOpenModal }) {
+  const getDemoIcon = () => {
+    switch (project.demoType) {
+      case 'video':
+        return <FaVideo />;
+      case 'apk':
+        return <FaAndroid />;
+      case 'live':
+        return <FaExternalLinkAlt />;
+      default:
+        return <FaBookOpen />;
+    }
+  };
+
+  const getDemoTitle = () => {
+    switch (project.demoType) {
+      case 'video':
+        return 'Watch Demo Video';
+      case 'apk':
+        return 'Download APK';
+      case 'live':
+        return 'Live Demo';
+      default:
+        return 'Case Study Only';
+    }
+  };
+
   return (
     <motion.div
       className="card project-card"
@@ -15,6 +50,15 @@ export default function ProjectCard({ project, onOpenModal }) {
         <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" loading="lazy" />
         <div className="project-image-overlay">
           <span className="project-category-badge">{project.badge}</span>
+          <span className={`project-status-badge ${project.githubStatus || 'private'}`}>
+            {project.githubStatus === 'public' ? (
+              <>Open Source</>
+            ) : project.githubStatus === 'case-study' ? (
+              <><FaBookOpen className="badge-icon" /> Case Study</>
+            ) : (
+              <><FaLock className="badge-icon" /> Private Repo</>
+            )}
+          </span>
         </div>
       </div>
 
@@ -51,7 +95,8 @@ export default function ProjectCard({ project, onOpenModal }) {
             <span>View Details</span>
           </button>
 
-          {Boolean(project.githubUrl) && (
+          {/* Source Code Action Button or Badge */}
+          {Boolean(project.githubUrl) && project.githubStatus === 'public' ? (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -62,19 +107,36 @@ export default function ProjectCard({ project, onOpenModal }) {
             >
               <FaGithub />
             </a>
+          ) : (
+            <span 
+              className="action-status-badge repo-badge"
+              title={project.githubStatusNote || "Private Repository (Available Upon Request)"}
+            >
+              <FaLock className="badge-icon" />
+              <span>{project.githubStatus === 'case-study' ? 'Case Study' : 'Private'}</span>
+            </span>
           )}
 
-          {Boolean(project.liveUrl) && (
+          {/* Demo Action Button or Badge */}
+          {Boolean(project.liveUrl) ? (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary btn-sm"
-              title="Live Demo"
-              aria-label={`View ${project.title} live demo`}
+              title={getDemoTitle()}
+              aria-label={`View ${project.title} ${getDemoTitle()}`}
             >
-              <FaExternalLinkAlt />
+              {getDemoIcon()}
             </a>
+          ) : (
+            <span 
+              className="action-status-badge demo-badge"
+              title={`Demo Format: ${getDemoTitle()}`}
+            >
+              {getDemoIcon()}
+              <span>{project.demoType === 'apk' ? 'APK' : project.demoType === 'video' ? 'Video' : project.demoType === 'live' ? 'Live' : 'Overview'}</span>
+            </span>
           )}
         </div>
       </div>
@@ -116,9 +178,10 @@ export default function ProjectCard({ project, onOpenModal }) {
         .project-image-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 60%, rgba(20, 16, 13, 0.95) 100%);
+          background: linear-gradient(180deg, transparent 55%, rgba(20, 16, 13, 0.95) 100%);
           display: flex;
           align-items: flex-start;
+          justify-content: space-between;
           padding: 0.85rem;
           pointer-events: none;
         }
@@ -129,11 +192,46 @@ export default function ProjectCard({ project, onOpenModal }) {
           border: 1px solid var(--border-color-glow);
           color: var(--accent-secondary);
           font-family: var(--font-mono);
-          font-size: 0.775rem;
+          font-size: 0.75rem;
           font-weight: 600;
           padding: 0.3rem 0.75rem;
           border-radius: var(--radius-full);
           pointer-events: auto;
+        }
+
+        .project-status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          background: rgba(15, 23, 42, 0.85);
+          backdrop-filter: blur(8px);
+          border: 1px solid var(--border-color);
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+          font-size: 0.725rem;
+          font-weight: 600;
+          padding: 0.3rem 0.65rem;
+          border-radius: var(--radius-full);
+          pointer-events: auto;
+        }
+
+        .project-status-badge.public {
+          border-color: rgba(34, 197, 94, 0.4);
+          color: #4ADE80;
+        }
+
+        .project-status-badge.private {
+          border-color: rgba(245, 158, 11, 0.3);
+          color: #FBBF24;
+        }
+
+        .project-status-badge.case-study {
+          border-color: rgba(99, 102, 241, 0.3);
+          color: #818CF8;
+        }
+
+        .badge-icon {
+          font-size: 0.7rem;
         }
 
         .project-card-body {
@@ -212,11 +310,35 @@ export default function ProjectCard({ project, onOpenModal }) {
         .project-card-actions {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
         }
 
         .flex-1 {
           flex: 1;
+        }
+
+        .action-status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          padding: 0.5rem 0.75rem;
+          border-radius: var(--radius-sm);
+          font-size: 0.775rem;
+          font-weight: 600;
+          background: rgba(28, 22, 17, 0.7);
+          border: 1px solid var(--border-color);
+          color: var(--text-muted);
+          white-space: nowrap;
+        }
+
+        .repo-badge {
+          color: #F59E0B;
+          border-color: rgba(245, 158, 11, 0.25);
+        }
+
+        .demo-badge {
+          color: var(--accent-secondary);
+          border-color: rgba(249, 115, 22, 0.25);
         }
 
         @media (max-width: 640px) {
@@ -228,3 +350,4 @@ export default function ProjectCard({ project, onOpenModal }) {
     </motion.div>
   );
 }
+

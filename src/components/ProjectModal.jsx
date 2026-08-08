@@ -1,6 +1,19 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaGithub, FaExternalLinkAlt, FaCheckCircle, FaExclamationTriangle, FaLightbulb, FaUserCheck } from 'react-icons/fa';
+import { 
+  FaTimes, 
+  FaGithub, 
+  FaExternalLinkAlt, 
+  FaCheckCircle, 
+  FaExclamationTriangle, 
+  FaLightbulb, 
+  FaUserCheck,
+  FaLock,
+  FaVideo,
+  FaAndroid,
+  FaBookOpen,
+  FaShieldAlt
+} from 'react-icons/fa';
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -20,6 +33,76 @@ export default function ProjectModal({ project, onClose }) {
 
   if (!project) return null;
 
+  const renderDemoButton = () => {
+    if (project.liveUrl) {
+      if (project.demoType === 'video') {
+        return (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-sm"
+            aria-label={`Watch ${project.title} demo video`}
+          >
+            <FaVideo /> Watch Demo Video
+          </a>
+        );
+      }
+      if (project.demoType === 'apk') {
+        return (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-sm"
+            aria-label={`Download ${project.title} APK`}
+          >
+            <FaAndroid /> Download APK
+          </a>
+        );
+      }
+      return (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary btn-sm"
+          aria-label={`View ${project.title} live demo`}
+        >
+          <FaExternalLinkAlt /> Live Web Demo
+        </a>
+      );
+    }
+
+    // Secondary informative label if no direct URL is configured yet
+    if (project.demoType === 'apk') {
+      return (
+        <span className="modal-status-badge-inline" title="APK Download">
+          <FaAndroid /> Android APK
+        </span>
+      );
+    }
+    if (project.demoType === 'video') {
+      return (
+        <span className="modal-status-badge-inline" title="Video Recording">
+          <FaVideo /> Video Demo
+        </span>
+      );
+    }
+    if (project.demoType === 'live') {
+      return (
+        <span className="modal-status-badge-inline" title="Web Build">
+          <FaExternalLinkAlt /> Web Hosted
+        </span>
+      );
+    }
+    return (
+      <span className="modal-status-badge-inline" title="Case Study Only">
+        <FaBookOpen /> Case Study
+      </span>
+    );
+  };
+
   return (
     <AnimatePresence>
       <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -33,7 +116,12 @@ export default function ProjectModal({ project, onClose }) {
         >
           {/* Modal Header Bar */}
           <div className="modal-header">
-            <div className="modal-badge">{project.badge}</div>
+            <div className="modal-header-badges">
+              <span className="modal-badge">{project.badge}</span>
+              <span className={`modal-status-pill ${project.githubStatus || 'private'}`}>
+                {project.githubStatus === 'public' ? 'Open Source' : project.githubStatus === 'case-study' ? 'Academic Case Study' : 'Private Repository'}
+              </span>
+            </div>
             <button className="modal-close-btn" onClick={onClose} aria-label="Close project modal">
               <FaTimes />
             </button>
@@ -57,33 +145,35 @@ export default function ProjectModal({ project, onClose }) {
                   <span key={i} className="modal-tech-tag">{tech}</span>
                 ))}
               </div>
-              {(project.githubUrl || project.liveUrl) && (
-                <div className="modal-action-btns">
-                  {Boolean(project.githubUrl) && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary btn-sm"
-                      aria-label={`View ${project.title} GitHub repository`}
-                    >
-                      <FaGithub /> View Source
-                    </a>
-                  )}
-                  {Boolean(project.liveUrl) && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary btn-sm"
-                      aria-label={`View ${project.title} live demo`}
-                    >
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
-                  )}
-                </div>
-              )}
+              <div className="modal-action-btns">
+                {project.githubUrl && project.githubStatus === 'public' ? (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary btn-sm"
+                    aria-label={`View ${project.title} GitHub repository`}
+                  >
+                    <FaGithub /> View Source
+                  </a>
+                ) : (
+                  <span className="modal-status-badge-inline" title={project.githubStatusNote}>
+                    <FaLock /> {project.githubStatus === 'case-study' ? 'Case Study Code' : 'Private Repo'}
+                  </span>
+                )}
+                {renderDemoButton()}
+              </div>
             </div>
+
+            {/* Repository Visibility Notice */}
+            {project.githubStatus !== 'public' && (
+              <div className="modal-notice-banner">
+                <FaShieldAlt className="notice-icon" />
+                <span>
+                  <strong>Repository Note:</strong> {project.githubStatusNote || 'This codebase is kept in a private repository for client/academic confidentiality. Architecture, database schemas, and implementation patterns are outlined below.'}
+                </span>
+              </div>
+            )}
 
             {/* Overview */}
             <div className="modal-section">
@@ -187,6 +277,13 @@ export default function ProjectModal({ project, onClose }) {
           background: var(--bg-primary);
         }
 
+        .modal-header-badges {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+        }
+
         .modal-badge {
           background: rgba(245, 158, 11, 0.15);
           border: 1px solid rgba(249, 115, 22, 0.3);
@@ -196,6 +293,65 @@ export default function ProjectModal({ project, onClose }) {
           font-weight: 600;
           padding: 0.25rem 0.75rem;
           border-radius: var(--radius-full);
+        }
+
+        .modal-status-pill {
+          font-family: var(--font-mono);
+          font-size: 0.775rem;
+          font-weight: 600;
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-full);
+          background: rgba(15, 23, 42, 0.8);
+          border: 1px solid var(--border-color);
+          color: var(--text-muted);
+        }
+
+        .modal-status-pill.public {
+          border-color: rgba(34, 197, 94, 0.4);
+          color: #4ADE80;
+        }
+
+        .modal-status-pill.private {
+          border-color: rgba(245, 158, 11, 0.35);
+          color: #FBBF24;
+        }
+
+        .modal-status-pill.case-study {
+          border-color: rgba(99, 102, 241, 0.35);
+          color: #818CF8;
+        }
+
+        .modal-status-badge-inline {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.4rem 0.85rem;
+          border-radius: var(--radius-sm);
+          font-size: 0.825rem;
+          font-weight: 600;
+          background: rgba(28, 22, 17, 0.8);
+          border: 1px solid var(--border-color);
+          color: var(--accent-secondary);
+        }
+
+        .modal-notice-banner {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          background: rgba(245, 158, 11, 0.08);
+          border: 1px solid rgba(245, 158, 11, 0.25);
+          border-radius: var(--radius-md);
+          padding: 0.85rem 1.15rem;
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+
+        .modal-notice-banner .notice-icon {
+          color: #F59E0B;
+          font-size: 1.1rem;
+          flex-shrink: 0;
+          margin-top: 0.15rem;
         }
 
         .modal-close-btn {

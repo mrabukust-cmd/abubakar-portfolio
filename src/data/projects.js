@@ -24,6 +24,9 @@ export const projectsData = [
     ],
     githubUrl: "",
     liveUrl: "",
+    demoType: "apk", // Options: "live" | "video" | "apk" | "none"
+    githubStatus: "private", // Options: "public" | "private" | "case-study"
+    githubStatusNote: "Private Repository (Available Upon Request)",
     modalData: {
       problem: "University students frequently struggle to find accessible peer tutors or study partners within their campus courses without relying on informal message boards or fragmented chats.",
       solution: "Engineered Mentora as a dedicated Flutter mobile platform where students can search for peers with complementary skill sets, send study connection requests, and coordinate peer learning sessions.",
@@ -54,6 +57,9 @@ export const projectsData = [
     ],
     githubUrl: "",
     liveUrl: "",
+    demoType: "video",
+    githubStatus: "private",
+    githubStatusNote: "Private Client Repository",
     modalData: {
       problem: "Handling live audio/video feeds and active chat streams on mobile devices requires low latency, efficient memory management, and responsive UI rebuilds.",
       solution: "Engineered ZiloLive using Flutter's reactive widget system alongside Agora RTC services and Firebase Firestore data listeners for real-time interaction.",
@@ -82,6 +88,9 @@ export const projectsData = [
     ],
     githubUrl: "",
     liveUrl: "",
+    demoType: "live",
+    githubStatus: "private",
+    githubStatusNote: "Private Repository",
     modalData: {
       problem: "Users require utility applications that load rapidly, function predictably under varying network conditions, and feature simple navigation.",
       solution: "Built a modular mobile client in Flutter utilizing repository patterns for network calls, local data caching, and clean widget separation.",
@@ -110,6 +119,9 @@ export const projectsData = [
     ],
     githubUrl: "",
     liveUrl: "",
+    demoType: "none",
+    githubStatus: "case-study",
+    githubStatusNote: "Academic Case Study Only",
     modalData: {
       problem: "Traditional academic management relies on fragmented paper records and non-mobile systems that are difficult for students and teachers to access on mobile devices.",
       solution: "Developed a cross-platform mobile application using Flutter and Firebase that unifies academic management into clear, accessible mobile dashboards.",
