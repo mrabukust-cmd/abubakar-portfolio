@@ -8,34 +8,32 @@ export const projectsData = [
     id: "mentora",
     featured: false,
     title: "Mentora",
-    tagline: "Peer Learning & Campus Skill Exchange Platform",
+    tagline: "Campus Peer Learning & Skill Exchange Platform",
     category: "Education & Peer Learning",
-    badge: "Featured Application",
+    badge: "Mobile Platform",
     image: mentoraImg,
-    technologies: ["Flutter", "Firebase", "Firestore", "Firebase Auth", "Google Sign-In", "FCM"],
-    shortDescription: "A campus-focused mobile application connecting university students for peer-to-peer learning, course tutoring, skill exchange, and study session scheduling.",
+    technologies: ["Flutter", "Firebase Auth", "Cloud Firestore", "Firebase Storage", "Provider", "SharedPreferences", "Google Sign-In"],
+    shortDescription: "A Flutter mobile application designed to connect university students for peer tutoring, skill exchanges, and study requests backed by Firebase services.",
     features: [
-      "User Authentication & Google Sign-In integration",
-      "Student profiles displaying skills offered & skills wanted",
-      "Mentor & peer discovery with real-time Firestore search/filter",
-      "Peer-to-peer connection request system",
-      "Real-time messaging & push notifications via FCM",
-      "Dark mode UI theme & intuitive screen navigation"
+      "Firebase Auth & Google Sign-In onboarding flow",
+      "Student profiles with customizable skills offered & requested",
+      "Peer matching feed with study request exchanges",
+      "Local preferences via SharedPreferences & profile media via Firebase Storage"
     ],
     githubUrl: "",
     liveUrl: "",
     demoType: "apk", // Options: "live" | "video" | "apk" | "none"
     githubStatus: "private", // Options: "public" | "private" | "case-study"
-    githubStatusNote: "Private Repository (Available Upon Request)",
+    githubStatusNote: "Private Repository (APK Available Upon Request)",
     modalData: {
-      problem: "University students frequently struggle to find accessible peer tutors or study partners within their campus courses without relying on informal message boards or fragmented chats.",
-      solution: "Engineered Mentora as a dedicated Flutter mobile platform where students can search for peers with complementary skill sets, send study connection requests, and coordinate peer learning sessions.",
+      problem: "In campus peer learning data flows, skills added by users would save to backend records but fail to reflect dynamically on MySkillsScreen due to UI state sync mismatches and initial Firestore security permission issues.",
+      solution: "Resolved security rules and re-architected state listener flows across Firebase Auth, Cloud Firestore, and Provider so user skills, profile updates, and study requests refresh reliably.",
       challenges: [
-        "Structuring relational user & skill document models efficiently in Cloud Firestore.",
-        "Implementing real-time Firestore queries for instant skill filter search.",
-        "Managing push notification triggers using Firebase Cloud Messaging (FCM)."
+        "Debugging Firestore permission-denied security rule errors during initial user profile creation.",
+        "Fixing state management flow so newly added user skills render immediately in MySkillsScreen.",
+        "Structuring user profile documents and peer connection requests in Cloud Firestore."
       ],
-      contribution: "Designed and built the full mobile client in Flutter, integrated Firebase Authentication & Google Sign-In, designed Firestore database schemas, and developed the peer discovery UI."
+      contribution: "Developed Flutter frontend modules including authentication, profile management, skill listing UI, matching feed, connection requests, and Firebase service integration."
     }
   },
   {
@@ -46,14 +44,13 @@ export const projectsData = [
     category: "Social & Media",
     badge: "Live Media Project",
     image: ziloliveImg,
-    technologies: ["Flutter", "Dart", "Firebase", "REST APIs", "Real-Time Features", "Agora"],
-    shortDescription: "A feature-rich Flutter mobile application engineered for live audio/video interaction, streaming rooms, and real-time social engagement.",
+    technologies: ["Flutter", "Dart", "Firebase", "REST APIs", "FCM", "State Management"],
+    shortDescription: "A Flutter social and live-streaming client featuring real-time stream interactions, ranking leaderboards, virtual gifting, coin wallet management, and user leveling.",
     features: [
-      "Live interactive audio/video room integration via Agora SDK",
-      "Real-time social chat stream & live user interactions",
-      "Firebase Authentication & secure session management",
-      "Custom Flutter widget architecture optimized for smooth FPS",
-      "Cloud Firestore synchronization for room state and user profiles"
+      "Live stream view layer with ranking leaderboards & coin wallet state",
+      "Deep pull-to-refresh profile gesture matching YouTube & TikTok UX",
+      "VIP membership status, user levels, and Boost Now ranking persistence",
+      "FCM token lifecycle handling & REST API integration with timeout fallbacks"
     ],
     githubUrl: "",
     liveUrl: "",
@@ -61,75 +58,77 @@ export const projectsData = [
     githubStatus: "private",
     githubStatusNote: "Private Client Repository",
     modalData: {
-      problem: "Handling live audio/video feeds and active chat streams on mobile devices requires low latency, efficient memory management, and responsive UI rebuilds.",
-      solution: "Engineered ZiloLive using Flutter's reactive widget system alongside Agora RTC services and Firebase Firestore data listeners for real-time interaction.",
+      problem: "Over-sensitive default pull-to-refresh gestures triggered accidental profile reloads during routine scrolling, while dynamic layout feeds triggered RenderViewport/RenderSliver runtime errors and network timeouts.",
+      solution: "Customized pull gesture thresholds to require an intentional deep pull (matching YouTube/TikTok profile UX), fixed sliver viewport constraints, and stabilized Boost Now ranking and coin deduction persistence.",
       challenges: [
-        "Managing complex state transitions during active audio/video stream sessions.",
-        "Maintaining responsive 60fps UI performance while parsing high-frequency message streams."
+        "Resolving RenderViewport and RenderSliver layout errors during dynamic widget rendering.",
+        "Re-engineering profile pull-to-refresh to prevent accidental triggers on minor vertical swipes.",
+        "Simulating Boost Now ranking with local wallet state, coin deduction, and Booster badge updates.",
+        "Handling backend REST API network timeouts and FCM token registration edge cases."
       ],
-      contribution: "Architected the Flutter frontend layout, integrated live streaming RTC components, managed real-time chat state listeners, and built profile screens."
+      contribution: "Engineered core application features including live streaming UI views, ranking leaderboards, gifting workflows, VIP status, coin wallet state, and profile refresh behavior."
     }
   },
   {
     id: "copono",
     featured: false,
     title: "Copono",
-    tagline: "Mobile Application & Utility Management",
+    tagline: "Flutter Mobile Application (UI/UX Refinement)",
     category: "Mobile Application",
-    badge: "Utility App",
+    badge: "UI/UX Development",
     image: coponoImg,
-    technologies: ["Flutter", "Dart", "Firebase", "REST APIs"],
-    shortDescription: "A streamlined mobile utility application built with Flutter, focusing on clean architecture, API data parsing, and dark mode interface design.",
+    technologies: ["Flutter", "Dart", "UI/UX Refinement"],
+    shortDescription: "A Flutter mobile project focused on interface improvements, layout polish, and visual corrections across feature branches (fix/check-ui and fix/check-uiux).",
     features: [
-      "Clean dark-first custom UI & widget hierarchy",
-      "RESTful API integration with JSON data parsing & error fallbacks",
-      "Firebase backend services for secure user profile persistence",
-      "Local state handling for offline-friendly user experience"
+      "Targeted UI/UX corrections across feature branches",
+      "Screen layout polish and visual consistency adjustments",
+      "Widget styling and interface alignment"
     ],
     githubUrl: "",
     liveUrl: "",
-    demoType: "live",
+    demoType: "none",
     githubStatus: "private",
-    githubStatusNote: "Private Repository",
+    githubStatusNote: "Private Repository (Pending Technical Verification)",
     modalData: {
-      problem: "Users require utility applications that load rapidly, function predictably under varying network conditions, and feature simple navigation.",
-      solution: "Built a modular mobile client in Flutter utilizing repository patterns for network calls, local data caching, and clean widget separation.",
+      problem: "Interface inconsistencies and visual alignment issues required dedicated UI/UX fixes across feature development branches.",
+      solution: "Executed layout corrections and UI polish in fix/check-ui and fix/check-uiux branches to improve overall interface consistency.",
       challenges: [
-        "Ensuring smooth list rendering and image caching on lower-spec mobile devices.",
-        "Handling REST API errors gracefully with clear user feedback states."
+        "Refactoring widget trees to match target UI/UX design specifications.",
+        "Resolving layout overflow and visual alignment issues across different screen dimensions."
       ],
-      contribution: "Developed the Flutter application codebase, implemented network API client classes, designed custom dark UI widgets, and integrated Firebase backend."
+      contribution: "Implemented UI/UX fixes, frontend styling adjustments, and screen layout polish across dedicated feature branches."
     }
   },
   {
     id: "school-management-system",
     featured: false,
     title: "School Management System",
-    tagline: "Academic Portal & Operations System",
+    tagline: "Multi-Role Academic Portal & Attendance Tracker",
     category: "Education & Peer Learning",
-    badge: "Academic Project",
+    badge: "Full-Stack Project",
     image: schoolSystemImg,
     technologies: ["Flutter", "Firebase", "Cloud Firestore", "Firebase Storage"],
-    shortDescription: "An academic management mobile portal developed as a Software Engineering project to digitize attendance, timetables, grades, and notice announcements.",
+    shortDescription: "A school academic platform connecting Parents, Students, Teachers, and Admins to digitize attendance marking, grade tracking, and extra-class schedule visibility.",
     features: [
-      "Role-tailored access views for Students and Teachers",
-      "Attendance logging & dynamic class schedule tracking",
-      "Academic performance & grade dashboard views",
-      "Digital assignment announcements & notice board stream"
+      "4 primary access roles: Parent, Student, Teacher, and Admin",
+      "Daily attendance tracking & grade management operated by Teachers",
+      "Parent visibility into daily attendance and special/extra class schedules",
+      "Student grade and attendance portal dashboards"
     ],
     githubUrl: "",
     liveUrl: "",
-    demoType: "none",
-    githubStatus: "case-study",
-    githubStatusNote: "Academic Case Study Only",
+    demoType: "apk",
+    githubStatus: "private",
+    githubStatusNote: "Repository & APK Available",
     modalData: {
-      problem: "Traditional academic management relies on fragmented paper records and non-mobile systems that are difficult for students and teachers to access on mobile devices.",
-      solution: "Developed a cross-platform mobile application using Flutter and Firebase that unifies academic management into clear, accessible mobile dashboards.",
+      problem: "Parents lacked direct visibility into their child's actual daily school attendance and extra class schedules, having to rely solely on unverified verbal reports from students.",
+      solution: "Built a unified 4-role portal enabling teachers to log attendance and grades directly, providing parents and students with real-time schedule visibility.",
       challenges: [
-        "Configuring security rules in Cloud Firestore for role-restricted document access.",
-        "Calculating student attendance percentages dynamically across academic terms."
+        "Structuring role-restricted data models across 4 distinct user access levels (Parent, Student, Teacher, Admin).",
+        "Ensuring teacher-entered attendance records and grades propagate accurately to relevant parents and students.",
+        "Coupling business logic closely with UI widgets during initial build (an architectural tradeoff to decouple in future iterations)."
       ],
-      contribution: "Led the Flutter mobile application development for the project, implemented Firestore security rules, student grade calculation modules, and timetable UI views."
+      contribution: "Sole developer responsible for full project execution: designed mobile UI layouts, backend Firebase integration, role-based access rules, attendance workflows, and grade dashboards."
     }
   }
 ];
