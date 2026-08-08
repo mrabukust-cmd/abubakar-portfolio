@@ -4,6 +4,7 @@ import { FaGithub, FaArrowRight, FaCode, FaCopy, FaCheck } from 'react-icons/fa'
 import { SiFlutter, SiDart, SiFirebase } from 'react-icons/si';
 import { profileData } from '../data/profile';
 import mentoraImg from '../assets/images/mentora_real.png';
+import AnimatedCounter from './AnimatedCounter';
 
 const codeSnippets = {
   'main.dart': {
@@ -261,7 +262,19 @@ export default function Hero() {
           {profileData.stats.map((stat, idx) => (
             <div key={idx} className="stat-card">
               <div className="stat-label">{stat.label}</div>
-              <div className="stat-value">{stat.value}</div>
+              <div className="stat-value">
+                {typeof stat.count === 'number' ? (
+                  <AnimatedCounter
+                    from={0}
+                    to={stat.count}
+                    duration={1.5}
+                    prefix={stat.prefix || ''}
+                    suffix={stat.suffix || ''}
+                  />
+                ) : (
+                  stat.value
+                )}
+              </div>
               <div className="stat-detail">{stat.detail}</div>
             </div>
           ))}

@@ -34,24 +34,32 @@ export const profileData = {
   
   stats: [
     {
-      label: "Flutter",
-      value: "Primary Development",
-      detail: "Cross-Platform Mobile Apps"
+      label: "Featured Apps",
+      count: 4,
+      suffix: "+ Built",
+      value: "4+ Built",
+      detail: "Flutter & Mobile Projects"
     },
     {
-      label: "Firebase",
-      value: "Backend & Services",
+      label: "Firebase Tech",
+      count: 5,
+      suffix: "+ Services",
+      value: "5+ Services",
       detail: "Auth, Firestore, Storage & FCM"
     },
     {
-      label: "REST APIs",
-      value: "Integration",
+      label: "REST & Network",
+      count: 100,
+      suffix: "% API Integration",
+      value: "100% API Integration",
       detail: "HTTP, JSON & Network Handling"
     },
     {
-      label: "Real Projects",
-      value: "Hands-on Development",
-      detail: "Practical App Engineering"
+      label: "Engineering",
+      count: 100,
+      suffix: "% Clean Code",
+      value: "100% Clean Code",
+      detail: "Modular & Reusable Architecture"
     }
   ],
   

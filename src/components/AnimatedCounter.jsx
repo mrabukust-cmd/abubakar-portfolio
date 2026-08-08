@@ -10,6 +10,7 @@ export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix =
     if (!isInView) return;
 
     let startTimestamp = null;
+    let animationFrameId = null;
     const numericTo = parseFloat(to);
 
     const step = (timestamp) => {
@@ -23,13 +24,19 @@ export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix =
       setCount(currentCount);
 
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        animationFrameId = window.requestAnimationFrame(step);
       } else {
         setCount(numericTo);
       }
     };
 
-    window.requestAnimationFrame(step);
+    animationFrameId = window.requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, [isInView, from, to, duration]);
 
   return (
