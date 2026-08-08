@@ -1,0 +1,168 @@
+.githubSection {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.githubCard {
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(38, 30, 23, 0.9) 0%, rgba(24, 20, 16, 0.95) 100%);
+  border-color: var(--border-color-glow);
+}
+
+[data-theme="light"] .githubCard {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+}
+
+.githubGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.githubBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--accent-secondary);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.githubTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.githubDescription {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.githubActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Terminal Window Graphic */
+.terminalBox {
+  background: #120E0A;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .terminalBox {
+  background: #0F172A;
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 1rem;
+  background: #1B1510;
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .terminalHeader {
+  background: #1E293B;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.windowDots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red {
+  background-color: #EF4444;
+}
+
+.yellow {
+  background-color: #F59E0B;
+}
+
+.green {
+  background-color: #10B981;
+}
+
+.terminalTitle {
+  color: var(--text-muted);
+  font-size: 0.775rem;
+}
+
+.terminalBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #E2E8F0;
+}
+
+.termLine {
+  display: block;
+}
+
+.termPrompt {
+  color: #F59E0B;
+  font-weight: 700;
+}
+
+.termOutput {
+  color: #94A3B8;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+}
+
+.termLog {
+  display: block;
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.commitHash {
+  color: #F97316;
+}
+
+.termCursor {
+  animation: blink 1s infinite;
+  color: #F59E0B;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .githubCard {
+    padding: 1.75rem;
+  }
+  .githubGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

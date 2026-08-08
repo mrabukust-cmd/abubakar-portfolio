@@ -19,18 +19,24 @@ export const profileData = {
   aboutText: [
     "I am a Software Engineering student with a strong focus on mobile application development. My passion lies in building practical, user-centered applications that solve real-world problems.",
     "My primary development stack centers around Flutter and Dart, backed by Firebase services and REST API integration. I emphasize clean software architecture, modular widget structures, and intuitive UI/UX design.",
-    "As a student who actively builds real applications rather than just theoretical exercises, I focus on turning complex requirements into functional, maintainable code using Git and GitHub.",
+    "Rather than just building theoretical demos, I focus on shipping production-grade Flutter applications — like Mentora (a peer skill exchange with real-time Firestore synchronization) and Copono (a smart deal discovery app with REST API integration).",
     "I am continuously improving my software engineering practices and seeking opportunities to contribute to real-world products through internships, junior developer roles, and freelance projects."
   ],
   
   philosophy: {
     heading: "My Engineering Mindset",
     bullets: [
-      "Understand the problem first.",
+      "Understand the domain & data flows first — as learned while engineering Firestore stream listeners for Mentora.",
       "Write clean, modular code.",
       "Never stop refining the user experience."
     ]
   },
+
+  currentlyLearning: [
+    { title: "Riverpod & BLoC", detail: "Advanced Flutter State Management" },
+    { title: "Clean Architecture", detail: "Repository Pattern & Data Decoupling" },
+    { title: "Node.js & Express", detail: "Backend API Integration" }
+  ],
   
   stats: [
     {

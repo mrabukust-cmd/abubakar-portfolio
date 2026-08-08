@@ -5,7 +5,7 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclam
 import { profileData } from '../data/profile';
 import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Contact() {
   const [formData, setFormData] = useState({

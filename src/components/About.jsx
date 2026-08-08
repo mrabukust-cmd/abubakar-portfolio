@@ -126,11 +126,90 @@ export default function About() {
                 Specializing in Flutter client UIs, state management, Cloud Firestore, Firebase Auth, REST API serialization, and modular code structures.
               </p>
             </div>
+
+            {/* Currently Learning / Exploring Now Card */}
+            {profileData.currentlyLearning && (
+              <div className="card currently-learning-card">
+                <div className="learning-header">
+                  <span className="badge badge-cool">
+                    <span className="badge-dot" /> Currently Exploring
+                  </span>
+                  <h4 className="learning-title">Continuous Growth</h4>
+                </div>
+                <div className="learning-grid">
+                  {profileData.currentlyLearning.map((item, idx) => (
+                    <div key={idx} className="learning-item">
+                      <span className="learning-name">{item.title}</span>
+                      <span className="learning-desc">{item.detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
 
       <style>{`
+        .currently-learning-card {
+          margin-top: 1rem;
+          background: rgba(14, 18, 28, 0.85);
+          border: 1px solid var(--border-color);
+          padding: 1.25rem 1.5rem;
+        }
+
+        [data-theme="light"] .currently-learning-card {
+          background: #FFFFFF;
+          border-color: rgba(15, 23, 42, 0.12);
+        }
+
+        .learning-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .learning-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .learning-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+          gap: 0.75rem;
+        }
+
+        .learning-item {
+          background: rgba(38, 30, 23, 0.4);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          padding: 0.65rem 0.85rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+        }
+
+        [data-theme="light"] .learning-item {
+          background: #F8FAFC;
+          border-color: rgba(15, 23, 42, 0.12);
+        }
+
+        .learning-name {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--accent-cool);
+        }
+
+        .learning-desc {
+          font-size: 0.775rem;
+          color: var(--text-secondary);
+        }
+
         .about-section {
           background: var(--bg-secondary);
           border-top: 1px solid var(--border-color);

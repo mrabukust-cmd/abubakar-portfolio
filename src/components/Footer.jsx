@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 import { profileData } from '../data/profile';
+import { navLinks } from '../data/navigation';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -36,13 +37,13 @@ export default function Footer() {
           <div className="footer-nav">
             <h4 className="footer-heading">Navigation</h4>
             <ul className="footer-links">
-              <li><a href="#home" onClick={(e) => handleNavClick(e, '#home')}>Home</a></li>
-              <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
-              <li><a href="#what-i-build" onClick={(e) => handleNavClick(e, '#what-i-build')}>What I Build</a></li>
-              <li><a href="#projects" onClick={(e) => handleNavClick(e, '#projects')}>Projects</a></li>
-              <li><a href="#skills" onClick={(e) => handleNavClick(e, '#skills')}>Skills</a></li>
-              <li><a href="#experience" onClick={(e) => handleNavClick(e, '#experience')}>Journey</a></li>
-              <li><a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a></li>
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} onClick={(e) => handleNavClick(e, link.href)}>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

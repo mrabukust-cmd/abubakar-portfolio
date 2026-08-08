@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import ProjectModal from './ProjectModal';
 import { projectsData, projectCategories } from '../data/projects';
+
+const ProjectModal = React.lazy(() => import('./ProjectModal'));
 import { socialLinks } from '../data/socialLinks';
 import { FaGithub, FaExternalLinkAlt, FaSearch, FaTimes, FaInbox } from 'react-icons/fa';
 
@@ -152,10 +153,12 @@ export default function Projects() {
 
       {/* Modal Render */}
       {activeModalProject && (
-        <ProjectModal
-          project={activeModalProject}
-          onClose={() => setActiveModalProject(null)}
-        />
+        <React.Suspense fallback={null}>
+          <ProjectModal
+            project={activeModalProject}
+            onClose={() => setActiveModalProject(null)}
+          />
+        </React.Suspense>
       )}
 
       <style>{`

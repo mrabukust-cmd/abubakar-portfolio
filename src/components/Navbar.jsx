@@ -5,16 +5,9 @@ import {
   FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase, FaFileAlt
 } from 'react-icons/fa';
 import { profileData } from '../data/profile';
-import ResumeModal from './ResumeModal';
+import { navLinks } from '../data/navigation';
 
-const navLinks = [
-  { name: 'Home', href: '#home', icon: FaHome },
-  { name: 'About', href: '#about', icon: FaUser },
-  { name: 'Skills', href: '#skills', icon: FaMicrochip },
-  { name: 'Projects', href: '#projects', icon: FaCode },
-  { name: 'Experience', href: '#experience', icon: FaBriefcase },
-  { name: 'Contact', href: '#contact', icon: FaEnvelope },
-];
+const ResumeModal = React.lazy(() => import('./ResumeModal'));
 
 const getStoredTheme = () => {
   try {
@@ -256,7 +249,9 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      <React.Suspense fallback={null}>
+        <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      </React.Suspense>
 
       <style>{`
         .navbar-header {

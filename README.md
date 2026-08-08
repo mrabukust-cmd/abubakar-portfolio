@@ -1,5 +1,7 @@
 # Abubakar Siddique — Developer Portfolio
 
+[![CI Pipeline](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml)
+
 A production-ready, dark-themed personal portfolio website built with **React.js**, **Vite**, **Framer Motion**, and **React Icons**. 
 
 Designed specifically for **Abubakar Siddique** (Software Engineering Student & Flutter Developer) to showcase real-world mobile applications, technical skills, academic journey, and contact options.
