@@ -38,19 +38,7 @@ export default function Contact() {
   };
 
   const triggerMailtoFallback = () => {
-    const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    
     setStatus('fallback');
-    triggerConfettiEffect();
-
-    setTimeout(() => {
-      try {
-        window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
-      } catch {
-        // Handle environments where mailto execution fails
-      }
-    }, 100);
   };
 
   const handleSubmit = async (e) => {
@@ -197,17 +185,32 @@ export default function Contact() {
               )}
 
               {status === 'fallback' && (
-                <div className="form-alert alert-info">
-                  <FaEnvelope />
-                  <span>
-                    Opening your email client... If your email application does not open, send directly to{' '}
+                <div className="form-alert alert-info alert-fallback">
+                  <div className="alert-fallback-header">
+                    <FaEnvelope className="alert-fallback-icon" />
+                    <span>Something went wrong sending your message directly. You can email me instead:</span>
+                  </div>
+                  <div className="alert-fallback-actions">
                     <a
                       href={`mailto:${profileData.email}?subject=${encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`}
-                      className="alert-link"
+                      className="alert-fallback-btn"
                     >
-                      {profileData.email}
-                    </a>.
-                  </span>
+                      <FaEnvelope />
+                      <span>Open Email App</span>
+                    </a>
+                    <div className="fallback-copy-wrapper">
+                      <span className="fallback-email-text">{profileData.email}</span>
+                      <button
+                        type="button"
+                        className="contact-copy-btn"
+                        onClick={handleCopyEmail}
+                        title="Copy Email Address"
+                        aria-label="Copy Email Address"
+                      >
+                        {emailCopied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -441,14 +444,89 @@ export default function Contact() {
           color: #60A5FA;
         }
 
-        .alert-link {
-          color: #93C5FD;
-          text-decoration: underline;
-          font-weight: 600;
+        .alert-fallback {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.85rem;
+          padding: 1rem 1.15rem;
         }
 
-        .alert-link:hover {
-          color: #ffffff;
+        .alert-fallback-header {
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+          color: #93C5FD;
+          font-weight: 500;
+          line-height: 1.45;
+        }
+
+        .alert-fallback-icon {
+          font-size: 1.1rem;
+          flex-shrink: 0;
+          color: #60A5FA;
+        }
+
+        .alert-fallback-actions {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0.75rem;
+          width: 100%;
+          padding-top: 0.75rem;
+          border-top: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        .alert-fallback-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: #3B82F6;
+          color: #FFFFFF;
+          font-weight: 600;
+          font-size: 0.85rem;
+          padding: 0.5rem 0.95rem;
+          border-radius: var(--radius-sm);
+          text-decoration: none;
+          transition: all var(--transition-fast);
+          box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .alert-fallback-btn:hover {
+          background: #2563EB;
+          color: #FFFFFF;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .fallback-copy-wrapper {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(15, 23, 42, 0.6);
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          padding: 0.25rem 0.35rem 0.25rem 0.75rem;
+          border-radius: var(--radius-sm);
+        }
+
+        .fallback-email-text {
+          font-size: 0.85rem;
+          font-family: var(--font-mono);
+          color: #E2E8F0;
+          user-select: all;
+        }
+
+        .fallback-copy-wrapper .contact-copy-btn {
+          width: 30px;
+          height: 30px;
+          font-size: 0.85rem;
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .fallback-copy-wrapper .contact-copy-btn:hover {
+          background: rgba(59, 130, 246, 0.25);
+          border-color: #60A5FA;
+          color: #FFFFFF;
         }
 
         .alert-error {
