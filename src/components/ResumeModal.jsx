@@ -56,14 +56,14 @@ export default function ResumeModal({ isOpen, onClose }) {
               <span>Developer Curriculum Vitae</span>
             </div>
             <div className="toolbar-actions">
-              <button className="btn btn-secondary btn-sm" onClick={handleCopyEmail} title="Copy Email" aria-label="Copy email address">
+              <button className="btn btn-secondary btn-sm toolbar-action-btn" onClick={handleCopyEmail} title="Copy Email" aria-label="Copy email address">
                 {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
-                <span>{copied ? 'Copied!' : 'Copy Email'}</span>
+                <span className="toolbar-btn-text">{copied ? 'Copied!' : 'Copy Email'}</span>
               </button>
 
-              <button className="btn btn-primary btn-sm" onClick={handlePrint} title="Print or Save as PDF" aria-label="Print or save resume as PDF">
+              <button className="btn btn-primary btn-sm toolbar-action-btn" onClick={handlePrint} title="Print or Save as PDF" aria-label="Print or save resume as PDF">
                 <FaPrint />
-                <span>Print / Save PDF</span>
+                <span className="toolbar-btn-text">Print / Save PDF</span>
               </button>
 
               <button className="resume-close-btn" onClick={onClose} aria-label="Close Resume Modal">
@@ -254,19 +254,31 @@ export default function ResumeModal({ isOpen, onClose }) {
           gap: 0.75rem;
         }
 
+        .toolbar-action-btn {
+          min-height: 44px;
+        }
+
         .resume-close-btn {
           background: rgba(38, 30, 23, 0.7);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
-          width: 34px;
-          height: 34px;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
           border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          font-size: 1rem;
+          font-size: 1.1rem;
           transition: all var(--transition-fast);
+        }
+
+        [data-theme="light"] .resume-close-btn {
+          background: #F1F5F9;
+          border-color: rgba(15, 23, 42, 0.15);
+          color: #0F172A;
         }
 
         .resume-close-btn:hover {
@@ -464,6 +476,8 @@ export default function ResumeModal({ isOpen, onClose }) {
           color: var(--text-primary);
           padding: 0.2rem 0.55rem;
           border-radius: var(--radius-sm);
+          max-width: 100%;
+          word-break: break-word;
         }
 
         [data-theme="light"] .resume-skill-badge {
@@ -514,6 +528,73 @@ export default function ResumeModal({ isOpen, onClose }) {
           }
           .resume-document {
             padding: 1.25rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .resume-backdrop {
+            padding: 0.75rem 0.5rem;
+          }
+          .resume-modal-container {
+            max-height: 96vh;
+            border-radius: var(--radius-md);
+          }
+          .resume-toolbar {
+            padding: 0.75rem 0.85rem;
+          }
+          .toolbar-title {
+            font-size: 0.85rem;
+          }
+          .toolbar-btn-text {
+            display: none;
+          }
+          .toolbar-action-btn {
+            padding: 0.5rem 0.75rem;
+            min-height: 44px;
+            min-width: 44px;
+          }
+          .resume-document-wrapper {
+            padding: 0.75rem 0.5rem;
+          }
+          .resume-document {
+            padding: 1rem 0.85rem;
+          }
+          .resume-name {
+            font-size: 1.6rem;
+            line-height: 1.25;
+          }
+          .resume-headline {
+            font-size: 0.975rem;
+          }
+          .resume-summary {
+            font-size: 0.875rem;
+            line-height: 1.6;
+          }
+          .resume-contact-meta {
+            padding: 0.75rem 0.85rem;
+            gap: 0.5rem;
+          }
+          .contact-meta-item {
+            font-size: 0.825rem;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+          }
+          .block-header-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.35rem;
+          }
+          .block-title {
+            font-size: 0.925rem;
+          }
+          .block-badge {
+            align-self: flex-start;
+          }
+          .resume-block {
+            padding: 0.85rem 0.85rem;
+          }
+          .resume-divider {
+            margin: 1.25rem 0;
           }
         }
       `}</style>
