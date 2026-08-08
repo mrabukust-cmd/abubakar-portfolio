@@ -131,7 +131,7 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal-body">
             {/* Banner Image Container */}
             <div className="modal-image-wrapper">
-              <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" />
+              <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" width="800" height="400" loading="lazy" />
               <div className="modal-banner-info">
                 <h2 id="modal-title" className="modal-title">{project.title}</h2>
                 <p className="modal-tagline">{project.tagline}</p>

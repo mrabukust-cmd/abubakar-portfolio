@@ -1,28 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMobileAlt, FaServer, FaBolt, FaCodeBranch, FaCheck } from 'react-icons/fa';
-import { SiFlutter, SiDart, SiFirebase, SiGit, SiGithub } from 'react-icons/si';
 import { skillCategories } from '../data/skills';
-
-const getCategoryIcon = (iconName) => {
-  switch (iconName) {
-    case 'FaMobileAlt': return <FaMobileAlt />;
-    case 'FaServer': return <FaServer />;
-    case 'FaBolt': return <FaBolt />;
-    case 'FaCodeBranch': return <FaCodeBranch />;
-    default: return <FaMobileAlt />;
-  }
-};
-
-const getSkillTechIcon = (skillName) => {
-  const lower = skillName.toLowerCase();
-  if (lower.includes('flutter')) return <SiFlutter style={{ color: '#38BDF8' }} />;
-  if (lower.includes('dart')) return <SiDart style={{ color: '#0175C2' }} />;
-  if (lower.includes('firebase') || lower.includes('firestore')) return <SiFirebase style={{ color: '#FFCA28' }} />;
-  if (lower.includes('git')) return <SiGit style={{ color: '#F05032' }} />;
-  if (lower.includes('github')) return <SiGithub style={{ color: '#F8FAFC' }} />;
-  return <FaCheck style={{ color: '#38BDF8', fontSize: '0.85rem' }} />;
-};
+import { getCategoryIcon, getSkillTechIcon } from '../utils/iconMap';
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('all');
@@ -85,10 +64,10 @@ export default function Skills() {
               key={category.id}
               layout
               className="card category-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
             >
               <div className="category-header">
                 <div className="category-icon-box">

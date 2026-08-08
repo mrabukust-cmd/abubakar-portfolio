@@ -184,26 +184,45 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
-/* Badge Component */
+/* Unified Pill & Badge System */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.95rem;
+  padding: 0.4rem 0.9rem;
   border-radius: var(--radius-full);
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(249, 115, 22, 0.35);
-  color: #F59E0B;
-  font-size: 0.85rem;
+  font-size: 0.825rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--accent-secondary);
   backdrop-filter: blur(8px);
 }
 
 .badge-cool {
   background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-color: rgba(56, 189, 248, 0.35);
   color: var(--accent-cool);
+}
+
+.tech-pill,
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: border-color var(--transition-fast);
+}
+
+.tech-pill:hover,
+.skill-chip:hover {
+  border-color: var(--accent-secondary);
 }
 
 .badge-dot {
@@ -281,8 +300,8 @@ a {
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-color-hover);
-  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.6);
-  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.55);
+  transform: translateY(-2px);
 }
 
 .glass-panel {
@@ -483,21 +502,6 @@ textarea:focus-visible {
 
 .scroll-icon {
   font-size: 1.1rem;
-}
-
-/* Smooth Shimmer Text Effect */
-.shimmer-text {
-  background: linear-gradient(90deg, #FFFBEB 0%, #F59E0B 50%, #FFFBEB 100%);
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 200% center;
-  }
 }
 
 

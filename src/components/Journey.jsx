@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaMobileAlt, FaRocket, FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
 import { profileData } from '../data/profile';
-
-const getRoleIcon = (role) => {
-  if (role.includes('Student')) return <FaGraduationCap />;
-  if (role.includes('Flutter')) return <FaMobileAlt />;
-  return <FaRocket />;
-};
+import { getRoleIcon } from '../utils/iconMap';
 
 export default function Journey() {
   return (
@@ -28,10 +23,10 @@ export default function Journey() {
             <motion.div
               key={idx}
               className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -25 : 25 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              transition={{ duration: 0.45, delay: idx * 0.12 }}
             >
               <div className="timeline-dot-wrapper">
                 <div className="timeline-dot">

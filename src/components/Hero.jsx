@@ -84,7 +84,6 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <div className="badge hero-badge">
-              <span className="badge-dot" />
               <span>{profileData.heroBadge}</span>
             </div>
           </motion.div>
@@ -95,7 +94,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            I Build <span className="text-gradient shimmer-text">Real-World Mobile Apps</span> With Flutter.
+            I Build <span className="text-gradient">Real-World Mobile Apps</span> With Flutter.
           </motion.h1>
 
           <motion.h2
@@ -214,38 +213,29 @@ export default function Hero() {
 
               {/* Mobile App Preview Overlay Composition */}
               <div className="app-preview-composition">
-                <img src={mentoraImg} alt="Flutter Application Preview" className="app-preview-img" loading="eager" />
+                <img src={mentoraImg} alt="Flutter Application Preview" className="app-preview-img" width="400" height="190" loading="eager" />
                 <div className="app-preview-badge">
-                  <span className="badge-dot" />
                   <span>Flutter App Preview</span>
                 </div>
               </div>
             </div>
 
-            {/* Floating Tech Badges */}
-            <motion.div
-              className="floating-badge badge-top-right"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
+            {/* Static Tech Badges */}
+            <div className="floating-badge badge-top-right">
               <SiFlutter className="float-icon flutter" />
               <div>
                 <span className="float-title">Flutter SDK</span>
                 <span className="float-sub">Cross-Platform UI</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="floating-badge badge-bottom-left"
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 1 }}
-            >
+            <div className="floating-badge badge-bottom-left">
               <SiFirebase className="float-icon firebase" />
               <div>
                 <span className="float-title">Firebase Cloud</span>
                 <span className="float-sub">Auth, Firestore & FCM</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

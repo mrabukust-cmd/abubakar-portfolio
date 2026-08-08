@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import confetti from 'canvas-confetti';
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
@@ -28,13 +27,6 @@ export default function Contact() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const triggerConfettiEffect = () => {
-    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion) {
-      confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
-    }
   };
 
   const triggerMailtoFallback = () => {
@@ -81,7 +73,6 @@ export default function Contact() {
 
         if (data.success) {
           setStatus('success');
-          triggerConfettiEffect();
           setFormData({ name: '', email: '', subject: '', message: '' });
         } else {
           triggerMailtoFallback();

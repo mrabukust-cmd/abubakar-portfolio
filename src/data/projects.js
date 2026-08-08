@@ -1,5 +1,4 @@
 import ziloliveImg from '../assets/images/zilolive.png';
-import coponoImg from '../assets/images/copono.png';
 import mentoraImg from '../assets/images/mentora_real.png';
 import schoolSystemImg from '../assets/images/edu_manage_mockup.png';
 
@@ -70,36 +69,6 @@ export const projectsData = [
     }
   },
   {
-    id: "copono",
-    featured: false,
-    title: "Copono",
-    tagline: "Flutter Mobile Application (UI/UX Refinement)",
-    category: "Mobile Application",
-    badge: "UI/UX Development",
-    image: coponoImg,
-    technologies: ["Flutter", "Dart", "UI/UX Refinement"],
-    shortDescription: "A Flutter mobile project focused on interface improvements, layout polish, and visual corrections across feature branches (fix/check-ui and fix/check-uiux).",
-    features: [
-      "Targeted UI/UX corrections across feature branches",
-      "Screen layout polish and visual consistency adjustments",
-      "Widget styling and interface alignment"
-    ],
-    githubUrl: "",
-    liveUrl: "",
-    demoType: "none",
-    githubStatus: "private",
-    githubStatusNote: "Private Repository (Pending Technical Verification)",
-    modalData: {
-      problem: "Interface inconsistencies and visual alignment issues required dedicated UI/UX fixes across feature development branches.",
-      solution: "Executed layout corrections and UI polish in fix/check-ui and fix/check-uiux branches to improve overall interface consistency.",
-      challenges: [
-        "Refactoring widget trees to match target UI/UX design specifications.",
-        "Resolving layout overflow and visual alignment issues across different screen dimensions."
-      ],
-      contribution: "Implemented UI/UX fixes, frontend styling adjustments, and screen layout polish across dedicated feature branches."
-    }
-  },
-  {
     id: "school-management-system",
     featured: false,
     title: "School Management System",
@@ -136,6 +105,5 @@ export const projectsData = [
 export const projectCategories = [
   "All",
   "Education & Peer Learning",
-  "Social & Media",
-  "Mobile Application"
+  "Social & Media"
 ];

@@ -14,21 +14,21 @@ export const profileData = {
   heroBadge: "Building → Testing → Improving",
   heroHeading: "I Build Real-World Mobile Apps With Flutter.",
   heroSubheading: "Software Engineering Student & Flutter Developer",
-  heroDescription: "I'm Abubakar Siddique, a Software Engineering student and Flutter Developer focused on turning ideas into polished, functional mobile applications with Flutter, Firebase, APIs, and modern UI/UX.",
+  heroDescription: "I'm Abubakar Siddique, a Software Engineering student and Flutter Developer building cross-platform mobile applications with Flutter, Cloud Firestore stream listeners, Provider state management, and REST APIs.",
   
   aboutText: [
-    "I am a Software Engineering student with a strong focus on mobile application development. My passion lies in building practical, user-centered applications that solve real-world problems.",
-    "My primary development stack centers around Flutter and Dart, backed by Firebase services and REST API integration. I emphasize clean software architecture, modular widget structures, and intuitive UI/UX design.",
-    "Rather than just building theoretical demos, I focus on shipping production-grade Flutter applications — like Mentora (a peer skill exchange with real-time Firestore synchronization) and Copono (a smart deal discovery app with REST API integration).",
-    "I am continuously improving my software engineering practices and seeking opportunities to contribute to real-world products through internships, junior developer roles, and freelance projects."
+    "I am a Software Engineering student specializing in cross-platform mobile engineering with Flutter and Dart.",
+    "My core development workflow integrates Cloud Firestore stream listeners, Firebase Auth, Provider state management, and REST API network handling.",
+    "I focus on solving real mobile architecture challenges — such as tuning pull-to-refresh thresholds in ZiloLive to prevent unintended reloads and configuring multi-role Firestore security rules in Mentora and the School Management System.",
+    "I am seeking software engineering internships and junior mobile developer roles where I can contribute to production mobile apps and maintain clean codebase architecture."
   ],
   
   philosophy: {
     heading: "My Engineering Mindset",
     bullets: [
-      "Understand the domain & data flows first — as learned while engineering Firestore stream listeners for Mentora.",
-      "Write clean, modular code.",
-      "Never stop refining the user experience."
+      "Understand domain & data flows first — as learned while engineering Firestore stream listeners for Mentora.",
+      "Decouple state logic from widget trees to prevent RenderViewport clipping and unnecessary rebuilds.",
+      "Test edge cases early — handling network timeouts, FCM registration tokens, and role-based access rules."
     ]
   },
 
@@ -41,9 +41,9 @@ export const profileData = {
   stats: [
     {
       label: "Featured Apps",
-      count: 4,
+      count: 3,
       suffix: "+ Built",
-      value: "4+ Built",
+      value: "3 Apps Built",
       detail: "Flutter & Mobile Projects"
     },
     {
@@ -54,18 +54,18 @@ export const profileData = {
       detail: "Auth, Firestore, Storage & FCM"
     },
     {
-      label: "REST & Network",
-      count: 100,
-      suffix: "% API Integration",
-      value: "100% API Integration",
-      detail: "HTTP, JSON & Network Handling"
+      label: "Core Stack",
+      count: 7,
+      suffix: "+ Core Tools",
+      value: "7+ Core Tech Tools",
+      detail: "Flutter, Dart, Firebase, REST APIs"
     },
     {
-      label: "Engineering",
-      count: 100,
-      suffix: "% Clean Code",
-      value: "100% Clean Code",
-      detail: "Modular & Reusable Architecture"
+      label: "Access Roles",
+      count: 4,
+      suffix: " Access Levels",
+      value: "4 Access Levels",
+      detail: "Parent, Student, Teacher & Admin"
     }
   ],
   
@@ -88,7 +88,7 @@ export const profileData = {
       period: "Full-Stack Mobile Apps",
       role: "Real-World Application Development",
       institution: "Building & Refining Complete Apps",
-      description: "Developing end-to-end mobile applications like Mentora, ZiloLive, Copono, and a School Management System, connecting Flutter frontends with Firebase, APIs, and real-time features.",
+      description: "Developing end-to-end mobile applications like Mentora, ZiloLive, and a School Management System, connecting Flutter frontends with Firebase, APIs, and real-time features.",
       skills: ["Firebase Auth", "Firestore", "REST APIs", "Real-Time Chat", "Git & GitHub"]
     }
   ],

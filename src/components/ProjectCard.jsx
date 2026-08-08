@@ -10,21 +10,9 @@ import {
   FaAndroid, 
   FaBookOpen 
 } from 'react-icons/fa';
+import { getDemoIcon } from '../utils/iconMap';
 
 export default function ProjectCard({ project, onOpenModal }) {
-  const getDemoIcon = () => {
-    switch (project.demoType) {
-      case 'video':
-        return <FaVideo />;
-      case 'apk':
-        return <FaAndroid />;
-      case 'live':
-        return <FaExternalLinkAlt />;
-      default:
-        return <FaBookOpen />;
-    }
-  };
-
   const getDemoTitle = () => {
     switch (project.demoType) {
       case 'video':
@@ -47,7 +35,7 @@ export default function ProjectCard({ project, onOpenModal }) {
       transition={{ duration: 0.4 }}
     >
       <div className="project-image-container">
-        <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" loading="lazy" />
+        <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" width="600" height="340" loading="lazy" />
         <div className="project-image-overlay">
           <span className="project-category-badge">{project.badge}</span>
           <span className={`project-status-badge ${project.githubStatus || 'private'}`}>
@@ -127,14 +115,14 @@ export default function ProjectCard({ project, onOpenModal }) {
               title={getDemoTitle()}
               aria-label={`View ${project.title} ${getDemoTitle()}`}
             >
-              {getDemoIcon()}
+              {getDemoIcon(project.demoType)}
             </a>
           ) : (
             <span 
               className="action-status-badge demo-badge"
               title={`Demo Format: ${getDemoTitle()}`}
             >
-              {getDemoIcon()}
+              {getDemoIcon(project.demoType)}
               <span>{project.demoType === 'apk' ? 'APK' : project.demoType === 'video' ? 'Video' : project.demoType === 'live' ? 'Live' : 'Overview'}</span>
             </span>
           )}

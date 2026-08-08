@@ -1,17 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaMobileAlt, FaFire, FaPlug, FaBolt, FaCheck } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import { whatIBuildData } from '../data/whatIBuild';
-
-const getCapabilityIcon = (iconName) => {
-  switch (iconName) {
-    case 'FaMobileAlt': return <FaMobileAlt />;
-    case 'FaFire': return <FaFire />;
-    case 'FaPlug': return <FaPlug />;
-    case 'FaBolt': return <FaBolt />;
-    default: return <FaMobileAlt />;
-  }
-};
+import { getCapabilityIcon } from '../utils/iconMap';
 
 export default function WhatIBuild() {
   return (
@@ -30,10 +21,10 @@ export default function WhatIBuild() {
             <motion.div
               key={item.id}
               className="card capability-card"
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
             >
               <div className="capability-icon-box">
                 {getCapabilityIcon(item.iconName)}

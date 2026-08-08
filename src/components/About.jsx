@@ -31,6 +31,8 @@ export default function About() {
                   src={profileData.profileImage}
                   alt="Abubakar Siddique — Software Engineering Student and Flutter Developer"
                   className="profile-portrait-img"
+                  width="400"
+                  height="400"
                   loading="lazy"
                 />
                 <div className="profile-photo-gradient" />
@@ -132,7 +134,7 @@ export default function About() {
               <div className="card currently-learning-card">
                 <div className="learning-header">
                   <span className="badge badge-cool">
-                    <span className="badge-dot" /> Currently Exploring
+                    Currently Exploring
                   </span>
                   <h4 className="learning-title">Continuous Growth</h4>
                 </div>
