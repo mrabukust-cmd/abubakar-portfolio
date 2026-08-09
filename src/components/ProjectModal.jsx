@@ -246,8 +246,7 @@ export default function ProjectModal({ project, onClose }) {
           position: fixed;
           inset: 0;
           z-index: 2000;
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(12px);
+          background: rgba(13, 13, 17, 0.85);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -257,15 +256,15 @@ export default function ProjectModal({ project, onClose }) {
 
         .modal-content {
           background: var(--bg-secondary);
-          border: 1px solid var(--border-color-glow);
-          border-radius: var(--radius-lg);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           width: 100%;
           max-width: 860px;
           max-height: 90vh;
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
         }
 
         .modal-header {
@@ -285,40 +284,30 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-badge {
-          background: rgba(245, 158, 11, 0.15);
-          border: 1px solid rgba(249, 115, 22, 0.3);
-          color: var(--accent-secondary);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          color: var(--accent-primary);
           font-family: var(--font-mono);
-          font-size: 0.8rem;
-          font-weight: 600;
-          padding: 0.25rem 0.75rem;
-          border-radius: var(--radius-full);
+          font-size: 0.775rem;
+          font-weight: 500;
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-sm);
         }
 
         .modal-status-pill {
           font-family: var(--font-mono);
-          font-size: 0.775rem;
-          font-weight: 600;
+          font-size: 0.75rem;
+          font-weight: 500;
           padding: 0.25rem 0.65rem;
-          border-radius: var(--radius-full);
-          background: rgba(15, 23, 42, 0.8);
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-muted);
         }
 
         .modal-status-pill.public {
-          border-color: rgba(34, 197, 94, 0.4);
-          color: #4ADE80;
-        }
-
-        .modal-status-pill.private {
-          border-color: rgba(245, 158, 11, 0.35);
-          color: #FBBF24;
-        }
-
-        .modal-status-pill.case-study {
-          border-color: rgba(99, 102, 241, 0.35);
-          color: #818CF8;
+          border-color: var(--accent-primary);
+          color: var(--accent-primary);
         }
 
         .modal-status-badge-inline {
@@ -328,19 +317,20 @@ export default function ProjectModal({ project, onClose }) {
           padding: 0.4rem 0.85rem;
           border-radius: var(--radius-sm);
           font-size: 0.825rem;
-          font-weight: 600;
-          background: rgba(28, 22, 17, 0.8);
+          font-weight: 500;
+          font-family: var(--font-mono);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
         }
 
         .modal-notice-banner {
           display: flex;
           align-items: flex-start;
           gap: 0.75rem;
-          background: rgba(245, 158, 11, 0.08);
-          border: 1px solid rgba(245, 158, 11, 0.25);
-          border-radius: var(--radius-md);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           padding: 0.85rem 1.15rem;
           font-size: 0.875rem;
           color: var(--text-secondary);
@@ -348,29 +338,29 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-notice-banner .notice-icon {
-          color: #F59E0B;
+          color: var(--accent-primary);
           font-size: 1.1rem;
           flex-shrink: 0;
           margin-top: 0.15rem;
         }
 
         .modal-close-btn {
-          background: rgba(38, 30, 23, 0.6);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
-          width: 36px;
-          height: 36px;
+          width: 34px;
+          height: 34px;
           border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
 
         .modal-close-btn:hover {
-          background: rgba(239, 68, 68, 0.2);
-          color: #EF4444;
+          border-color: var(--accent-primary);
+          color: var(--accent-primary);
         }
 
         .modal-body {
@@ -385,9 +375,9 @@ export default function ProjectModal({ project, onClose }) {
           position: relative;
           width: 100%;
           height: 320px;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
-          background: #0E0B08;
+          background: var(--bg-primary);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -407,23 +397,24 @@ export default function ProjectModal({ project, onClose }) {
           bottom: 0.75rem;
           left: 1rem;
           right: 1rem;
-          background: rgba(24, 20, 16, 0.85);
-          backdrop-filter: blur(8px);
+          background: var(--bg-secondary);
           padding: 0.6rem 1rem;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--border-color-glow);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
         }
 
         .modal-title {
-          font-size: 1.65rem;
-          font-weight: 800;
+          font-size: 1.5rem;
+          font-weight: 500;
           color: var(--text-primary);
+          font-family: var(--font-heading);
         }
 
         .modal-tagline {
-          font-size: 0.9rem;
-          color: var(--accent-secondary);
+          font-size: 0.85rem;
+          color: var(--accent-primary);
           font-weight: 500;
+          font-family: var(--font-mono);
         }
 
         .modal-quick-bar {
@@ -443,11 +434,12 @@ export default function ProjectModal({ project, onClose }) {
         }
 
         .modal-tech-tag {
-          background: rgba(38, 30, 23, 0.7);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
-          font-size: 0.8rem;
-          font-weight: 500;
+          font-size: 0.775rem;
+          font-weight: 400;
+          font-family: var(--font-mono);
           padding: 0.3rem 0.65rem;
           border-radius: var(--radius-sm);
         }
@@ -459,16 +451,17 @@ export default function ProjectModal({ project, onClose }) {
 
         .modal-section-title {
           font-size: 1.15rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.75rem;
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          font-family: var(--font-heading);
         }
 
         .modal-text {
-          font-size: 0.975rem;
+          font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.7;
         }
@@ -481,7 +474,9 @@ export default function ProjectModal({ project, onClose }) {
 
         .modal-card {
           padding: 1.25rem;
-          background: rgba(24, 20, 16, 0.6);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .modal-card-header {
@@ -489,11 +484,9 @@ export default function ProjectModal({ project, onClose }) {
           align-items: center;
           gap: 0.5rem;
           font-size: 0.95rem;
-          font-weight: 700;
+          font-weight: 600;
           margin-bottom: 0.5rem;
         }
-        .text-red { color: #F43F5E; }
-        .text-cyan { color: var(--accent-cool); }
 
         .modal-card-text {
           font-size: 0.875rem;
@@ -511,11 +504,11 @@ export default function ProjectModal({ project, onClose }) {
           display: flex;
           align-items: flex-start;
           gap: 0.6rem;
-          font-size: 0.9rem;
+          font-size: 0.875rem;
           color: var(--text-secondary);
-          background: rgba(38, 30, 23, 0.4);
+          background: var(--bg-card);
           padding: 0.65rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           border: 1px solid var(--border-color);
         }
 

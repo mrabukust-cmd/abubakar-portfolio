@@ -100,10 +100,10 @@ export default function Contact() {
           {/* Contact Direct Info Cards */}
           <motion.div
             className="contact-info-col"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="card contact-method-card contact-email-card">
               <div className="method-icon-box">
@@ -121,7 +121,7 @@ export default function Contact() {
                 title="Copy Email Address"
                 aria-label="Copy Email Address"
               >
-                {emailCopied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+                {emailCopied ? <FaCheck style={{ color: 'var(--accent-primary)' }} /> : <FaCopy />}
               </button>
             </div>
 
@@ -160,12 +160,12 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.div
             className="contact-form-col"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <form className="card contact-form glass-panel" onSubmit={handleSubmit} noValidate>
+            <form className="card contact-form" onSubmit={handleSubmit} noValidate>
               <h3 className="form-heading">Send A Message</h3>
 
               {status === 'success' && (
@@ -179,26 +179,16 @@ export default function Contact() {
                 <div className="form-alert alert-info alert-fallback">
                   <div className="alert-fallback-header">
                     <FaEnvelope className="alert-fallback-icon" />
-                    <span>Something went wrong sending your message directly. You can email me instead:</span>
+                    <span>Sending service is currently undergoing maintenance. Please reach out directly:</span>
                   </div>
                   <div className="alert-fallback-actions">
-                    <a
-                      href={`mailto:${profileData.email}?subject=${encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`}
-                      className="alert-fallback-btn"
-                    >
-                      <FaEnvelope />
-                      <span>Open Email App</span>
+                    <a href={profileData.socials.mailto} className="alert-fallback-btn">
+                      Open Mail Client
                     </a>
                     <div className="fallback-copy-wrapper">
                       <span className="fallback-email-text">{profileData.email}</span>
-                      <button
-                        type="button"
-                        className="contact-copy-btn"
-                        onClick={handleCopyEmail}
-                        title="Copy Email Address"
-                        aria-label="Copy Email Address"
-                      >
-                        {emailCopied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+                      <button type="button" className="contact-copy-btn" onClick={handleCopyEmail} title="Copy Email">
+                        {emailCopied ? <FaCheck /> : <FaCopy />}
                       </button>
                     </div>
                   </div>
@@ -208,40 +198,33 @@ export default function Contact() {
               {status === 'error' && (
                 <div className="form-alert alert-error">
                   <FaExclamationCircle />
-                  <span>{errorMessage}</span>
+                  <span>Failed to send. Please check your form input or email directly.</span>
                 </div>
               )}
 
               <div className="form-row-2">
                 <div className="form-group">
-                  <label htmlFor="name" className="form-label">
-                    Your Name <span className="req">*</span>
-                  </label>
+                  <label htmlFor="user_name" className="form-label">Your Name <span className="req">*</span></label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="user_name"
+                    name="user_name"
+                    value={formData.user_name}
                     onChange={handleChange}
-                    placeholder="e.g. Recruiter / Collaborator"
+                    placeholder="Jane Doe"
                     className="form-input"
-                    required
                   />
                 </div>
-
                 <div className="form-group">
-                  <label htmlFor="email" className="form-label">
-                    Your Email <span className="req">*</span>
-                  </label>
+                  <label htmlFor="user_email" className="form-label">Your Email <span className="req">*</span></label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    id="user_email"
+                    name="user_email"
+                    value={formData.user_email}
                     onChange={handleChange}
-                    placeholder="e.g. contact@company.com"
+                    placeholder="jane@example.com"
                     className="form-input"
-                    required
                   />
                 </div>
               </div>
@@ -254,40 +237,31 @@ export default function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="e.g. Flutter Dev Opportunity / Project Inquiry"
+                  placeholder="Internship / Flutter Project Query"
                   className="form-input"
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message" className="form-label">
-                  Message <span className="req">*</span>
-                </label>
+                <label htmlFor="message" className="form-label">Message <span className="req">*</span></label>
                 <textarea
                   id="message"
                   name="message"
+                  rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about the role, project, or collaboration..."
-                  rows={5}
+                  placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
                   className="form-input form-textarea"
-                  required
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn btn-primary btn-full"
-                disabled={status === 'submitting'}
+                className="btn btn-primary"
+                disabled={submitting}
+                style={{ alignSelf: 'flex-start' }}
               >
-                {status === 'submitting' ? (
-                  <span>Sending Message...</span>
-                ) : (
-                  <>
-                    <FaPaperPlane />
-                    <span>Send Message</span>
-                  </>
-                )}
+                {submitting ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
           </motion.div>
@@ -297,7 +271,6 @@ export default function Contact() {
       <style>{`
         .contact-section {
           background: var(--bg-secondary);
-          border-top: 1px solid var(--border-color);
         }
 
         .contact-grid {
@@ -318,6 +291,9 @@ export default function Contact() {
           align-items: center;
           gap: 1.25rem;
           padding: 1.25rem 1.5rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .contact-email-card {
@@ -329,69 +305,73 @@ export default function Contact() {
         }
 
         .contact-copy-btn {
-          background: rgba(38, 30, 23, 0.7);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
-          width: 36px;
-          height: 36px;
+          width: 34px;
+          height: 34px;
           border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           transition: all var(--transition-fast);
           flex-shrink: 0;
         }
 
         .contact-copy-btn:hover {
           color: var(--text-primary);
-          border-color: var(--accent-secondary);
-          background: rgba(54, 42, 31, 0.9);
+          border-color: var(--accent-primary);
         }
 
         .method-icon-box {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 46px;
-          height: 46px;
-          border-radius: var(--radius-md);
-          background: rgba(245, 158, 11, 0.12);
-          border: 1px solid rgba(249, 115, 22, 0.3);
-          color: var(--accent-secondary);
-          font-size: 1.25rem;
+          width: 42px;
+          height: 42px;
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          color: var(--accent-primary);
+          font-size: 1.1rem;
           flex-shrink: 0;
         }
 
         .method-label {
           display: block;
-          font-size: 0.8rem;
+          font-size: 0.775rem;
           color: var(--text-muted);
           margin-bottom: 0.15rem;
+          font-family: var(--font-mono);
         }
 
         .method-value {
-          font-weight: 600;
+          font-weight: 500;
           font-size: 0.95rem;
           color: var(--text-primary);
           transition: color var(--transition-fast);
         }
 
         .method-value:hover {
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
         }
 
         .contact-availability-card {
-          background: rgba(24, 20, 16, 0.7);
-          border-color: var(--border-color);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           margin-top: 0.5rem;
+          padding: 1.5rem;
         }
 
         .avail-title {
           font-size: 1rem;
           color: var(--text-primary);
           margin-bottom: 0.5rem;
+          font-family: var(--font-sans);
+          font-weight: 600;
         }
 
         .avail-desc {
@@ -405,13 +385,17 @@ export default function Contact() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .form-heading {
           font-size: 1.35rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.5rem;
+          font-family: var(--font-heading);
         }
 
         .form-alert {
@@ -419,20 +403,20 @@ export default function Contact() {
           align-items: center;
           gap: 0.75rem;
           padding: 0.85rem 1rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           font-size: 0.875rem;
         }
 
         .alert-success {
-          background: rgba(16, 185, 129, 0.15);
-          border: 1px solid rgba(16, 185, 129, 0.4);
-          color: #10B981;
+          background: var(--bg-secondary);
+          border: 1px solid var(--accent-primary);
+          color: var(--accent-primary);
         }
 
         .alert-info {
-          background: rgba(56, 189, 248, 0.12);
-          border: 1px solid rgba(56, 189, 248, 0.35);
-          color: var(--accent-cool);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          color: var(--text-primary);
         }
 
         .alert-fallback {
@@ -454,7 +438,7 @@ export default function Contact() {
         .alert-fallback-icon {
           font-size: 1.1rem;
           flex-shrink: 0;
-          color: var(--accent-cool);
+          color: var(--accent-primary);
         }
 
         .alert-fallback-actions {
@@ -464,37 +448,37 @@ export default function Contact() {
           gap: 0.75rem;
           width: 100%;
           padding-top: 0.75rem;
-          border-top: 1px solid rgba(56, 189, 248, 0.2);
+          border-top: 1px solid var(--border-color);
         }
 
         .alert-fallback-btn {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: var(--accent-cool);
-          color: #0F172A;
-          font-weight: 600;
+          background: var(--accent-primary);
+          color: #0D0D11;
+          font-weight: 500;
           font-size: 0.85rem;
           padding: 0.5rem 0.95rem;
           border-radius: var(--radius-sm);
           text-decoration: none;
           transition: all var(--transition-fast);
-          box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+        }
+
+        [data-theme="light"] .alert-fallback-btn {
+          color: #FFFFFF;
         }
 
         .alert-fallback-btn:hover {
-          background: var(--accent-cool-hover);
-          color: #FFFFFF;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+          background: var(--accent-primary-hover);
         }
 
         .fallback-copy-wrapper {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(15, 23, 42, 0.6);
-          border: 1px solid rgba(56, 189, 248, 0.3);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
           padding: 0.25rem 0.35rem 0.25rem 0.75rem;
           border-radius: var(--radius-sm);
         }
@@ -502,28 +486,14 @@ export default function Contact() {
         .fallback-email-text {
           font-size: 0.85rem;
           font-family: var(--font-mono);
-          color: #E2E8F0;
+          color: var(--text-primary);
           user-select: all;
         }
 
-        .fallback-copy-wrapper .contact-copy-btn {
-          width: 30px;
-          height: 30px;
-          font-size: 0.85rem;
-          background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(56, 189, 248, 0.3);
-        }
-
-        .fallback-copy-wrapper .contact-copy-btn:hover {
-          background: rgba(56, 189, 248, 0.2);
-          border-color: var(--accent-cool);
-          color: #FFFFFF;
-        }
-
         .alert-error {
-          background: rgba(239, 68, 68, 0.15);
-          border: 1px solid rgba(239, 68, 68, 0.4);
-          color: #F43F5E;
+          background: var(--bg-secondary);
+          border: 1px solid #E11D48;
+          color: #E11D48;
         }
 
         .form-row-2 {
@@ -539,30 +509,30 @@ export default function Contact() {
         }
 
         .form-label {
-          font-size: 0.85rem;
-          font-weight: 600;
+          font-size: 0.825rem;
+          font-weight: 500;
           color: var(--text-secondary);
+          font-family: var(--font-mono);
         }
 
         .req {
-          color: #F43F5E;
+          color: var(--accent-primary);
         }
 
         .form-input {
           width: 100%;
-          background: rgba(24, 20, 16, 0.8);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           padding: 0.75rem 1rem;
           color: var(--text-primary);
           font-family: var(--font-sans);
-          font-size: 0.95rem;
+          font-size: 0.925rem;
           transition: all var(--transition-fast);
         }
 
         .form-input:focus {
-          border-color: var(--accent-secondary);
-          background: rgba(32, 26, 20, 1);
+          border-color: var(--accent-primary);
         }
 
         .form-textarea {

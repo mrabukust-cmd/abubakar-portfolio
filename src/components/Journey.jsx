@@ -17,21 +17,26 @@ export default function Journey() {
         </div>
 
         <div className="timeline-container">
-          <div className="timeline-line" />
+          <motion.div 
+            className="timeline-line"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            style={{ originY: 0 }}
+          />
 
           {profileData.journey.map((item, idx) => (
             <motion.div
               key={idx}
               className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -25 : 25 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: idx * 0.12 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="timeline-dot-wrapper">
-                <div className="timeline-dot">
-                  {getRoleIcon(item.role)}
-                </div>
+                <div className="timeline-dot" />
               </div>
 
               <div className="card timeline-card">
@@ -74,8 +79,8 @@ export default function Journey() {
           top: 0;
           bottom: 0;
           left: 50%;
-          width: 2px;
-          background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--border-color) 100%);
+          width: 1px;
+          background: var(--border-color);
           transform: translateX(-50%);
           z-index: 0;
         }
@@ -101,36 +106,31 @@ export default function Journey() {
 
         .timeline-dot-wrapper {
           position: absolute;
-          top: 0;
+          top: 0.5rem;
           z-index: 10;
         }
 
         .timeline-item.left .timeline-dot-wrapper {
-          right: -24px;
+          right: -6px;
         }
 
         .timeline-item.right .timeline-dot-wrapper {
-          left: -24px;
+          left: -6px;
         }
 
         .timeline-dot {
-          width: 48px;
-          height: 48px;
+          width: 12px;
+          height: 12px;
           border-radius: 50%;
-          background: var(--bg-card);
-          border: 2px solid var(--accent-secondary);
-          color: var(--accent-secondary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.2rem;
-          box-shadow: 0 0 15px var(--accent-glow);
+          background: var(--accent-primary);
+          border: 2px solid var(--bg-primary);
         }
 
         .timeline-card {
           width: 100%;
           background: var(--bg-card);
           border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .timeline-header {
@@ -141,19 +141,21 @@ export default function Journey() {
           display: inline-block;
           font-family: var(--font-mono);
           font-size: 0.775rem;
-          font-weight: 600;
-          color: var(--accent-secondary);
-          background: rgba(245, 158, 11, 0.12);
+          font-weight: 500;
+          color: var(--accent-primary);
+          background: var(--bg-secondary);
           padding: 0.2rem 0.6rem;
           border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
           margin-bottom: 0.5rem;
         }
 
         .timeline-role {
           font-size: 1.25rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.15rem;
+          font-family: var(--font-heading);
         }
 
         .timeline-institution {
@@ -182,13 +184,15 @@ export default function Journey() {
           gap: 0.35rem;
           font-size: 0.775rem;
           color: var(--text-secondary);
-          background: rgba(30, 41, 59, 0.6);
+          font-family: var(--font-mono);
+          background: var(--bg-secondary);
           padding: 0.25rem 0.6rem;
           border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
         }
 
         .skill-pill-check {
-          color: #10B981;
+          color: var(--accent-primary);
           font-size: 0.7rem;
         }
 
@@ -199,12 +203,12 @@ export default function Journey() {
           .timeline-item, .timeline-item.left, .timeline-item.right {
             width: 100%;
             left: 0 !important;
-            padding-left: 4rem !important;
+            padding-left: 3.5rem !important;
             padding-right: 0 !important;
           }
           .timeline-item.left .timeline-dot-wrapper,
           .timeline-item.right .timeline-dot-wrapper {
-            left: 0 !important;
+            left: 18px !important;
             right: auto !important;
           }
         }

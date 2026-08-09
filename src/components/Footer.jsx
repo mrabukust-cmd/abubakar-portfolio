@@ -94,7 +94,7 @@ export default function Footer() {
 
       <style>{`
         .footer-container {
-          background: #0B0F19;
+          background: var(--bg-primary);
           border-top: 1px solid var(--border-color);
           padding-top: 4rem;
           padding-bottom: 2.5rem;
@@ -111,16 +111,18 @@ export default function Footer() {
           display: inline-flex;
           align-items: center;
           gap: 0.75rem;
-          font-weight: 700;
+          font-weight: 500;
           font-size: 1.25rem;
           color: var(--text-primary);
+          font-family: var(--font-heading);
           margin-bottom: 0.75rem;
         }
 
         .footer-tagline {
-          font-weight: 600;
-          color: var(--accent-secondary);
-          font-size: 0.95rem;
+          font-weight: 500;
+          color: var(--accent-primary);
+          font-size: 0.9rem;
+          font-family: var(--font-mono);
           margin-bottom: 0.5rem;
         }
 
@@ -133,9 +135,10 @@ export default function Footer() {
 
         .footer-heading {
           font-size: 1rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 1.25rem;
+          font-family: var(--font-heading);
         }
 
         .footer-links {
@@ -147,12 +150,12 @@ export default function Footer() {
 
         .footer-links a {
           color: var(--text-secondary);
-          font-size: 0.875rem;
+          font-size: 0.85rem;
           transition: color var(--transition-fast);
         }
 
         .footer-links a:hover {
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
         }
 
         .footer-socials-col {
@@ -171,20 +174,19 @@ export default function Footer() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 40px;
-          height: 40px;
-          border-radius: var(--radius-md);
-          background: rgba(30, 41, 59, 0.6);
+          width: 38px;
+          height: 38px;
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
-          font-size: 1.15rem;
+          font-size: 1.1rem;
           transition: all var(--transition-fast);
         }
 
         .social-icon-btn:hover {
-          color: var(--accent-secondary);
-          border-color: var(--accent-secondary);
-          transform: translateY(-2px);
+          color: var(--accent-primary);
+          border-color: var(--accent-primary);
         }
 
         .scroll-top-btn {
@@ -197,15 +199,16 @@ export default function Footer() {
           justify-content: space-between;
           padding-top: 2rem;
           border-top: 1px solid var(--border-color);
-          font-size: 0.85rem;
+          font-size: 0.825rem;
           color: var(--text-muted);
+          font-family: var(--font-mono);
           flex-wrap: wrap;
           gap: 1rem;
         }
 
         .highlight {
-          color: var(--accent-secondary);
-          font-weight: 600;
+          color: var(--accent-primary);
+          font-weight: 500;
         }
 
         @media (max-width: 900px) {

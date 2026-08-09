@@ -203,9 +203,8 @@ export default function ResumeModal({ isOpen, onClose }) {
         .resume-backdrop {
           position: fixed;
           inset: 0;
-          z-index: 2100;
-          background: rgba(10, 12, 18, 0.88);
-          backdrop-filter: blur(12px);
+          z-index: 2000;
+          background: rgba(13, 13, 17, 0.85);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -214,16 +213,16 @@ export default function ResumeModal({ isOpen, onClose }) {
         }
 
         .resume-modal-container {
+          background: var(--bg-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           width: 100%;
-          max-width: 960px;
+          max-width: 920px;
           max-height: 92vh;
-          background: var(--bg-secondary);
-          border: 1px solid var(--border-color-glow);
-          border-radius: var(--radius-lg);
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
         }
 
         .resume-toolbar {
@@ -231,21 +230,22 @@ export default function ResumeModal({ isOpen, onClose }) {
           align-items: center;
           justify-content: space-between;
           padding: 0.85rem 1.5rem;
-          background: var(--bg-primary);
+          background: var(--bg-secondary);
           border-bottom: 1px solid var(--border-color);
         }
 
         .toolbar-title {
           display: flex;
           align-items: center;
-          gap: 0.6rem;
-          font-weight: 700;
+          gap: 0.5rem;
+          font-weight: 500;
           font-size: 0.95rem;
           color: var(--text-primary);
+          font-family: var(--font-heading);
         }
 
         .toolbar-icon {
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
         }
 
         .toolbar-actions {
@@ -254,36 +254,24 @@ export default function ResumeModal({ isOpen, onClose }) {
           gap: 0.75rem;
         }
 
-        .toolbar-action-btn {
-          min-height: 44px;
-        }
-
         .resume-close-btn {
-          background: rgba(38, 30, 23, 0.7);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
-          width: 44px;
-          height: 44px;
-          min-width: 44px;
-          min-height: 44px;
+          width: 32px;
+          height: 32px;
           border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          font-size: 1.1rem;
+          font-size: 0.95rem;
           transition: all var(--transition-fast);
         }
 
-        [data-theme="light"] .resume-close-btn {
-          background: #F1F5F9;
-          border-color: rgba(15, 23, 42, 0.15);
-          color: #0F172A;
-        }
-
         .resume-close-btn:hover {
-          background: rgba(239, 68, 68, 0.2);
-          color: #EF4444;
+          border-color: var(--accent-primary);
+          color: var(--accent-primary);
         }
 
         .resume-document-wrapper {
@@ -293,15 +281,10 @@ export default function ResumeModal({ isOpen, onClose }) {
         }
 
         .resume-document {
-          background: rgba(20, 16, 13, 0.7);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           padding: 2.25rem;
-        }
-
-        [data-theme="light"] .resume-document {
-          background: #FFFFFF;
-          border-color: rgba(15, 23, 42, 0.12);
         }
 
         .resume-header-main {
@@ -310,15 +293,17 @@ export default function ResumeModal({ isOpen, onClose }) {
 
         .resume-name {
           font-size: 2.25rem;
-          font-weight: 800;
+          font-weight: 500;
           color: var(--text-primary);
+          font-family: var(--font-heading);
           margin-bottom: 0.2rem;
         }
 
         .resume-headline {
-          font-size: 1.1rem;
-          color: var(--accent-secondary);
-          font-weight: 600;
+          font-size: 1rem;
+          color: var(--accent-primary);
+          font-weight: 500;
+          font-family: var(--font-mono);
           margin-bottom: 0.75rem;
         }
 
@@ -332,15 +317,12 @@ export default function ResumeModal({ isOpen, onClose }) {
           display: flex;
           flex-wrap: wrap;
           gap: 1.25rem;
-          background: rgba(38, 30, 23, 0.5);
+          background: var(--bg-secondary);
           padding: 0.85rem 1.25rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           border: 1px solid var(--border-color);
-          font-size: 0.85rem;
-        }
-
-        [data-theme="light"] .resume-contact-meta {
-          background: #F1F5F9;
+          font-size: 0.825rem;
+          font-family: var(--font-mono);
         }
 
         .contact-meta-item {
@@ -372,29 +354,26 @@ export default function ResumeModal({ isOpen, onClose }) {
 
         .section-heading {
           font-size: 1.1rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 1rem;
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          border-bottom: 2px solid var(--accent-primary);
+          font-family: var(--font-heading);
+          border-bottom: 1px solid var(--accent-primary);
           padding-bottom: 0.35rem;
         }
 
         .heading-icon {
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
         }
 
         .resume-block {
-          background: rgba(38, 30, 23, 0.4);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           padding: 1rem 1.15rem;
-        }
-
-        [data-theme="light"] .resume-block {
-          background: #F8FAFC;
         }
 
         .mb-3 { margin-bottom: 1rem; }
@@ -409,25 +388,27 @@ export default function ResumeModal({ isOpen, onClose }) {
 
         .block-title {
           font-size: 0.975rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
+          font-family: var(--font-heading);
         }
 
         .block-badge {
           font-size: 0.725rem;
           font-family: var(--font-mono);
-          background: rgba(245, 158, 11, 0.15);
-          color: var(--accent-secondary);
+          background: var(--bg-card);
+          color: var(--accent-primary);
           padding: 0.2rem 0.55rem;
-          border-radius: var(--radius-full);
-          border: 1px solid rgba(249, 115, 22, 0.3);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
         }
 
         .block-meta {
           display: block;
-          font-size: 0.825rem;
-          color: var(--accent-secondary);
+          font-size: 0.8rem;
+          color: var(--accent-primary);
           font-weight: 500;
+          font-family: var(--font-mono);
           margin-bottom: 0.4rem;
         }
 
@@ -455,12 +436,13 @@ export default function ResumeModal({ isOpen, onClose }) {
         }
 
         .cat-block-name {
-          font-size: 0.85rem;
-          font-weight: 700;
+          font-size: 0.8rem;
+          font-weight: 500;
           color: var(--text-secondary);
           margin-bottom: 0.4rem;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          font-family: var(--font-mono);
         }
 
         .skill-tags {
@@ -470,19 +452,15 @@ export default function ResumeModal({ isOpen, onClose }) {
         }
 
         .resume-skill-badge {
-          font-size: 0.775rem;
-          background: rgba(24, 20, 16, 0.8);
+          font-size: 0.75rem;
+          font-family: var(--font-mono);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
           padding: 0.2rem 0.55rem;
           border-radius: var(--radius-sm);
           max-width: 100%;
           word-break: break-word;
-        }
-
-        [data-theme="light"] .resume-skill-badge {
-          background: #E2E8F0;
-          color: #0F172A;
         }
 
         /* Print Media Style Rules */
