@@ -187,6 +187,9 @@ export default function Projects() {
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
         .projects-capabilities-pills {
           display: flex;
           align-items: center;

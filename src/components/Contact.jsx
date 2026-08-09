@@ -204,27 +204,29 @@ export default function Contact() {
 
               <div className="form-row-2">
                 <div className="form-group">
-                  <label htmlFor="user_name" className="form-label">Your Name <span className="req">*</span></label>
+                  <label htmlFor="name" className="form-label">Your Name <span className="req">*</span></label>
                   <input
                     type="text"
-                    id="user_name"
-                    name="user_name"
-                    value={formData.user_name}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     placeholder="Jane Doe"
                     className="form-input"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="user_email" className="form-label">Your Email <span className="req">*</span></label>
+                  <label htmlFor="email" className="form-label">Your Email <span className="req">*</span></label>
                   <input
                     type="email"
-                    id="user_email"
-                    name="user_email"
-                    value={formData.user_email}
+                    id="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
                     placeholder="jane@example.com"
                     className="form-input"
+                    required
                   />
                 </div>
               </div>
@@ -252,16 +254,17 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
                   className="form-input form-textarea"
+                  required
                 />
               </div>
 
               <button
                 type="submit"
                 className="btn btn-primary"
-                disabled={submitting}
+                disabled={status === 'submitting'}
                 style={{ alignSelf: 'flex-start' }}
               >
-                {submitting ? 'Sending Message...' : 'Send Message'}
+                {status === 'submitting' ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
           </motion.div>

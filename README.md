@@ -2,7 +2,7 @@
 
 [![CI Pipeline](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml)
 
-A production-ready, dark-themed personal portfolio website built with **React.js**, **Vite**, **Framer Motion**, and **React Icons**. 
+A production-ready, dark/light themed personal portfolio website built with **React.js**, **Vite**, **Framer Motion**, and **React Icons**. 
 
 Designed specifically for **Abubakar Siddique** (Software Engineering Student & Flutter Developer) to showcase real-world mobile applications, technical skills, academic journey, and contact options.
 
@@ -11,10 +11,10 @@ Designed specifically for **Abubakar Siddique** (Software Engineering Student & 
 ## 🚀 Tech Stack
 
 - **Framework**: React.js (Vite)
-- **Styling**: Custom Dark Design System (Vanilla CSS3 & HSL Slate Palette)
+- **Styling**: Nordic Architectural Design System (Vanilla CSS3 Tokens & Theme Switcher)
 - **Animations**: Framer Motion
+- **Typography**: Instrument Serif, Syne, DM Sans, Space Mono
 - **Icons**: React Icons (FontAwesome & Simple Icons)
-- **Interactive Feedback**: Canvas Confetti
 - **Deployment**: Vercel ready
 
 ---
@@ -29,28 +29,30 @@ d:\portfolio\
 ├── README.md
 ├── src/
 │   ├── assets/
-│   │   └── images/          # Project mockups & hero visuals
+│   │   └── images/          # Project mockups & profile imagery
 │   ├── components/
-│   │   ├── Navbar.jsx        # Sticky glassmorphism header & drawer
+│   │   ├── Navbar.jsx        # Navigation header & theme toggle
 │   │   ├── Hero.jsx          # Hero section + interactive Dart code visual & stats
-│   │   ├── About.jsx         # Background story + Development Philosophy card
-│   │   ├── Skills.jsx        # Categorized skills grid (Mobile, Backend, Real-Time, SE)
-│   │   ├── Projects.jsx      # Filterable project gallery
-│   │   ├── ProjectCard.jsx   # Project cards with tags & links
-│   │   ├── ProjectModal.jsx  # Detailed modal overlay (Problem/Solution/Tech/Challenges)
-│   │   ├── Journey.jsx       # Development journey timeline
-│   │   ├── Services.jsx      # "What I Can Build" services grid
-│   │   ├── GithubSection.jsx # "Building in Public" section + terminal graphic
+│   │   ├── About.jsx         # Story, Engineering Philosophy & 4-step Approach
+│   │   ├── Projects.jsx      # Filterable project showcase & search
+│   │   ├── ProjectCard.jsx   # Project card component
+│   │   ├── ProjectModal.jsx  # Deep-dive project modal overlay
+│   │   ├── Skills.jsx        # Categorized technical skills stack
+│   │   ├── Journey.jsx       # Academic & development path timeline
+│   │   ├── GithubSection.jsx # "Building in Public" terminal activity panel
 │   │   ├── Contact.jsx       # Contact form + direct social links
-│   │   └── Footer.jsx        # Footer branding & quick navigation
+│   │   ├── ResumeModal.jsx   # Printable developer CV overlay
+│   │   ├── ScrollToTop.jsx   # Back-to-top floating button
+│   │   └── Footer.jsx        # Footer branding & quick links
 │   ├── data/
-│   │   ├── profile.js        # Personal details, bio, philosophy, stats & journey
-│   │   ├── projects.js       # ZiloLive, Copono, Mentora, School Management System
+│   │   ├── profile.js        # Bio, stats, journey timeline & engineering approach
+│   │   ├── projects.js       # Mentora, ZiloLive, School Management System
 │   │   ├── skills.js         # Skill categories & tech stack items
-│   │   └── services.js       # Core service offerings
+│   │   ├── navigation.js     # Nav items and icons
+│   │   └── socialLinks.js    # Contact email, GitHub & LinkedIn URLs
 │   ├── App.jsx
 │   ├── main.jsx
-│   └── index.css             # Core CSS variables, typography & layout utilities
+│   └── index.css             # Design tokens, typography & global layout rules
 ```
 
 ---
@@ -84,15 +86,15 @@ All text content, social links, and project details are decoupled from UI compon
 Edit `src/data/profile.js`:
 - `name`, `title`, `email`, `status`
 - `socials` (GitHub, LinkedIn)
-- `aboutText`, `philosophy`, `stats`, `journey`
+- `aboutText`, `philosophy`, `howIBuild`, `stats`, `journey`
 
 ### Update Projects
 Edit `src/data/projects.js`:
-- Add or modify projects (ZiloLive, Copono, Mentora, School Management System)
+- Add or modify projects (Mentora, ZiloLive, School Management System)
 - Change images, technologies, GitHub links, and deep-dive modal descriptions.
 
-### Update Skills & Services
-Edit `src/data/skills.js` and `src/data/services.js`.
+### Update Skills
+Edit `src/data/skills.js`.
 
 ---
 
