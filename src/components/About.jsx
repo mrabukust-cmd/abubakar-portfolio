@@ -150,9 +150,121 @@ export default function About() {
             )}
           </motion.div>
         </div>
+
+        {/* Engineering Approach Subsection (Folded from HowIBuild) */}
+        {profileData.howIBuild && (
+          <motion.div
+            className="about-process-wrapper"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="about-process-header">
+              <span className="process-subtitle">Engineering Approach</span>
+              <h3 className="process-heading">How I Turn Ideas Into Reliable Mobile Software</h3>
+            </div>
+
+            <div className="about-process-grid">
+              {profileData.howIBuild.map((step) => (
+                <div key={step.step} className="about-process-card">
+                  <div className="process-card-top">
+                    <span className="process-num">{step.step}</span>
+                    <h4 className="process-card-title">{step.title}</h4>
+                  </div>
+                  <p className="process-card-desc">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
 
       <style>{`
+        .about-process-wrapper {
+          margin-top: 3.5rem;
+          padding-top: 2.5rem;
+          border-top: 1px solid var(--border-color);
+        }
+
+        .about-process-header {
+          margin-bottom: 1.5rem;
+        }
+
+        .process-subtitle {
+          font-family: var(--font-mono);
+          font-size: 0.775rem;
+          color: var(--accent-primary);
+          font-weight: 500;
+          display: block;
+          margin-bottom: 0.25rem;
+        }
+
+        .process-heading {
+          font-size: 1.4rem;
+          font-weight: 500;
+          color: var(--text-primary);
+          font-family: var(--font-heading);
+        }
+
+        .about-process-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+        }
+
+        .about-process-card {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          padding: 1.25rem 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .process-card-top {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+        }
+
+        .process-num {
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--accent-primary);
+          background: var(--bg-secondary);
+          padding: 0.15rem 0.45rem;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
+        }
+
+        .process-card-title {
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: var(--text-primary);
+          font-family: var(--font-heading);
+        }
+
+        .process-card-desc {
+          font-size: 0.825rem;
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+          .about-process-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 550px) {
+          .about-process-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
         .currently-learning-card {
           margin-top: 1rem;
           background: var(--bg-card);

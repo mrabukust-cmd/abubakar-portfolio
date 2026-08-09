@@ -37,8 +37,14 @@ export default function Projects() {
           <span className="section-subtitle">Real-World Software</span>
           <h2 className="section-title">Selected Projects</h2>
           <p className="section-description">
-            A selection of applications and software projects I've worked on while developing my skills and solving real-world problems.
+            Mobile application solutions I build using Flutter, Cloud Firestore, REST APIs, and clean software architecture.
           </p>
+          <div className="projects-capabilities-pills">
+            <span className="cap-pill">📱 Cross-Platform Mobile Apps</span>
+            <span className="cap-pill">🔥 Firebase & Cloud Services</span>
+            <span className="cap-pill">🌐 RESTful API Integration</span>
+            <span className="cap-pill">🔒 Security & State Decoupling</span>
+          </div>
         </div>
 
         {/* Filter & Search Controls */}
@@ -181,7 +187,23 @@ export default function Projects() {
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
+        .projects-capabilities-pills {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: 1rem;
+        }
+
+        .cap-pill {
+          font-family: var(--font-mono);
+          font-size: 0.775rem;
+          color: var(--text-secondary);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          padding: 0.3rem 0.75rem;
+          border-radius: var(--radius-sm);
         }
 
         .projects-search-box {
