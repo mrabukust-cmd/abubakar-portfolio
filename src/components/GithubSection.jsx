@@ -17,11 +17,11 @@ export default function GithubSection() {
     <section className="section github-section">
       <div className="container">
         <motion.div
-          className="card glass-panel github-card"
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="card github-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="github-grid">
             <div className="github-content">
@@ -86,12 +86,9 @@ export default function GithubSection() {
 
         .github-card {
           padding: 3rem;
-          background: linear-gradient(135deg, rgba(38, 30, 23, 0.9) 0%, rgba(24, 20, 16, 0.95) 100%);
-          border-color: var(--border-color-glow);
-        }
-
-        [data-theme="light"] .github-card {
-          background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .github-grid {
@@ -105,21 +102,23 @@ export default function GithubSection() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(245, 158, 11, 0.12);
-          border: 1px solid rgba(249, 115, 22, 0.3);
-          color: var(--accent-secondary);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          color: var(--accent-primary);
           padding: 0.35rem 0.85rem;
-          border-radius: var(--radius-full);
-          font-size: 0.85rem;
-          font-weight: 600;
+          border-radius: var(--radius-sm);
+          font-size: 0.825rem;
+          font-weight: 500;
+          font-family: var(--font-mono);
           margin-bottom: 1.25rem;
         }
 
         .github-title {
           font-size: 2.25rem;
-          font-weight: 800;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 1rem;
+          font-family: var(--font-heading);
         }
 
         .github-description {
@@ -136,18 +135,13 @@ export default function GithubSection() {
         }
 
         .terminal-box {
-          background: #120E0A;
+          background: var(--bg-primary);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           font-family: var(--font-mono);
           font-size: 0.825rem;
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        [data-theme="light"] .terminal-box {
-          background: #0F172A;
-          border-color: rgba(15, 23, 42, 0.2);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .terminal-header {
@@ -155,13 +149,8 @@ export default function GithubSection() {
           align-items: center;
           gap: 1rem;
           padding: 0.65rem 1rem;
-          background: #1B1510;
+          background: var(--bg-secondary);
           border-bottom: 1px solid var(--border-color);
-        }
-
-        [data-theme="light"] .terminal-header {
-          background: #1E293B;
-          border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
         .terminal-title {
@@ -174,24 +163,24 @@ export default function GithubSection() {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
-          color: #E2E8F0;
+          color: var(--text-primary);
         }
 
         .term-line {
           display: block;
-          font-weight: 700;
-          color: var(--accent-secondary);
+          font-weight: 600;
+          color: var(--accent-primary);
           margin-bottom: 0.25rem;
         }
 
         .term-prompt {
-          color: #F59E0B;
+          color: var(--accent-primary);
           font-weight: 700;
           margin-right: 0.35rem;
         }
 
         .term-output {
-          color: #94A3B8;
+          color: var(--text-secondary);
           font-size: 0.825rem;
           padding-left: 0.5rem;
           line-height: 1.6;

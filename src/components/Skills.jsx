@@ -64,39 +64,54 @@ export default function Skills() {
               key={category.id}
               layout
               className="card category-card"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="category-header">
-                <div className="category-icon-box">
+                <span className="category-icon-inline">
                   {getCategoryIcon(category.iconName)}
-                </div>
+                </span>
                 <div>
                   <h3 className="category-title">{category.title}</h3>
                   <p className="category-desc">{category.description}</p>
                 </div>
               </div>
 
-              <div className="skills-chips-wrapper">
+              <motion.div 
+                className="skills-chips-wrapper"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: {},
+                  show: {
+                    transition: {
+                      staggerChildren: 0.04
+                    }
+                  }
+                }}
+              >
                 {category.skills.map((skill, sIdx) => (
                   <motion.div
                     key={sIdx}
                     className="skill-chip"
-                    whileHover={{ scale: 1.04, y: -2 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.95 },
+                      show: { opacity: 1, scale: 1 }
+                    }}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
                   >
-                    <div className="chip-icon">
-                      {getSkillTechIcon(skill.name)}
-                    </div>
+                    <span className="skill-dot">●</span>
                     <div className="chip-info">
                       <span className="chip-name">{skill.name}</span>
                       <span className="chip-level">{skill.level}</span>
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
@@ -111,7 +126,7 @@ export default function Skills() {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
           margin-bottom: 3rem;
           flex-wrap: wrap;
         }
@@ -121,13 +136,14 @@ export default function Skills() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          padding: 0.6rem 1.25rem;
-          border-radius: var(--radius-full);
-          background: rgba(38, 30, 23, 0.6);
+          padding: 0.45rem 1.1rem;
+          border-radius: var(--radius-sm);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
-          font-weight: 600;
-          font-size: 0.9rem;
+          font-weight: 500;
+          font-size: 0.85rem;
+          font-family: var(--font-mono);
           cursor: pointer;
           transition: color var(--transition-fast);
           overflow: hidden;
@@ -135,20 +151,23 @@ export default function Skills() {
 
         .skills-tab:hover {
           color: var(--text-primary);
-          border-color: var(--accent-secondary);
+          border-color: var(--accent-primary);
         }
 
         .skills-tab.active {
-          color: #FFFFFF;
+          color: #0D0D11;
           border-color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .skills-tab.active {
+          color: #FFFFFF;
         }
 
         .skills-tab-active-bg {
           position: absolute;
           inset: 0;
-          border-radius: var(--radius-full);
-          background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
-          box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+          border-radius: var(--radius-sm);
+          background: var(--accent-primary);
           z-index: 1;
         }
 
@@ -160,13 +179,17 @@ export default function Skills() {
         .skills-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 1.75rem;
+          gap: 1.5rem;
         }
 
         .category-card {
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          padding: 2rem;
         }
 
         .category-header {
@@ -175,25 +198,22 @@ export default function Skills() {
           align-items: flex-start;
         }
 
-        .category-icon-box {
+        .category-icon-inline {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 48px;
-          height: 48px;
-          border-radius: var(--radius-md);
-          background: rgba(245, 158, 11, 0.12);
-          border: 1px solid rgba(249, 115, 22, 0.35);
-          color: var(--accent-secondary);
           font-size: 1.35rem;
+          color: var(--accent-primary);
           flex-shrink: 0;
+          margin-top: 0.2rem;
         }
 
         .category-title {
-          font-size: 1.2rem;
-          font-weight: 700;
+          font-size: 1.25rem;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.25rem;
+          font-family: var(--font-heading);
         }
 
         .category-desc {
@@ -203,33 +223,28 @@ export default function Skills() {
 
         .skills-chips-wrapper {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-          gap: 0.85rem;
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 0.75rem;
         }
 
         .skill-chip {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.6rem;
           padding: 0.65rem 0.85rem;
-          border-radius: var(--radius-md);
-          background: rgba(24, 20, 16, 0.7);
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           transition: all var(--transition-fast);
         }
 
         .skill-chip:hover {
-          border-color: var(--border-color-glow);
-          background: rgba(38, 30, 23, 0.85);
-          transform: translateY(-2px);
+          border-color: var(--accent-primary);
         }
 
-        .chip-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.2rem;
-          flex-shrink: 0;
+        .skill-dot {
+          color: var(--accent-primary);
+          font-size: 0.6rem;
         }
 
         .chip-info {
@@ -239,8 +254,8 @@ export default function Skills() {
         }
 
         .chip-name {
-          font-weight: 600;
-          font-size: 0.875rem;
+          font-weight: 500;
+          font-size: 0.85rem;
           color: var(--text-primary);
           white-space: nowrap;
           text-overflow: ellipsis;
@@ -268,8 +283,8 @@ export default function Skills() {
             gap: 0.5rem;
           }
           .skills-tab {
-            padding: 0.5rem 0.95rem;
-            font-size: 0.825rem;
+            padding: 0.4rem 0.85rem;
+            font-size: 0.8rem;
           }
         }
       `}</style>
