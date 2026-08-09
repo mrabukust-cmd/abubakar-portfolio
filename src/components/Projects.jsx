@@ -180,7 +180,7 @@ export default function Projects() {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
           flex-wrap: wrap;
         }
 
@@ -201,9 +201,9 @@ export default function Projects() {
 
         .projects-search-input {
           width: 100%;
-          background: rgba(24, 20, 16, 0.7);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           padding: 0.65rem 2.5rem 0.65rem 2.6rem;
           color: var(--text-primary);
           font-family: var(--font-sans);
@@ -212,8 +212,7 @@ export default function Projects() {
         }
 
         .projects-search-input:focus {
-          border-color: var(--accent-secondary);
-          box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+          border-color: var(--accent-primary);
         }
 
         .search-clear-btn {
@@ -240,13 +239,14 @@ export default function Projects() {
           align-items: center;
           justify-content: space-between;
           gap: 1rem;
-          background: rgba(245, 158, 11, 0.1);
-          border: 1px solid rgba(249, 115, 22, 0.25);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
           padding: 0.6rem 1.25rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           margin-bottom: 2rem;
           font-size: 0.85rem;
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
         }
 
         .reset-filter-btn {
@@ -255,8 +255,9 @@ export default function Projects() {
           color: var(--text-primary);
           text-decoration: underline;
           cursor: pointer;
-          font-weight: 600;
+          font-weight: 500;
           font-size: 0.85rem;
+          font-family: var(--font-mono);
         }
 
         .projects-empty-state {
@@ -266,22 +267,26 @@ export default function Projects() {
           flex-direction: column;
           align-items: center;
           gap: 1rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .empty-icon {
-          font-size: 3rem;
+          font-size: 2.75rem;
           color: var(--text-muted);
         }
 
         .filter-btn {
           position: relative;
-          padding: 0.5rem 1.25rem;
-          border-radius: var(--radius-full);
-          background: rgba(38, 30, 23, 0.6);
+          padding: 0.45rem 1.1rem;
+          border-radius: var(--radius-sm);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
-          font-weight: 600;
-          font-size: 0.875rem;
+          font-weight: 500;
+          font-size: 0.85rem;
+          font-family: var(--font-mono);
           cursor: pointer;
           transition: color var(--transition-fast);
           overflow: hidden;
@@ -289,27 +294,30 @@ export default function Projects() {
 
         .filter-btn:hover {
           color: var(--text-primary);
-          border-color: var(--accent-secondary);
+          border-color: var(--accent-primary);
         }
 
         .filter-btn.active {
-          color: #FFFFFF;
+          color: #0D0D11;
           border-color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .filter-btn.active {
+          color: #FFFFFF;
         }
 
         .filter-btn-active-bg {
           position: absolute;
           inset: 0;
-          border-radius: var(--radius-full);
-          background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
-          box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+          border-radius: var(--radius-sm);
+          background: var(--accent-primary);
           z-index: 1;
         }
 
         .projects-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
+          gap: 1.75rem;
         }
 
         .projects-more-cta {
@@ -322,39 +330,27 @@ export default function Projects() {
           width: 100%;
           background: var(--bg-card);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-lg);
+          border-left: 2px solid var(--accent-primary);
+          border-radius: var(--radius-sm);
           padding: 2rem 2.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 2rem;
-          backdrop-filter: blur(16px);
           transition: all var(--transition-normal);
           position: relative;
-          overflow: hidden;
-        }
-
-        .projects-more-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
         }
 
         .projects-more-card:hover {
-          border-color: var(--border-color-glow);
-          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
-          transform: translateY(-2px);
+          border-color: var(--accent-primary);
         }
 
         .projects-more-title {
           font-size: 1.25rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.35rem;
+          font-family: var(--font-heading);
         }
 
         .projects-more-desc {
@@ -364,8 +360,8 @@ export default function Projects() {
         }
 
         .github-more-btn {
-          padding: 0.85rem 1.75rem;
-          font-size: 1rem;
+          padding: 0.75rem 1.5rem;
+          font-size: 0.925rem;
           display: inline-flex;
           align-items: center;
           gap: 0.75rem;
@@ -383,13 +379,6 @@ export default function Projects() {
             text-align: center;
             padding: 1.75rem 1.5rem;
             gap: 1.25rem;
-          }
-
-          .projects-more-card::before {
-            width: 100%;
-            height: 4px;
-            top: 0;
-            left: 0;
           }
 
           .github-more-btn {

@@ -285,18 +285,18 @@ export default function Hero() {
         .ambient-grid-overlay {
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(244, 241, 234, 0.04) 1px, transparent 1px);
           background-size: 32px 32px;
           pointer-events: none;
           z-index: 0;
         }
 
+        [data-theme="light"] .ambient-grid-overlay {
+          background-image: radial-gradient(rgba(26, 25, 23, 0.05) 1px, transparent 1px);
+        }
+
         .glow-1 {
-          top: 10%;
-          left: -5%;
-          width: 300px;
-          height: 300px;
-          background: rgba(245, 158, 11, 0.10);
+          display: none;
         }
 
         .hero-container {
@@ -313,25 +313,30 @@ export default function Hero() {
         }
 
         .hero-title {
-          font-size: 3.15rem;
-          font-weight: 800;
-          letter-spacing: -0.03em;
+          font-family: var(--font-heading);
+          font-size: 3.5rem;
+          font-weight: 500;
+          letter-spacing: -0.015em;
           margin-bottom: 0.75rem;
-          line-height: 1.15;
+          line-height: 1.12;
+          color: var(--text-primary);
         }
 
         .text-gradient {
-          background: linear-gradient(135deg, #FFFBEB 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          background: none;
+          -webkit-background-clip: unset;
+          -webkit-text-fill-color: var(--text-primary);
+          color: var(--text-primary);
+          font-style: italic;
         }
 
         .hero-subtitle {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: var(--accent-secondary);
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--accent-primary);
           margin-bottom: 1.25rem;
           font-family: var(--font-mono);
+          letter-spacing: 0.02em;
         }
 
         .hero-description {
@@ -353,7 +358,7 @@ export default function Hero() {
         .btn-icon-only {
           padding: 0.75rem;
           font-size: 1.25rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
         }
 
         .hero-tech-pills {
@@ -366,7 +371,7 @@ export default function Hero() {
         }
 
         .tech-pill-label {
-          font-size: 0.85rem;
+          font-size: 0.825rem;
           color: var(--text-muted);
           font-family: var(--font-mono);
         }
@@ -375,18 +380,19 @@ export default function Hero() {
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
-          background: rgba(38, 30, 23, 0.6);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           padding: 0.35rem 0.75rem;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 0.825rem;
           color: var(--text-primary);
-          font-weight: 500;
+          font-weight: 400;
+          font-family: var(--font-mono);
         }
 
-        .flutter-icon { color: #F59E0B; }
-        .dart-icon { color: #F97316; }
-        .firebase-icon { color: #FFCA28; }
+        .flutter-icon { color: var(--accent-primary); }
+        .dart-icon { color: var(--accent-primary); }
+        .firebase-icon { color: var(--accent-primary); }
         .api-icon { color: var(--accent-cool); }
 
         /* Visual Composition Window Box */
@@ -396,10 +402,10 @@ export default function Hero() {
 
         .hero-card-window {
           padding: 0;
-          background: rgba(24, 20, 16, 0.95);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-lg);
-          box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+          border-radius: var(--radius-md);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
         .window-header {
@@ -408,7 +414,7 @@ export default function Hero() {
           justify-content: space-between;
           gap: 0.75rem;
           padding: 0.75rem 1.25rem;
-          background: rgba(18, 14, 11, 0.95);
+          background: var(--bg-primary);
           border-bottom: 1px solid var(--border-color);
         }
 
@@ -419,12 +425,13 @@ export default function Hero() {
         }
 
         .dot {
-          width: 10px;
-          height: 10px;
+          width: 9px;
+          height: 9px;
           border-radius: 50%;
+          opacity: 0.6;
         }
-        .dot.red { background: #EF4444; }
-        .dot.yellow { background: #F59E0B; }
+        .dot.red { background: #E11D48; }
+        .dot.yellow { background: var(--accent-primary); }
         .dot.green { background: #10B981; }
 
         .code-tabs-bar {
@@ -448,18 +455,18 @@ export default function Hero() {
 
         .code-tab-btn:hover {
           color: var(--text-primary);
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--bg-card);
         }
 
         .code-tab-btn.active {
-          color: var(--accent-secondary);
-          background: rgba(245, 158, 11, 0.12);
-          border-color: rgba(249, 115, 22, 0.3);
+          color: var(--text-primary);
+          background: var(--bg-card);
+          border-color: var(--accent-primary);
           font-weight: 600;
         }
 
         .code-copy-btn {
-          background: rgba(255, 255, 255, 0.06);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
           width: 28px;
@@ -476,7 +483,7 @@ export default function Hero() {
 
         .code-copy-btn:hover {
           color: var(--text-primary);
-          background: rgba(255, 255, 255, 0.12);
+          border-color: var(--accent-primary);
         }
 
         .window-body {
@@ -487,28 +494,28 @@ export default function Hero() {
         }
 
         .code-snippet {
-          background: #120E0A;
+          background: var(--bg-primary);
           padding: 1rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           font-family: var(--font-mono);
           font-size: 0.8rem;
           line-height: 1.5;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-color);
         }
 
         .code-line { display: block; }
-        .code-keyword { color: #F43F5E; }
-        .code-string { color: #10B981; }
-        .code-func { color: #F59E0B; }
-        .code-type { color: #F97316; }
+        .code-keyword { color: var(--accent-primary); font-weight: 600; }
+        .code-string { color: var(--accent-cool); }
+        .code-func { color: var(--text-primary); font-weight: 500; }
+        .code-type { color: var(--accent-primary); }
 
         .app-preview-composition {
           position: relative;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           height: 190px;
           border: 1px solid var(--border-color);
-          background: #0E0B08;
+          background: var(--bg-primary);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -527,13 +534,13 @@ export default function Hero() {
           display: flex;
           align-items: center;
           gap: 0.4rem;
-          background: rgba(24, 20, 16, 0.85);
-          backdrop-filter: blur(8px);
+          background: var(--bg-secondary);
           padding: 0.3rem 0.65rem;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 0.75rem;
-          color: var(--accent-secondary);
-          border: 1px solid var(--border-color-glow);
+          color: var(--text-primary);
+          border: 1px solid var(--border-color);
+          font-family: var(--font-mono);
         }
 
         .floating-badge {
@@ -542,11 +549,10 @@ export default function Hero() {
           align-items: center;
           gap: 0.75rem;
           padding: 0.65rem 0.9rem;
-          border-radius: var(--radius-md);
-          background: rgba(38, 30, 23, 0.95);
-          backdrop-filter: blur(12px);
-          border: 1px solid var(--border-color-glow);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
           z-index: 10;
         }
 
@@ -561,22 +567,24 @@ export default function Hero() {
         }
 
         .float-icon {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
         }
-        .float-icon.flutter { color: #38BDF8; }
-        .float-icon.firebase { color: #FFCA28; }
+        .float-icon.flutter { color: var(--accent-primary); }
+        .float-icon.firebase { color: var(--accent-primary); }
 
         .float-title {
           display: block;
-          font-weight: 700;
+          font-weight: 600;
           font-size: 0.825rem;
           color: var(--text-primary);
+          font-family: var(--font-sans);
         }
 
         .float-sub {
           display: block;
           font-size: 0.725rem;
           color: var(--text-secondary);
+          font-family: var(--font-mono);
         }
 
         /* Hero Stats Grid */
@@ -595,31 +603,32 @@ export default function Hero() {
         .stat-card {
           background: var(--bg-card);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           padding: 1.25rem 1.5rem;
           transition: all var(--transition-normal);
         }
 
         .stat-card:hover {
-          border-color: var(--accent-secondary);
+          border-color: var(--accent-primary);
           background: var(--bg-card-hover);
         }
 
         .stat-label {
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: var(--accent-secondary);
+          font-size: 0.775rem;
+          font-weight: 600;
+          color: var(--accent-primary);
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.08em;
           margin-bottom: 0.2rem;
           font-family: var(--font-mono);
         }
 
         .stat-value {
-          font-size: 1.15rem;
-          font-weight: 800;
+          font-size: 1.35rem;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.15rem;
+          font-family: var(--font-heading);
         }
 
         .stat-detail {
@@ -633,7 +642,7 @@ export default function Hero() {
             gap: 3rem;
           }
           .hero-title {
-            font-size: 2.65rem;
+            font-size: 2.85rem;
           }
           .hero-stats-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -647,10 +656,10 @@ export default function Hero() {
             padding-top: 6.5rem;
           }
           .hero-title {
-            font-size: 2.1rem;
+            font-size: 2.25rem;
           }
           .hero-subtitle {
-            font-size: 1.05rem;
+            font-size: 1rem;
           }
           .hero-actions {
             flex-direction: column;

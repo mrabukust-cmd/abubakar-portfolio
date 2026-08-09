@@ -29,10 +29,10 @@ export default function ProjectCard({ project, onOpenModal }) {
   return (
     <motion.div
       className="card project-card"
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ type: 'spring', stiffness: 260, damping: 24 }}
     >
       <div className="project-image-container">
         <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" width="600" height="340" loading="lazy" />
@@ -136,14 +136,16 @@ export default function ProjectCard({ project, onOpenModal }) {
           flex-direction: column;
           height: 100%;
           background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .project-image-container {
           position: relative;
           width: 100%;
-          height: 250px;
+          height: 230px;
           overflow: hidden;
-          background: #0D0A07;
+          background: var(--bg-primary);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -160,13 +162,13 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .project-card:hover .project-img {
-          transform: scale(1.03);
+          transform: scale(1.02);
         }
 
         .project-image-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 55%, rgba(20, 16, 13, 0.95) 100%);
+          background: linear-gradient(180deg, transparent 55%, var(--bg-primary) 100%);
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
@@ -175,15 +177,14 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .project-category-badge {
-          background: rgba(24, 20, 16, 0.9);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--border-color-glow);
-          color: var(--accent-secondary);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          color: var(--text-primary);
           font-family: var(--font-mono);
           font-size: 0.75rem;
-          font-weight: 600;
-          padding: 0.3rem 0.75rem;
-          border-radius: var(--radius-full);
+          font-weight: 500;
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-sm);
           pointer-events: auto;
         }
 
@@ -191,31 +192,20 @@ export default function ProjectCard({ project, onOpenModal }) {
           display: inline-flex;
           align-items: center;
           gap: 0.35rem;
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(8px);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-muted);
           font-family: var(--font-mono);
           font-size: 0.725rem;
-          font-weight: 600;
-          padding: 0.3rem 0.65rem;
-          border-radius: var(--radius-full);
+          font-weight: 500;
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-sm);
           pointer-events: auto;
         }
 
         .project-status-badge.public {
-          border-color: rgba(34, 197, 94, 0.4);
-          color: #4ADE80;
-        }
-
-        .project-status-badge.private {
-          border-color: rgba(245, 158, 11, 0.3);
-          color: #FBBF24;
-        }
-
-        .project-status-badge.case-study {
-          border-color: rgba(99, 102, 241, 0.3);
-          color: #818CF8;
+          border-color: var(--accent-primary);
+          color: var(--accent-primary);
         }
 
         .badge-icon {
@@ -235,15 +225,17 @@ export default function ProjectCard({ project, onOpenModal }) {
 
         .project-title {
           font-size: 1.35rem;
-          font-weight: 800;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.2rem;
+          font-family: var(--font-heading);
         }
 
         .project-tagline {
           font-size: 0.85rem;
-          color: var(--accent-secondary);
+          color: var(--accent-primary);
           font-weight: 500;
+          font-family: var(--font-mono);
         }
 
         .project-description {
@@ -270,7 +262,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .feature-check {
-          color: #F59E0B;
+          color: var(--accent-primary);
           font-size: 0.75rem;
           flex-shrink: 0;
         }
@@ -286,11 +278,12 @@ export default function ProjectCard({ project, onOpenModal }) {
         }
 
         .tech-badge {
-          background: rgba(38, 30, 23, 0.6);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-secondary);
           font-size: 0.75rem;
-          font-weight: 500;
+          font-weight: 400;
+          font-family: var(--font-mono);
           padding: 0.25rem 0.6rem;
           border-radius: var(--radius-sm);
         }
@@ -312,21 +305,22 @@ export default function ProjectCard({ project, onOpenModal }) {
           padding: 0.5rem 0.75rem;
           border-radius: var(--radius-sm);
           font-size: 0.775rem;
-          font-weight: 600;
-          background: rgba(28, 22, 17, 0.7);
+          font-weight: 500;
+          font-family: var(--font-mono);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           color: var(--text-muted);
           white-space: nowrap;
         }
 
         .repo-badge {
-          color: #F59E0B;
-          border-color: rgba(245, 158, 11, 0.25);
+          color: var(--accent-primary);
+          border-color: var(--border-color);
         }
 
         .demo-badge {
-          color: var(--accent-secondary);
-          border-color: rgba(249, 115, 22, 0.25);
+          color: var(--accent-primary);
+          border-color: var(--border-color);
         }
 
         @media (max-width: 640px) {

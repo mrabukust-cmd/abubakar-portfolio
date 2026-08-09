@@ -19,10 +19,10 @@ export default function About() {
           {/* Left Column: Profile Photo Card & Philosophy */}
           <motion.div
             className="about-left-col"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Profile Photo Card */}
             <div className="card profile-photo-card">
@@ -71,10 +71,10 @@ export default function About() {
           {/* Right Column: Main Story & Core Values */}
           <motion.div
             className="about-story"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="about-highlights-bar">
               <div className="highlight-pill">
@@ -155,14 +155,10 @@ export default function About() {
       <style>{`
         .currently-learning-card {
           margin-top: 1rem;
-          background: rgba(14, 18, 28, 0.85);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           padding: 1.25rem 1.5rem;
-        }
-
-        [data-theme="light"] .currently-learning-card {
-          background: #FFFFFF;
-          border-color: rgba(15, 23, 42, 0.12);
+          border-radius: var(--radius-sm);
         }
 
         .learning-header {
@@ -176,8 +172,9 @@ export default function About() {
 
         .learning-title {
           font-size: 0.95rem;
-          font-weight: 700;
+          font-weight: 600;
           color: var(--text-primary);
+          font-family: var(--font-sans);
         }
 
         .learning-grid {
@@ -187,7 +184,7 @@ export default function About() {
         }
 
         .learning-item {
-          background: rgba(38, 30, 23, 0.4);
+          background: var(--bg-secondary);
           border: 1px solid var(--border-color);
           border-radius: var(--radius-sm);
           padding: 0.65rem 0.85rem;
@@ -196,15 +193,11 @@ export default function About() {
           gap: 0.2rem;
         }
 
-        [data-theme="light"] .learning-item {
-          background: #F8FAFC;
-          border-color: rgba(15, 23, 42, 0.12);
-        }
-
         .learning-name {
           font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--accent-cool);
+          font-weight: 600;
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
         }
 
         .learning-desc {
@@ -237,14 +230,13 @@ export default function About() {
           overflow: hidden;
           background: var(--bg-card);
           border: 1px solid var(--border-color);
-          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+          border-radius: var(--radius-sm);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
           transition: all var(--transition-normal);
         }
 
         .profile-photo-card:hover {
-          border-color: var(--border-color-glow);
-          transform: translateY(-3px);
-          box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-glow);
+          border-color: var(--accent-primary);
         }
 
         .profile-img-wrapper {
@@ -252,7 +244,7 @@ export default function About() {
           width: 100%;
           height: 380px;
           overflow: hidden;
-          background: #0B0F19;
+          background: var(--bg-primary);
         }
 
         .profile-portrait-img {
@@ -264,13 +256,13 @@ export default function About() {
         }
 
         .profile-photo-card:hover .profile-portrait-img {
-          transform: scale(1.03);
+          transform: scale(1.02);
         }
 
         .profile-photo-gradient {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.95) 100%);
+          background: linear-gradient(180deg, transparent 40%, var(--bg-primary) 100%);
         }
 
         .profile-photo-info {
@@ -281,23 +273,26 @@ export default function About() {
         }
 
         .profile-photo-name {
-          font-size: 1.25rem;
-          font-weight: 800;
+          font-size: 1.35rem;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.15rem;
+          font-family: var(--font-heading);
         }
 
         .profile-photo-role {
           display: block;
           font-size: 0.8rem;
-          color: var(--accent-secondary);
-          font-weight: 600;
+          color: var(--accent-primary);
+          font-weight: 500;
+          font-family: var(--font-mono);
         }
 
         /* Philosophy Card */
         .philosophy-card {
-          background: linear-gradient(145deg, var(--bg-card) 0%, rgba(30, 41, 59, 0.8) 100%);
-          border: 1px solid var(--border-color-glow);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           position: relative;
           padding: 2rem;
         }
@@ -306,22 +301,22 @@ export default function About() {
           position: absolute;
           top: 1.5rem;
           right: 1.5rem;
-          font-size: 2.75rem;
-          color: rgba(56, 189, 248, 0.08);
+          font-size: 2.5rem;
+          color: var(--border-color);
         }
 
         .philosophy-title {
-          font-size: 1.25rem;
-          font-weight: 800;
+          font-size: 1.35rem;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.75rem;
+          font-family: var(--font-heading);
         }
 
         .philosophy-divider {
-          width: 36px;
-          height: 3px;
-          background: var(--accent-secondary);
-          border-radius: 2px;
+          width: 32px;
+          height: 2px;
+          background: var(--accent-primary);
           margin-bottom: 1.25rem;
         }
 
@@ -340,19 +335,19 @@ export default function About() {
 
         .bullet-number {
           font-family: var(--font-mono);
-          font-weight: 700;
-          font-size: 0.85rem;
-          color: var(--accent-secondary);
-          background: rgba(56, 189, 248, 0.1);
+          font-weight: 600;
+          font-size: 0.8rem;
+          color: var(--accent-primary);
+          background: var(--bg-secondary);
           padding: 0.2rem 0.55rem;
           border-radius: var(--radius-sm);
+          border: 1px solid var(--border-color);
         }
 
         .bullet-text {
-          font-weight: 700;
-          font-size: 1.05rem;
+          font-weight: 500;
+          font-size: 1rem;
           color: var(--text-primary);
-          letter-spacing: -0.01em;
         }
 
         .philosophy-footer {
@@ -363,14 +358,16 @@ export default function About() {
         }
 
         .footer-tag {
-          font-weight: 700;
-          color: var(--accent-secondary);
+          font-weight: 500;
+          color: var(--accent-primary);
           font-size: 0.9rem;
+          font-family: var(--font-heading);
         }
 
         .footer-role {
           font-size: 0.775rem;
           color: var(--text-muted);
+          font-family: var(--font-mono);
         }
 
         /* Right Column Story */
@@ -385,17 +382,19 @@ export default function About() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(37, 99, 235, 0.1);
-          border: 1px solid rgba(56, 189, 248, 0.2);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
           padding: 0.4rem 0.85rem;
-          border-radius: var(--radius-full);
-          color: var(--accent-secondary);
-          font-size: 0.875rem;
-          font-weight: 600;
+          border-radius: var(--radius-sm);
+          color: var(--text-primary);
+          font-size: 0.85rem;
+          font-weight: 400;
+          font-family: var(--font-mono);
         }
 
         .pill-icon {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
+          color: var(--accent-primary);
         }
 
         .story-paragraphs {
@@ -412,18 +411,19 @@ export default function About() {
         }
 
         .core-focus-list {
-          background: rgba(15, 23, 42, 0.6);
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           padding: 1.5rem;
           margin-bottom: 1.5rem;
         }
 
         .focus-heading {
           font-size: 1.05rem;
-          font-weight: 700;
+          font-weight: 600;
           color: var(--text-primary);
           margin-bottom: 1rem;
+          font-family: var(--font-sans);
         }
 
         .focus-grid {
@@ -441,19 +441,22 @@ export default function About() {
         }
 
         .check-icon {
-          color: #10B981;
+          color: var(--accent-primary);
           flex-shrink: 0;
         }
 
         .tech-summary-card {
-          background: rgba(15, 23, 42, 0.7);
-          border-color: var(--border-color);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
         }
 
         .tech-summary-heading {
           font-size: 0.95rem;
           color: var(--text-primary);
           margin-bottom: 0.5rem;
+          font-family: var(--font-sans);
+          font-weight: 600;
         }
 
         .tech-summary-text {

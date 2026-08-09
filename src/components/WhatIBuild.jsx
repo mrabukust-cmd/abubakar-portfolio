@@ -21,13 +21,16 @@ export default function WhatIBuild() {
             <motion.div
               key={item.id}
               className="card capability-card"
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="capability-icon-box">
-                {getCapabilityIcon(item.iconName)}
+              <div className="capability-header-row">
+                <span className="capability-index">0{idx + 1} / CAPABILITY</span>
+                <span className="capability-icon-inline">
+                  {getCapabilityIcon(item.iconName)}
+                </span>
               </div>
 
               <h3 className="capability-title">{item.title}</h3>
@@ -56,34 +59,45 @@ export default function WhatIBuild() {
         .capabilities-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 1.75rem;
+          gap: 1.5rem;
         }
 
         .capability-card {
           display: flex;
           flex-direction: column;
           padding: 2rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-left: 2px solid var(--accent-primary);
+          border-radius: var(--radius-sm);
         }
 
-        .capability-icon-box {
+        .capability-header-row {
           display: flex;
           align-items: center;
-          justify-content: center;
-          width: 52px;
-          height: 52px;
-          border-radius: var(--radius-md);
-          background: rgba(245, 158, 11, 0.12);
-          border: 1px solid rgba(249, 115, 22, 0.3);
-          color: var(--accent-secondary);
-          font-size: 1.5rem;
-          margin-bottom: 1.25rem;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+        }
+
+        .capability-index {
+          font-family: var(--font-mono);
+          font-size: 0.775rem;
+          color: var(--accent-primary);
+          font-weight: 600;
+          letter-spacing: 0.08em;
+        }
+
+        .capability-icon-inline {
+          font-size: 1.25rem;
+          color: var(--accent-primary);
         }
 
         .capability-title {
-          font-size: 1.35rem;
-          font-weight: 700;
+          font-size: 1.4rem;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.6rem;
+          font-family: var(--font-heading);
         }
 
         .capability-description {
@@ -111,7 +125,7 @@ export default function WhatIBuild() {
         }
 
         .highlight-check {
-          color: #10B981;
+          color: var(--accent-primary);
           font-size: 0.75rem;
           flex-shrink: 0;
         }

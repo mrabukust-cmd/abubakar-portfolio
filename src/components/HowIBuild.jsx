@@ -19,10 +19,10 @@ export default function HowIBuild() {
             <motion.div
               key={step.step}
               className="card process-card"
-              initial={{ opacity: 0, x: -15 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="process-card-header">
                 <span className="process-number">{step.step}</span>
@@ -50,6 +50,7 @@ export default function HowIBuild() {
         .process-card {
           background: var(--bg-card);
           border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
           padding: 1.75rem 1.5rem;
           display: flex;
           flex-direction: column;
@@ -57,7 +58,7 @@ export default function HowIBuild() {
         }
 
         .process-card:hover {
-          border-color: var(--accent-secondary);
+          border-color: var(--accent-primary);
           background: var(--bg-card-hover);
         }
 
@@ -70,13 +71,13 @@ export default function HowIBuild() {
 
         .process-number {
           font-family: var(--font-mono);
-          font-weight: 800;
-          font-size: 1.25rem;
-          color: var(--accent-secondary);
-          background: rgba(245, 158, 11, 0.12);
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--accent-primary);
+          background: var(--bg-secondary);
           padding: 0.25rem 0.65rem;
           border-radius: var(--radius-sm);
-          border: 1px solid rgba(249, 115, 22, 0.25);
+          border: 1px solid var(--border-color);
         }
 
         .process-line {
@@ -87,9 +88,10 @@ export default function HowIBuild() {
 
         .process-title {
           font-size: 1.2rem;
-          font-weight: 700;
+          font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 0.6rem;
+          font-family: var(--font-heading);
         }
 
         .process-description {
