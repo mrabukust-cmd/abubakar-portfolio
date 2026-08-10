@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../styles/modal-shared.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaTimes, 
@@ -105,9 +106,9 @@ export default function ProjectModal({ project, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div className="shared-modal-backdrop modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <motion.div
-          className="modal-content glass-panel"
+          className="shared-modal-container modal-content glass-panel"
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -122,7 +123,7 @@ export default function ProjectModal({ project, onClose }) {
                 {project.githubStatus === 'public' ? 'Open Source' : project.githubStatus === 'case-study' ? 'Academic Case Study' : 'Private Repository'}
               </span>
             </div>
-            <button className="modal-close-btn" onClick={onClose} aria-label="Close project modal">
+            <button className="shared-modal-close-btn" onClick={onClose} aria-label="Close project modal">
               <FaTimes />
             </button>
           </div>
@@ -242,29 +243,10 @@ export default function ProjectModal({ project, onClose }) {
       </div>
 
       <style>{`
-        .modal-backdrop {
-          position: fixed;
-          inset: 0;
-          z-index: 2000;
-          background: rgba(13, 13, 17, 0.85);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem;
-          overflow-y: auto;
-        }
-
         .modal-content {
           background: var(--bg-secondary);
-          border: 1px solid var(--border-color);
-          border-radius: var(--radius-sm);
-          width: 100%;
           max-width: 860px;
           max-height: 90vh;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
         }
 
         .modal-header {
@@ -344,24 +326,7 @@ export default function ProjectModal({ project, onClose }) {
           margin-top: 0.15rem;
         }
 
-        .modal-close-btn {
-          background: var(--bg-card);
-          border: 1px solid var(--border-color);
-          color: var(--text-primary);
-          width: 34px;
-          height: 34px;
-          border-radius: var(--radius-sm);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          font-size: 1rem;
-        }
 
-        .modal-close-btn:hover {
-          border-color: var(--accent-primary);
-          color: var(--accent-primary);
-        }
 
         .modal-body {
           padding: 1.5rem;

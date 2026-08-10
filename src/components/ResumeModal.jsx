@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/modal-shared.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaTimes, FaPrint, FaEnvelope, FaGithub, FaLinkedin, 
@@ -40,9 +41,9 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="resume-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="resume-title">
+      <div className="shared-modal-backdrop resume-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="resume-title">
         <motion.div
-          className="resume-modal-container glass-panel"
+          className="shared-modal-container resume-modal-container glass-panel"
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.95, y: 25 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -66,7 +67,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <span className="toolbar-btn-text">Print / Save PDF</span>
               </button>
 
-              <button className="resume-close-btn" onClick={onClose} aria-label="Close Resume Modal">
+              <button className="shared-modal-close-btn resume-close-btn" onClick={onClose} aria-label="Close Resume Modal">
                 <FaTimes />
               </button>
             </div>
@@ -200,29 +201,10 @@ export default function ResumeModal({ isOpen, onClose }) {
       </div>
 
       <style>{`
-        .resume-backdrop {
-          position: fixed;
-          inset: 0;
-          z-index: 2000;
-          background: rgba(13, 13, 17, 0.85);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem;
-          overflow-y: auto;
-        }
-
         .resume-modal-container {
           background: var(--bg-primary);
-          border: 1px solid var(--border-color);
-          border-radius: var(--radius-sm);
-          width: 100%;
           max-width: 920px;
           max-height: 92vh;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
         }
 
         .resume-toolbar {
@@ -254,25 +236,7 @@ export default function ResumeModal({ isOpen, onClose }) {
           gap: 0.75rem;
         }
 
-        .resume-close-btn {
-          background: var(--bg-card);
-          border: 1px solid var(--border-color);
-          color: var(--text-primary);
-          width: 32px;
-          height: 32px;
-          border-radius: var(--radius-sm);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          font-size: 0.95rem;
-          transition: all var(--transition-fast);
-        }
 
-        .resume-close-btn:hover {
-          border-color: var(--accent-primary);
-          color: var(--accent-primary);
-        }
 
         .resume-document-wrapper {
           padding: 2rem;

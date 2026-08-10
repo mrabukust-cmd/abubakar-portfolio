@@ -1,0 +1,59 @@
+/*
+ * modal-shared.css
+ * Shared chrome styles used by both ProjectModal and ResumeModal.
+ * Each component keeps its own unique inner-content styles in its
+ * inline <style> block (max-width, max-height, background, toolbar,
+ * resume grid, tech pills, etc.).
+ */
+
+/* ── Backdrop overlay ────────────────────────────────────────────── */
+.shared-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(13, 13, 17, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* ── Modal container chrome ──────────────────────────────────────── */
+/*
+ * Structural chrome shared by both modal containers.
+ * Background, max-width, and max-height are intentionally left to
+ * each component's own class (.modal-content / .resume-modal-container)
+ * so each modal can size itself independently.
+ */
+.shared-modal-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Close button ────────────────────────────────────────────────── */
+.shared-modal-close-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.shared-modal-close-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
