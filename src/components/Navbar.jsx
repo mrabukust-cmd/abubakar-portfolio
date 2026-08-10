@@ -34,6 +34,10 @@ export default function Navbar() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0D0D11' : '#F9F8F6');
+    }
     try {
       localStorage.setItem('theme', theme);
     } catch {
