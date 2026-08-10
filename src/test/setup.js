@@ -1,4 +1,8 @@
 import '@testing-library/jest-dom';
+import { afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
+
+afterEach(cleanup);
 
 // Mock window.matchMedia for Framer Motion and responsive tests in jsdom
 Object.defineProperty(window, 'matchMedia', {
