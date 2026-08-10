@@ -103,7 +103,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: [0.34, 1.2, 0.64, 1] }}
           >
             <div className="card contact-method-card contact-email-card">
               <div className="method-icon-box">
@@ -163,7 +163,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.34, 1.2, 0.64, 1] }}
           >
             <form className="card contact-form" onSubmit={handleSubmit} noValidate>
               <h3 className="form-heading">Send A Message</h3>
