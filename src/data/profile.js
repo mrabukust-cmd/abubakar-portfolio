@@ -12,9 +12,9 @@ export const profileData = {
   profileImage: profileImg,
   
   heroBadge: "Building → Testing → Improving",
-  heroHeading: "I Build Real-World Mobile Apps With Flutter.",
+  heroHeading: "Mobile apps built for people, not portfolios.",
   heroSubheading: "Software Engineering Student & Flutter Developer",
-  heroDescription: "I'm Abubakar Siddique, a Software Engineering student and Flutter Developer building cross-platform mobile applications with Flutter, Cloud Firestore stream listeners, Provider state management, and REST APIs.",
+  heroDescription: "I'm Abubakar Siddique, a software engineering student and Flutter developer focused on practical apps, clear architecture, and interfaces that feel easy to use.",
   
   aboutText: [
     "I am a Software Engineering student specializing in cross-platform mobile engineering with Flutter and Dart.",
