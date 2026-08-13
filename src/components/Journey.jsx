@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import { profileData } from '../data/profile';
-import { getRoleIcon } from '../utils/iconMap';
 
 export default function Journey() {
   return (

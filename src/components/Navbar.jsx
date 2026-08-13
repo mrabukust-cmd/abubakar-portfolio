@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import {
   FaBars, FaTimes, FaEnvelope, FaGithub, FaLinkedin,
-  FaMoon, FaSun, FaHome, FaUser, FaMicrochip, FaCode, FaBriefcase, FaFileAlt
+  FaMoon, FaSun, FaFileAlt
 } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 import { navLinks } from '../data/navigation';

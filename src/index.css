@@ -83,6 +83,29 @@ html {
   color-scheme: dark light;
 }
 
+/* Keep anchored sections clear of the sticky header and support keyboard users. */
+section[id], main[id] {
+  scroll-margin-top: 6rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-primary);
+  color: #0D0D11;
+  font-weight: 600;
+  transform: translateY(-180%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 body {
   background-color: var(--bg-primary);
   background-image: none;
@@ -369,6 +392,11 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Ambient Glow Removed */
 .ambient-glow {
   display: none;
@@ -431,6 +459,13 @@ textarea:focus-visible {
   z-index: 990;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all var(--transition-fast);
+}
+
+@media (max-width: 640px) {
+  .floating-scroll-top {
+    right: 1rem;
+    bottom: 1rem;
+  }
 }
 
 .floating-scroll-top:hover {

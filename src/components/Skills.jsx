@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { skillCategories } from '../data/skills';
-import { getCategoryIcon, getSkillTechIcon } from '../utils/iconMap';
+import { getCategoryIcon } from '../utils/iconMap';
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('all');

@@ -2,12 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaGithub, 
-  FaExternalLinkAlt, 
   FaInfoCircle, 
   FaCheck, 
   FaLock, 
-  FaVideo, 
-  FaAndroid, 
   FaBookOpen 
 } from 'react-icons/fa';
 import { getDemoIcon } from '../utils/iconMap';
@@ -106,7 +103,7 @@ export default function ProjectCard({ project, onOpenModal }) {
           )}
 
           {/* Demo Action Button or Badge */}
-          {Boolean(project.liveUrl) ? (
+          {project.liveUrl ? (
             <a
               href={project.liveUrl}
               target="_blank"

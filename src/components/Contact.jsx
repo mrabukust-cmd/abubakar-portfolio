@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
 import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
 
@@ -15,7 +15,6 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState('idle');
-  const [errorMessage, setErrorMessage] = useState('');
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
@@ -37,13 +36,11 @@ export default function Contact() {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage('Please fill out all required fields (Name, Email, Message).');
       setStatus('error');
       return;
     }
 
     if (!EMAIL_REGEX.test(formData.email.trim())) {
-      setErrorMessage('Please enter a valid email address.');
       setStatus('error');
       return;
     }
