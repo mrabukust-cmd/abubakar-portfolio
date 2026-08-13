@@ -25,11 +25,18 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (status !== 'idle' && status !== 'submitting') setStatus('idle');
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const triggerMailtoFallback = () => {
     setStatus('fallback');
+  };
+
+  const getMailtoHref = () => {
+    const subject = formData.subject || `Portfolio Contact from ${formData.name || 'a visitor'}`;
+    const body = [`Name: ${formData.name}`, `Email: ${formData.email}`, '', formData.message].join('\n');
+    return `${profileData.socials.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const handleSubmit = async (e) => {
@@ -166,20 +173,20 @@ export default function Contact() {
               <h3 className="form-heading">Send A Message</h3>
 
               {status === 'success' && (
-                <div className="form-alert alert-success">
+                <div className="form-alert alert-success" role="status" aria-live="polite">
                   <FaCheckCircle />
                   <span>Thank you! Your message has been sent. I will respond as soon as possible.</span>
                 </div>
               )}
 
               {status === 'fallback' && (
-                <div className="form-alert alert-info alert-fallback">
+                <div className="form-alert alert-info alert-fallback" role="status" aria-live="polite">
                   <div className="alert-fallback-header">
                     <FaEnvelope className="alert-fallback-icon" />
                     <span>Sending service is currently undergoing maintenance. Please reach out directly:</span>
                   </div>
                   <div className="alert-fallback-actions">
-                    <a href={profileData.socials.mailto} className="alert-fallback-btn">
+                    <a href={getMailtoHref()} className="alert-fallback-btn">
                       Open Mail Client
                     </a>
                     <div className="fallback-copy-wrapper">
@@ -193,9 +200,9 @@ export default function Contact() {
               )}
 
               {status === 'error' && (
-                <div className="form-alert alert-error">
+                <div className="form-alert alert-error" role="alert">
                   <FaExclamationCircle />
-                  <span>Failed to send. Please check your form input or email directly.</span>
+                  <span>Please enter your name, a valid email address, and a message before sending.</span>
                 </div>
               )}
 
@@ -210,6 +217,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Jane Doe"
                     className="form-input"
+                    aria-invalid={status === 'error' && !formData.name}
                     required
                   />
                 </div>
@@ -223,6 +231,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="jane@example.com"
                     className="form-input"
+                    aria-invalid={status === 'error' && !EMAIL_REGEX.test(formData.email.trim())}
                     required
                   />
                 </div>
@@ -248,10 +257,11 @@ export default function Contact() {
                   name="message"
                   rows="5"
                   value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
-                  className="form-input form-textarea"
-                  required
+                    onChange={handleChange}
+                    placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
+                    className="form-input form-textarea"
+                    aria-invalid={status === 'error' && !formData.message}
+                    required
                 />
               </div>
 
