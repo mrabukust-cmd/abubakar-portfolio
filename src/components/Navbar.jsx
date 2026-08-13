@@ -172,8 +172,8 @@ export default function Navbar() {
             <button
               className={`theme-circle-btn ${theme === 'light' ? 'active' : ''}`}
               onClick={() => toggleTheme('light')}
-              title="White Theme"
-              aria-label="Switch to White Theme"
+              title="Light Theme"
+              aria-label="Switch to Light Theme"
             >
               <FaSun />
             </button>
