@@ -43,28 +43,24 @@ export const profileData = {
       label: "Featured Apps",
       count: 3,
       suffix: "+ Built",
-      value: "3 Apps Built",
       detail: "Flutter & Mobile Projects"
     },
     {
       label: "Firebase Tech",
       count: 5,
       suffix: "+ Services",
-      value: "5+ Services",
       detail: "Auth, Firestore, Storage & FCM"
     },
     {
       label: "Core Stack",
       count: 7,
       suffix: "+ Core Tools",
-      value: "7+ Core Tech Tools",
       detail: "Flutter, Dart, Firebase, REST APIs"
     },
     {
       label: "Access Roles",
       count: 4,
       suffix: " Access Levels",
-      value: "4 Access Levels",
       detail: "Parent, Student, Teacher & Admin"
     }
   ],

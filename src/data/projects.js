@@ -5,7 +5,6 @@ import schoolSystemImg from '../assets/images/edu_manage_mockup.png';
 export const projectsData = [
   {
     id: "mentora",
-    featured: false,
     title: "Mentora",
     tagline: "Campus Peer Learning & Skill Exchange Platform",
     category: "Education & Peer Learning",
@@ -37,7 +36,6 @@ export const projectsData = [
   },
   {
     id: "zilolive",
-    featured: false,
     title: "ZiloLive",
     tagline: "Live Streaming & Social Interaction App",
     category: "Social & Media",
@@ -70,7 +68,6 @@ export const projectsData = [
   },
   {
     id: "school-management-system",
-    featured: false,
     title: "School Management System",
     tagline: "Multi-Role Academic Portal & Attendance Tracker",
     category: "Education & Peer Learning",
@@ -100,10 +97,4 @@ export const projectsData = [
       contribution: "Sole developer responsible for full project execution: designed mobile UI layouts, backend Firebase integration, role-based access rules, attendance workflows, and grade dashboards."
     }
   }
-];
-
-export const projectCategories = [
-  "All",
-  "Education & Peer Learning",
-  "Social & Media"
 ];
