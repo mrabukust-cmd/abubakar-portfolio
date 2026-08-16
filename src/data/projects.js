@@ -178,7 +178,7 @@ export const projectsData = [
     category: "Business Operations",
     badge: "Admin Panel",
     image: null,
-    technologies: [],
+    technologies: ["React.js", "Firebase"],
     shortDescription: "An administrative panel where I focused on building the management interface for the product team.",
     features: [
       "Admin panel interface implementation",
