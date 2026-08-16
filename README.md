@@ -22,7 +22,7 @@ Designed specifically for **Abubakar Siddique** (Software Engineering Student & 
 ## 📁 Project Architecture
 
 ```text
-d:\portfolio\
+portfolio/
 ├── index.html
 ├── package.json
 ├── vercel.json
@@ -43,6 +43,9 @@ d:\portfolio\
 │   │   ├── Contact.jsx       # Contact form + direct social links
 │   │   ├── ResumeModal.jsx   # Printable developer CV overlay
 │   │   ├── ScrollToTop.jsx   # Back-to-top floating button
+│   │   ├── AnimatedCounter.jsx # Animated statistics counter
+│   │   ├── __tests__/
+│   │   │   └── Contact.test.jsx # Contact component tests
 │   │   └── Footer.jsx        # Footer branding & quick links
 │   ├── data/
 │   │   ├── profile.js        # Bio, stats, journey timeline & engineering approach
@@ -50,6 +53,13 @@ d:\portfolio\
 │   │   ├── skills.js         # Skill categories & tech stack items
 │   │   ├── navigation.js     # Nav items and icons
 │   │   └── socialLinks.js    # Contact email, GitHub & LinkedIn URLs
+│   ├── styles/
+│   │   └── modal-shared.css  # Shared modal chrome styles
+│   ├── utils/
+│   │   └── iconMap.jsx       # Icon and demo-type mappings
+│   ├── test/
+│   │   ├── setup.js          # Vitest setup
+│   │   └── app.test.jsx      # Application smoke and data tests
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css             # Design tokens, typography & global layout rules
