@@ -5,6 +5,7 @@ import schoolSystemImg from '../assets/images/edu_manage_mockup.png';
 export const projectsData = [
   {
     id: "mentora",
+    projectType: "full-stack",
     title: "Mentora",
     tagline: "Campus Peer Learning & Skill Exchange Platform",
     category: "Education & Peer Learning",
@@ -46,6 +47,7 @@ export const projectsData = [
   },
   {
     id: "zilolive",
+    projectType: "contributed",
     title: "ZiloLive",
     tagline: "Live Streaming & Social Interaction App",
     category: "Social & Media",
@@ -88,6 +90,7 @@ export const projectsData = [
   },
   {
     id: "copono",
+    projectType: "contributed",
     title: "Copono",
     tagline: "Collaborative Product Interface",
     category: "Team Product",
@@ -128,6 +131,7 @@ export const projectsData = [
   },
   {
     id: "veralive",
+    projectType: "contributed",
     title: "VeraLive",
     tagline: "Flutter Application Experience",
     category: "Team Product",
@@ -168,6 +172,7 @@ export const projectsData = [
   },
   {
     id: "legalace",
+    projectType: "contributed",
     title: "Legalace",
     tagline: "Administrative Management Panel",
     category: "Business Operations",
@@ -208,6 +213,7 @@ export const projectsData = [
   },
   {
     id: "school-management-system",
+    projectType: "full-stack",
     title: "School Management System",
     tagline: "Multi-Role Academic Portal & Attendance Tracker",
     category: "Education & Peer Learning",

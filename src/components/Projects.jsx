@@ -9,6 +9,30 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 export default function Projects() {
   const [activeModalProject, setActiveModalProject] = useState(null);
+  const fullStackProjects = projectsData.filter((project) => project.projectType === 'full-stack');
+  const contributedProjects = projectsData.filter((project) => project.projectType === 'contributed');
+
+  const renderProjectGrid = (projects) => (
+    <motion.div layout className="projects-grid">
+      <AnimatePresence mode="popLayout">
+        {projects.map((project) => (
+          <motion.div
+            key={project.id}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ProjectCard
+              project={project}
+              onOpenModal={(proj) => setActiveModalProject(proj)}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.div>
+  );
 
   return (
     <section id="projects" className="section projects-section">
@@ -21,26 +45,23 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Projects Grid with AnimatePresence */}
-        <motion.div layout className="projects-grid">
-          <AnimatePresence mode="popLayout">
-            {projectsData.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ProjectCard
-                  project={project}
-                  onOpenModal={(proj) => setActiveModalProject(proj)}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="project-group">
+          <div className="project-group-heading">
+            <span className="project-group-kicker">01 / Complete Builds</span>
+            <h3>Full-Stack Projects</h3>
+            <p>Products where I handled the application experience together with backend and data flows.</p>
+          </div>
+          {renderProjectGrid(fullStackProjects)}
+        </div>
+
+        <div className="project-group project-group-contributed">
+          <div className="project-group-heading">
+            <span className="project-group-kicker">02 / Team Experience</span>
+            <h3>Contributed Projects</h3>
+            <p>Team products where my contribution focused on UI, selected backend work, or a dedicated admin experience.</p>
+          </div>
+          {renderProjectGrid(contributedProjects)}
+        </div>
 
         {/* View All Projects on GitHub CTA */}
         <div className="projects-more-cta">
@@ -86,6 +107,40 @@ export default function Projects() {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1.75rem;
+        }
+
+        .project-group + .project-group {
+          margin-top: 4.5rem;
+        }
+
+        .project-group-heading {
+          max-width: 680px;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-group-kicker {
+          display: block;
+          margin-bottom: 0.35rem;
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .project-group-heading h3 {
+          margin-bottom: 0.35rem;
+          color: var(--text-primary);
+          font-family: var(--font-heading);
+          font-size: 1.65rem;
+          font-weight: 500;
+        }
+
+        .project-group-heading p {
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          line-height: 1.6;
         }
 
         .projects-more-cta {
