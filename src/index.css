@@ -477,3 +477,295 @@ a {
 .scroll-icon {
   font-size: 1.1rem;
 }
+
+/* Responsive layout guardrails
+ * Keep component-level styles expressive while making their shared layout
+ * behavior predictable across phones, tablets, and small laptop screens.
+ */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    max-width: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .navbar-container {
+    gap: 1rem;
+  }
+
+  .logo-text {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  section[id],
+  main[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 7vw, 2.35rem);
+  }
+
+  .section-description,
+  p {
+    font-size: 0.98rem;
+  }
+
+  .card {
+    padding: 1.35rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.3rem, 10vw, 3rem) !important;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-tech-pills {
+    align-items: flex-start;
+  }
+
+  .hero-tech-pills .tech-pill-label {
+    flex-basis: 100%;
+  }
+
+  .hero-card-window {
+    width: 100%;
+  }
+
+  .window-header {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .window-body {
+    padding: 0.75rem;
+  }
+
+  .code-snippet {
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 0.72rem;
+  }
+
+  .app-preview-composition {
+    height: clamp(140px, 35vw, 190px);
+  }
+
+  .hero-stats-container {
+    margin-top: 2.5rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .about-grid,
+  .contact-grid,
+  .projects-grid,
+  .skills-grid {
+    gap: 1.25rem;
+  }
+
+  .profile-img-wrapper {
+    height: clamp(260px, 70vw, 340px) !important;
+  }
+
+  .about-highlights-bar {
+    gap: 0.5rem;
+  }
+
+  .highlight-pill {
+    max-width: 100%;
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+  }
+
+  .focus-grid,
+  .form-row-2,
+  .modal-grid-2,
+  .modal-features-grid,
+  .resume-body-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .category-card,
+  .contact-form,
+  .github-card {
+    padding: 1.35rem;
+  }
+
+  .project-card-actions,
+  .github-actions,
+  .modal-action-btns,
+  .alert-fallback-actions {
+    width: 100%;
+  }
+
+  .project-card-actions .btn,
+  .github-actions .btn,
+  .modal-action-btns .btn,
+  .alert-fallback-actions > * {
+    flex: 1 1 10rem;
+    justify-content: center;
+  }
+
+  .shared-modal-backdrop {
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+
+  .shared-modal-container {
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .modal-header,
+  .modal-footer,
+  .resume-toolbar {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .modal-body {
+    padding: 0.85rem;
+    gap: 1.25rem;
+  }
+
+  .modal-image-wrapper {
+    height: clamp(170px, 48vw, 240px) !important;
+  }
+
+  .modal-banner-info {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .modal-title {
+    font-size: 1.2rem !important;
+  }
+
+  .resume-document-wrapper {
+    padding: 0.75rem;
+  }
+
+  .resume-document {
+    padding: 1rem;
+  }
+
+  .resume-name {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    max-width: 8.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navbar-actions {
+    gap: 0.4rem;
+  }
+
+  .theme-capsule-toggle {
+    display: none;
+  }
+
+  .hero-actions .btn,
+  .github-actions .btn,
+  .project-card-actions .btn,
+  .modal-action-btns .btn {
+    width: 100%;
+  }
+
+  .hero-tech-pills .tech-pill {
+    flex: 1 1 calc(50% - 0.5rem);
+    justify-content: center;
+  }
+
+  .tech-pill,
+  .skill-chip {
+    min-width: 0;
+  }
+
+  .skills-tab-bar {
+    justify-content: stretch;
+  }
+
+  .skills-tab {
+    flex: 1 1 calc(50% - 0.5rem);
+    justify-content: center;
+  }
+
+  .category-card {
+    gap: 1rem;
+  }
+
+  .skills-chips-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-method-card {
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .method-value {
+    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+  }
+
+  .project-image-container {
+    height: clamp(170px, 52vw, 210px) !important;
+  }
+
+  .floating-scroll-top {
+    width: 40px;
+    height: 40px;
+  }
+}
