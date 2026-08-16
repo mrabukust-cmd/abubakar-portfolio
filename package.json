@@ -1,7 +1,14 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A responsive portfolio showcasing Abubakar Siddique's Flutter and software engineering work.",
+  "author": "Abubakar Siddique",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrabukust-cmd/abubakar-portfolio"
+  },
   "type": "module",
   "scripts": {
     "start": "vite",
