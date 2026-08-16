@@ -575,6 +575,12 @@ select {
     width: 100%;
   }
 
+  .hero-container > *,
+  .hero-content,
+  .hero-visual-wrapper {
+    min-width: 0;
+  }
+
   .window-header {
     padding: 0.65rem 0.75rem;
   }
@@ -606,6 +612,14 @@ select {
   .projects-grid,
   .skills-grid {
     gap: 1.25rem;
+  }
+
+  .journey-section {
+    overflow: hidden;
+  }
+
+  .timeline-container {
+    overflow: clip;
   }
 
   .profile-img-wrapper {
