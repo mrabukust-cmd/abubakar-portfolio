@@ -32,7 +32,14 @@ export default function ProjectCard({ project, onOpenModal }) {
       transition={{ type: 'spring', stiffness: 260, damping: 24 }}
     >
       <div className="project-image-container">
-        <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" width="600" height="340" loading="lazy" />
+        {project.image ? (
+          <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" width="600" height="340" loading="lazy" />
+        ) : (
+          <div className="project-image-placeholder" aria-label={`${project.title} project preview placeholder`}>
+            <span className="placeholder-monogram">{project.title.slice(0, 2).toUpperCase()}</span>
+            <span className="placeholder-label">Project Preview</span>
+          </div>
+        )}
         <div className="project-image-overlay">
           <span className="project-category-badge">{project.badge}</span>
           <span className={`project-status-badge ${project.githubStatus || 'private'}`}>
@@ -54,6 +61,14 @@ export default function ProjectCard({ project, onOpenModal }) {
         </div>
 
         <p className="project-description">{project.shortDescription}</p>
+
+        {project.contribution && (
+          <div className="project-contribution-summary">
+            <div className="contribution-summary-label">My Contribution</div>
+            <div className="contribution-summary-role">{project.contribution.role}</div>
+            <p>{project.contribution.summary}</p>
+          </div>
+        )}
 
         <ul className="project-features-list">
           {project.features.slice(0, 3).map((feat, idx) => (
@@ -158,6 +173,38 @@ export default function ProjectCard({ project, onOpenModal }) {
           transition: transform var(--transition-slow);
         }
 
+        .project-image-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+          background: linear-gradient(135deg, var(--bg-primary), var(--bg-card-hover));
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
+        }
+
+        .placeholder-monogram {
+          display: grid;
+          place-items: center;
+          width: 76px;
+          height: 76px;
+          border: 1px solid var(--accent-primary);
+          border-radius: var(--radius-md);
+          font-family: var(--font-heading);
+          font-size: 2rem;
+          color: var(--text-primary);
+        }
+
+        .placeholder-label {
+          font-size: 0.72rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+        }
+
         .project-card:hover .project-img {
           transform: scale(1.02);
         }
@@ -240,6 +287,38 @@ export default function ProjectCard({ project, onOpenModal }) {
           color: var(--text-secondary);
           margin-bottom: 1.25rem;
           line-height: 1.6;
+        }
+
+        .project-contribution-summary {
+          margin-bottom: 1.25rem;
+          padding: 0.85rem 1rem;
+          background: var(--bg-secondary);
+          border-left: 2px solid var(--accent-primary);
+          border-radius: var(--radius-sm);
+        }
+
+        .contribution-summary-label {
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 0.2rem;
+        }
+
+        .contribution-summary-role {
+          color: var(--text-primary);
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        }
+
+        .project-contribution-summary p {
+          color: var(--text-muted);
+          font-size: 0.8rem;
+          line-height: 1.5;
+          margin: 0;
         }
 
         .project-features-list {

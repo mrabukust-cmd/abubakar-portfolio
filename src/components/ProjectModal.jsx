@@ -132,7 +132,14 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal-body">
             {/* Banner Image Container */}
             <div className="modal-image-wrapper">
-              <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" width="800" height="400" loading="lazy" />
+              {project.image ? (
+                <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" width="800" height="400" loading="lazy" />
+              ) : (
+                <div className="modal-image-placeholder">
+                  <span>{project.title.slice(0, 2).toUpperCase()}</span>
+                  <small>Project preview available on request</small>
+                </div>
+              )}
               <div className="modal-banner-info">
                 <h2 id="modal-title" className="modal-title">{project.title}</h2>
                 <p className="modal-tagline">{project.tagline}</p>
@@ -220,7 +227,20 @@ export default function ProjectModal({ project, onClose }) {
                 <h3 className="modal-section-title">
                   <FaUserCheck className="inline-icon text-cyan" /> My Specific Contribution
                 </h3>
-                <p className="modal-text">{project.modalData.contribution}</p>
+                {project.contribution ? (
+                  <div className="modal-contribution-panel">
+                    <div className="modal-contribution-role">{project.contribution.role}</div>
+                    <p className="modal-text">{project.contribution.summary}</p>
+                    <ul className="modal-contribution-list">
+                      {project.contribution.responsibilities.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                    <span className="modal-team-label">{project.contribution.team}</span>
+                  </div>
+                ) : (
+                  <p className="modal-text">{project.modalData.contribution}</p>
+                )}
               </div>
 
               <div className="modal-section">
@@ -357,6 +377,26 @@ export default function ProjectModal({ project, onClose }) {
           border-radius: var(--radius-sm);
         }
 
+        .modal-image-placeholder {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, var(--bg-primary), var(--bg-card-hover));
+          color: var(--text-primary);
+          font-family: var(--font-heading);
+          font-size: 3rem;
+        }
+
+        .modal-image-placeholder small {
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+        }
+
         .modal-banner-info {
           position: absolute;
           bottom: 0.75rem;
@@ -429,6 +469,46 @@ export default function ProjectModal({ project, onClose }) {
           font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.7;
+        }
+
+        .modal-contribution-panel {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-left: 2px solid var(--accent-primary);
+          border-radius: var(--radius-sm);
+          padding: 1rem 1.1rem;
+        }
+
+        .modal-contribution-role {
+          color: var(--text-primary);
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 0.4rem;
+        }
+
+        .modal-contribution-panel .modal-text {
+          font-size: 0.9rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .modal-contribution-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.45rem;
+          padding-left: 1.1rem;
+          color: var(--text-secondary);
+          font-size: 0.85rem;
+          line-height: 1.5;
+        }
+
+        .modal-team-label {
+          display: inline-flex;
+          margin-top: 0.85rem;
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
         }
 
         .modal-grid-2 {

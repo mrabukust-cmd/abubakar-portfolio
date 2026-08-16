@@ -32,6 +32,16 @@ export const projectsData = [
         "Structuring user profile documents and peer connection requests in Cloud Firestore."
       ],
       contribution: "Developed Flutter frontend modules including authentication, profile management, skill listing UI, matching feed, connection requests, and Firebase service integration."
+    },
+    contribution: {
+      role: "Flutter UI Developer",
+      summary: "Contributed to the Flutter user interface as part of a cross-functional team.",
+      responsibilities: [
+        "Built and refined Flutter UI screens and reusable interface components.",
+        "Translated product requirements into clear, consistent mobile user flows.",
+        "Collaborated with the Node.js and MongoDB team members during integration."
+      ],
+      team: "Team project"
     }
   },
   {
@@ -41,7 +51,7 @@ export const projectsData = [
     category: "Social & Media",
     badge: "Live Media Project",
     image: ziloliveImg,
-    technologies: ["Flutter", "Dart", "Firebase", "REST APIs", "FCM", "State Management"],
+    technologies: ["Flutter", "Node.js", "MongoDB"],
     shortDescription: "A Flutter social and live-streaming client featuring real-time stream interactions, ranking leaderboards, virtual gifting, coin wallet management, and user leveling.",
     features: [
       "Live stream view layer with ranking leaderboards & coin wallet state",
@@ -63,7 +73,137 @@ export const projectsData = [
         "Simulating Boost Now ranking with local wallet state, coin deduction, and Booster badge updates.",
         "Handling backend REST API network timeouts and FCM token registration edge cases."
       ],
-      contribution: "Engineered core application features including live streaming UI views, ranking leaderboards, gifting workflows, VIP status, coin wallet state, and profile refresh behavior."
+      contribution: "Contributed across the Flutter UI and backend integration, with focused work on resolving a live-streaming issue."
+    },
+    contribution: {
+      role: "Flutter UI & Backend Contributor",
+      summary: "Worked on both the Flutter interface and selected backend tasks in a team-built live-streaming product.",
+      responsibilities: [
+        "Implemented and refined Flutter UI for live-streaming and social interaction flows.",
+        "Contributed to Node.js and MongoDB backend work where required.",
+        "Investigated and helped resolve a live-streaming issue affecting the product experience."
+      ],
+      team: "Team project"
+    }
+  },
+  {
+    id: "copono",
+    title: "Copono",
+    tagline: "Collaborative Product Interface",
+    category: "Team Product",
+    badge: "Team Project",
+    image: null,
+    technologies: ["Flutter", "Node.js", "MongoDB"],
+    shortDescription: "A team-built product where I focused on designing and implementing the Flutter user interface.",
+    features: [
+      "Flutter UI implementation across the product experience",
+      "Reusable interface components and consistent screen layouts",
+      "Team collaboration around Node.js and MongoDB integration"
+    ],
+    githubUrl: "",
+    liveUrl: "",
+    demoType: "none",
+    githubStatus: "private",
+    githubStatusNote: "Private Team Repository",
+    modalData: {
+      problem: "The product needed a consistent and usable mobile interface that could connect cleanly with the team’s backend work.",
+      solution: "Implemented the Flutter UI and collaborated with the backend contributors to keep the interface aligned with the product requirements.",
+      challenges: [
+        "Translating product requirements into practical Flutter screens.",
+        "Maintaining consistent UI patterns across the application.",
+        "Coordinating frontend work with Node.js and MongoDB integration."
+      ],
+      contribution: "Focused on the Flutter UI as part of a team project, building the interface and collaborating around backend integration."
+    },
+    contribution: {
+      role: "Flutter UI Developer",
+      summary: "Focused on the mobile user interface as part of a team project.",
+      responsibilities: [
+        "Built the Flutter UI and translated requirements into usable screens.",
+        "Created consistent layouts and reusable interface patterns.",
+        "Worked with the team during Node.js and MongoDB integration."
+      ],
+      team: "Team project"
+    }
+  },
+  {
+    id: "veralive",
+    title: "VeraLive",
+    tagline: "Flutter Application Experience",
+    category: "Team Product",
+    badge: "Team Project",
+    image: null,
+    technologies: ["Flutter"],
+    shortDescription: "A team-built Flutter application where I contributed to the user interface and mobile experience.",
+    features: [
+      "Flutter UI implementation",
+      "Responsive mobile screen layouts",
+      "Consistent interface styling across the application"
+    ],
+    githubUrl: "",
+    liveUrl: "",
+    demoType: "none",
+    githubStatus: "private",
+    githubStatusNote: "Private Team Repository",
+    modalData: {
+      problem: "The product needed a clear and consistent Flutter interface for its mobile users.",
+      solution: "Contributed to the Flutter UI and helped shape a cohesive mobile experience within the team workflow.",
+      challenges: [
+        "Implementing UI screens from product requirements.",
+        "Keeping layouts consistent across different mobile screen sizes.",
+        "Coordinating interface decisions with the wider project team."
+      ],
+      contribution: "Worked on the Flutter UI as part of a team project, contributing to the application’s mobile interface and visual consistency."
+    },
+    contribution: {
+      role: "Flutter UI Developer",
+      summary: "Contributed to the Flutter user interface in a collaborative team project.",
+      responsibilities: [
+        "Implemented Flutter UI screens and mobile layouts.",
+        "Helped maintain consistent styling and interaction patterns.",
+        "Collaborated with the team to refine the application experience."
+      ],
+      team: "Team project"
+    }
+  },
+  {
+    id: "legalace",
+    title: "Legalace",
+    tagline: "Administrative Management Panel",
+    category: "Business Operations",
+    badge: "Admin Panel",
+    image: null,
+    technologies: [],
+    shortDescription: "An administrative panel where I focused on building the management interface for the product team.",
+    features: [
+      "Admin panel interface implementation",
+      "Management-focused layouts and navigation",
+      "Collaborative delivery within a team project"
+    ],
+    githubUrl: "",
+    liveUrl: "",
+    demoType: "none",
+    githubStatus: "private",
+    githubStatusNote: "Private Team Repository",
+    modalData: {
+      problem: "The project needed a focused administrative interface for managing the product’s operational workflows.",
+      solution: "Built the admin panel interface and organized the management experience around the project requirements.",
+      challenges: [
+        "Translating administrative requirements into a practical panel layout.",
+        "Organizing navigation and management-focused screens.",
+        "Coordinating the panel work with the wider project team."
+      ],
+      contribution: "Built the admin panel as part of a team project, focusing on the management interface and its user experience."
+    },
+    contribution: {
+      role: "Admin Panel Developer",
+      summary: "Built the administrative panel as part of a collaborative team project.",
+      responsibilities: [
+        "Implemented the admin panel interface.",
+        "Structured management-focused screens and navigation.",
+        "Collaborated with the team to align the panel with project requirements."
+      ],
+      team: "Team project"
     }
   },
   {
@@ -95,6 +235,16 @@ export const projectsData = [
         "Coupling business logic closely with UI widgets during initial build (an architectural tradeoff to decouple in future iterations)."
       ],
       contribution: "Sole developer responsible for full project execution: designed mobile UI layouts, backend Firebase integration, role-based access rules, attendance workflows, and grade dashboards."
+    },
+    contribution: {
+      role: "Full-Stack Mobile Developer",
+      summary: "Led the complete implementation of the school management application.",
+      responsibilities: [
+        "Designed the mobile UI and role-specific dashboards.",
+        "Integrated Firebase services and role-based access rules.",
+        "Built attendance, grade, and schedule workflows."
+      ],
+      team: "Solo project"
     }
   }
 ];

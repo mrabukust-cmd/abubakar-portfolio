@@ -90,7 +90,7 @@ Edit `src/data/profile.js`:
 
 ### Update Projects
 Edit `src/data/projects.js`:
-- Add or modify projects (Mentora, ZiloLive, School Management System)
+- Add or modify projects, roles, team context, and contribution records.
 - Change images, technologies, GitHub links, and deep-dive modal descriptions.
 
 ### Update Skills

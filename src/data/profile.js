@@ -1,5 +1,6 @@
 import { socialLinks } from './socialLinks';
 import profileImg from '../assets/images/profile.png';
+import { projectsData } from './projects';
 
 export const profileData = {
   name: "Abubakar Siddique",
@@ -41,8 +42,8 @@ export const profileData = {
   stats: [
     {
       label: "Featured Apps",
-      count: 3,
-      suffix: "+ Built",
+      count: projectsData.length,
+      suffix: " Projects",
       detail: "Flutter & Mobile Projects"
     },
     {

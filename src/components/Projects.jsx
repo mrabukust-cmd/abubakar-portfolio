@@ -14,10 +14,10 @@ export default function Projects() {
     <section id="projects" className="section projects-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-subtitle">Real-World Software</span>
+          <span className="section-subtitle">My Works & Contributions</span>
           <h2 className="section-title">Selected Projects</h2>
           <p className="section-description">
-            Mobile application solutions I build using Flutter, Cloud Firestore, REST APIs, and clean software architecture.
+            A focused view of the products I have contributed to, the role I played, and the engineering work behind each experience.
           </p>
         </div>
 
