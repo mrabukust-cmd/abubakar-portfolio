@@ -34,7 +34,7 @@ d:\portfolio\
 │   │   ├── Navbar.jsx        # Navigation header & theme toggle
 │   │   ├── Hero.jsx          # Hero section + interactive Dart code visual & stats
 │   │   ├── About.jsx         # Story, Engineering Philosophy & 4-step Approach
-│   │   ├── Projects.jsx      # Filterable project showcase & search
+│   │   ├── Projects.jsx      # Grouped project showcase & contribution summaries
 │   │   ├── ProjectCard.jsx   # Project card component
 │   │   ├── ProjectModal.jsx  # Deep-dive project modal overlay
 │   │   ├── Skills.jsx        # Categorized technical skills stack
