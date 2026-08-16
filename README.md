@@ -45,6 +45,7 @@ portfolio/
 │   │   ├── ScrollToTop.jsx   # Back-to-top floating button
 │   │   ├── AnimatedCounter.jsx # Animated statistics counter
 │   │   ├── __tests__/
+│   │   │   ├── App.test.jsx     # Application smoke and data tests
 │   │   │   └── Contact.test.jsx # Contact component tests
 │   │   └── Footer.jsx        # Footer branding & quick links
 │   ├── data/
@@ -58,8 +59,7 @@ portfolio/
 │   ├── utils/
 │   │   └── iconMap.jsx       # Icon and demo-type mappings
 │   ├── test/
-│   │   ├── setup.js          # Vitest setup
-│   │   └── app.test.jsx      # Application smoke and data tests
+│   │   └── setup.js          # Vitest setup
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css             # Design tokens, typography & global layout rules

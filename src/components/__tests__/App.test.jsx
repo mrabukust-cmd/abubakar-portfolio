@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import App from '../App';
-import { EMAIL_REGEX } from '../components/Contact';
-import { projectsData } from '../data/projects';
+import App from '../../App';
+import { EMAIL_REGEX } from '../Contact';
+import { projectsData } from '../../data/projects';
 
 describe('Portfolio App Smoke Test', () => {
   it('renders App without crashing and mounts key section headings', () => {
