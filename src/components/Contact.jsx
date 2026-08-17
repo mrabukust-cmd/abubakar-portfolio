@@ -94,9 +94,9 @@ export default function Contact() {
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">Get In Touch</span>
-          <h2 className="section-title">Have a Project or Opportunity?</h2>
+          <h2 className="section-title">Ready to Build? Hire Me.</h2>
           <p className="section-description">
-            I'm open to internship opportunities, Flutter development projects, collaborations, and interesting software ideas.
+            Tell me what you are building, what is blocked, or what needs to improve. I work with founders and teams on focused Flutter and Firebase projects.
           </p>
         </div>
 
@@ -154,10 +154,16 @@ export default function Contact() {
             </div>
 
             <div className="contact-availability-card card">
-              <h4 className="avail-title">Available for Opportunities</h4>
+              <h4 className="avail-title">Available for Freelance Projects</h4>
               <p className="avail-desc">
                 Available to help founders and teams ship reliable Flutter apps, Firebase backends, and mobile product experiences from idea to launch.
               </p>
+              <div className="availability-details">
+                <span>Response time</span>
+                <strong>Within 24 hours</strong>
+                <span>Best fit</span>
+                <strong>MVPs, integrations, and UI fixes</strong>
+              </div>
             </div>
           </motion.div>
 
@@ -388,6 +394,27 @@ export default function Contact() {
           font-size: 0.875rem;
           color: var(--text-muted);
           line-height: 1.6;
+        }
+
+        .availability-details {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 0.4rem 0.75rem;
+          margin-top: 1rem;
+          padding-top: 1rem;
+          border-top: 1px solid var(--border-color);
+          font-size: 0.78rem;
+        }
+
+        .availability-details span {
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+        }
+
+        .availability-details strong {
+          color: var(--text-primary);
+          font-weight: 500;
+          text-align: right;
         }
 
         .contact-form {

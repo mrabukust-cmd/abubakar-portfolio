@@ -139,7 +139,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
             >
-              <span>Let's Connect</span>
+              <span>Hire Me</span>
             </motion.a>
 
             <a

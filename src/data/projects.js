@@ -32,6 +32,7 @@ export const projectsData = [
     modalData: {
       problem: "In campus peer learning data flows, skills added by users would save to backend records but fail to reflect dynamically on MySkillsScreen due to UI state sync mismatches and initial Firestore security permission issues.",
       solution: "Resolved security rules and re-architected state listener flows across Firebase Auth, Cloud Firestore, and Provider so user skills, profile updates, and study requests refresh reliably.",
+      result: "Skills, profile updates, and study requests now have a reliable refresh path across the main peer-learning flows.",
       challenges: [
         "Debugging Firestore permission-denied security rule errors during initial user profile creation.",
         "Fixing state management flow so newly added user skills render immediately in MySkillsScreen.",
@@ -79,6 +80,7 @@ export const projectsData = [
     modalData: {
       problem: "Over-sensitive default pull-to-refresh gestures triggered accidental profile reloads during routine scrolling, while dynamic layout feeds triggered RenderViewport/RenderSliver runtime errors and network timeouts.",
       solution: "Customized pull gesture thresholds to require an intentional deep pull (matching YouTube/TikTok profile UX), fixed sliver viewport constraints, and stabilized Boost Now ranking and coin deduction persistence.",
+      result: "Profile refresh became intentional instead of accidental, while ranking, wallet deduction, and FCM edge cases were stabilized.",
       challenges: [
         "Resolving RenderViewport and RenderSliver layout errors during dynamic widget rendering.",
         "Re-engineering profile pull-to-refresh to prevent accidental triggers on minor vertical swipes.",
@@ -126,6 +128,7 @@ export const projectsData = [
     modalData: {
       problem: "The product needed a consistent and usable mobile interface that could connect cleanly with the team’s backend work.",
       solution: "Implemented the Flutter UI and collaborated with the backend contributors to keep the interface aligned with the product requirements.",
+      result: "Delivered a consistent mobile interface that could be integrated with the team’s Node.js and MongoDB backend work.",
       challenges: [
         "Translating product requirements into practical Flutter screens.",
         "Maintaining consistent UI patterns across the application.",
@@ -172,6 +175,7 @@ export const projectsData = [
     modalData: {
       problem: "The product needed a clear and consistent Flutter interface for its mobile users.",
       solution: "Contributed to the Flutter UI and helped shape a cohesive mobile experience within the team workflow.",
+      result: "Improved consistency across the application’s mobile screens and interaction patterns.",
       challenges: [
         "Implementing UI screens from product requirements.",
         "Keeping layouts consistent across different mobile screen sizes.",
@@ -218,6 +222,7 @@ export const projectsData = [
     modalData: {
       problem: "The project needed a focused administrative interface for managing the product’s operational workflows.",
       solution: "Built the admin panel interface and organized the management experience around the project requirements.",
+      result: "Provided the product team with a focused management interface for its operational workflows.",
       challenges: [
         "Translating administrative requirements into a practical panel layout.",
         "Organizing navigation and management-focused screens.",
@@ -265,6 +270,7 @@ export const projectsData = [
     modalData: {
       problem: "Parents lacked direct visibility into their child's actual daily school attendance and extra class schedules, having to rely solely on unverified verbal reports from students.",
       solution: "Built a unified 4-role portal enabling teachers to log attendance and grades directly, providing parents and students with real-time schedule visibility.",
+      result: "Created one role-aware portal connecting attendance, grades, and schedules for Parents, Students, Teachers, and Admins.",
       challenges: [
         "Structuring role-restricted data models across 4 distinct user access levels (Parent, Student, Teacher, Admin).",
         "Ensuring teacher-entered attendance records and grades propagate accurately to relevant parents and students.",

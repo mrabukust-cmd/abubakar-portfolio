@@ -222,6 +222,16 @@ export default function ProjectModal({ project, onClose }) {
               </div>
             </div>
 
+            {project.modalData.result && (
+              <div className="card modal-result-card">
+                <div className="modal-card-header text-cyan">
+                  <FaCheckCircle className="modal-icon" />
+                  <h4>The Result</h4>
+                </div>
+                <p className="modal-card-text">{project.modalData.result}</p>
+              </div>
+            )}
+
             {/* Features List */}
             <div className="modal-section">
               <h3 className="modal-section-title">Key Implemented Features</h3>
@@ -509,6 +519,15 @@ export default function ProjectModal({ project, onClose }) {
 
         .modal-proof-item .check-icon {
           margin-top: 0.2rem;
+        }
+
+        .modal-result-card {
+          margin: 1.25rem 0;
+          padding: 1.1rem 1.25rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-left: 2px solid var(--accent-primary);
+          border-radius: var(--radius-sm);
         }
 
         .modal-contribution-panel {
