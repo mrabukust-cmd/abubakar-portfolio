@@ -27,7 +27,7 @@ export default function Footer() {
               <span className="logo-text">{profileData.name}</span>
             </a>
             <p className="footer-tagline">
-              Software Engineering Student · Flutter Developer
+              Flutter App Developer · Firebase Engineer
             </p>
             <p className="footer-subtext">
               Building modern, reliable, and user-friendly mobile applications.

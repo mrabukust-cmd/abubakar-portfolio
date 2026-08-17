@@ -156,7 +156,7 @@ export default function Contact() {
             <div className="contact-availability-card card">
               <h4 className="avail-title">Available for Opportunities</h4>
               <p className="avail-desc">
-                Currently seeking Software Engineering internships, entry-level Flutter developer positions, freelance app projects, and open-source collaborations.
+                Available to help founders and teams ship reliable Flutter apps, Firebase backends, and mobile product experiences from idea to launch.
               </p>
             </div>
           </motion.div>

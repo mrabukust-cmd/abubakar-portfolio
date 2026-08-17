@@ -11,7 +11,7 @@ export default function About() {
           <span className="section-subtitle">Background & Mindset</span>
           <h2 className="section-title">About Me</h2>
           <p className="section-description">
-            Dedicated Software Engineering student and Flutter Developer building real-world digital products.
+            I build reliable Flutter products that help ideas move from concept to launch.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function About() {
               <div className="profile-img-wrapper">
                 <img
                   src={profileData.profileImage}
-                  alt="Abubakar Siddique — Software Engineering Student and Flutter Developer"
+                  alt="Abubakar Siddique — Flutter App Developer and Firebase Engineer"
                   className="profile-portrait-img"
                   width="400"
                   height="400"
@@ -38,7 +38,7 @@ export default function About() {
                 <div className="profile-photo-gradient" />
                 <div className="profile-photo-info">
                   <h3 className="profile-photo-name">{profileData.name}</h3>
-                  <span className="profile-photo-role">Software Engineering Student · Flutter Developer</span>
+                  <span className="profile-photo-role">Flutter App Developer · Firebase Engineer</span>
                 </div>
               </div>
             </div>

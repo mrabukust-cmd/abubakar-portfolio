@@ -5,23 +5,23 @@ import { projectsData } from './projects';
 export const profileData = {
   name: "Abubakar Siddique",
   shortName: "AS",
-  title: "Software Engineering Student & Flutter Developer",
-  status: "Available for Opportunities",
+  title: "Flutter App Developer & Firebase Engineer",
+  status: "Available for Freelance Projects",
   education: "BS Software Engineering",
   email: socialLinks.email,
   location: "Pakistan",
   profileImage: profileImg,
   
-  heroBadge: "Building → Testing → Improving",
-  heroHeading: "Mobile apps built for people, not portfolios.",
-  heroSubheading: "Software Engineering Student & Flutter Developer",
-  heroDescription: "I'm Abubakar Siddique, a software engineering student and Flutter developer focused on practical apps, clear architecture, and interfaces that feel easy to use.",
+  heroBadge: "From idea → App Store",
+  heroHeading: "Production-ready Flutter apps, from idea to App Store.",
+  heroSubheading: "Flutter apps with Firebase backends for real-world products",
+  heroDescription: "I help founders and teams turn product ideas into reliable, user-friendly mobile apps with Flutter, Firebase, and REST APIs — built to ship, scale, and solve real problems.",
   
   aboutText: [
-    "I am a Software Engineering student specializing in cross-platform mobile engineering with Flutter and Dart.",
-    "My core development workflow integrates Cloud Firestore stream listeners, Firebase Auth, Provider state management, and REST API network handling.",
-    "I focus on solving real mobile architecture challenges — such as tuning pull-to-refresh thresholds in ZiloLive to prevent unintended reloads and configuring multi-role Firestore security rules in Mentora and the School Management System.",
-    "I am seeking software engineering internships and junior mobile developer roles where I can contribute to production mobile apps and maintain clean codebase architecture."
+    "I build production-ready cross-platform mobile apps that turn ideas into useful products. Using Flutter and Dart, I create polished interfaces, dependable flows, and maintainable foundations for launch.",
+    "From authentication and real-time data to notifications and REST API integrations, I connect the pieces behind the experience with Firebase, Firestore, Provider, and clean architecture patterns.",
+    "My work is focused on solving the details that make an app dependable — from preventing unintended refreshes in ZiloLive to designing multi-role Firestore security rules for Mentora and the School Management System.",
+    "Alongside client-focused product work, I am completing a BS in Software Engineering. That academic foundation strengthens my approach to architecture, testing, collaboration, and continuous improvement."
   ],
   
   philosophy: {
