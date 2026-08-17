@@ -11,6 +11,7 @@ export default function Projects() {
   const [activeModalProject, setActiveModalProject] = useState(null);
   const fullStackProjects = projectsData.filter((project) => project.projectType === 'full-stack');
   const contributedProjects = projectsData.filter((project) => project.projectType === 'contributed');
+  const privateCount = projectsData.filter((project) => project.githubStatus === 'private').length;
 
   const renderProjectGrid = (projects) => (
     <motion.div layout className="projects-grid">
@@ -41,8 +42,27 @@ export default function Projects() {
           <span className="section-subtitle">My Works & Contributions</span>
           <h2 className="section-title">Selected Projects</h2>
           <p className="section-description">
-            A focused view of the products I have contributed to, the role I played, and the engineering work behind each experience.
+            A transparent view of the products I built or contributed to, with clear ownership, verified scope, technical decisions, and available evidence for each project.
           </p>
+        </div>
+
+        <div className="project-trust-strip" aria-label="Project portfolio summary">
+          <div className="project-trust-item">
+            <strong>{projectsData.length}</strong>
+            <span>featured projects</span>
+          </div>
+          <div className="project-trust-item">
+            <strong>{fullStackProjects.length}</strong>
+            <span>full-stack builds</span>
+          </div>
+          <div className="project-trust-item">
+            <strong>1</strong>
+            <span>solo implementation</span>
+          </div>
+          <div className="project-trust-item">
+            <strong>{privateCount}</strong>
+            <span>private/client repos</span>
+          </div>
         </div>
 
         <div className="project-group">
@@ -69,7 +89,7 @@ export default function Projects() {
             <div className="projects-more-info">
               <h3 className="projects-more-title">Looking for more projects?</h3>
               <p className="projects-more-desc">
-                Explore all of my repositories, experimental apps, and open-source code on my GitHub profile.
+                Some client repositories remain private. Explore my public GitHub activity, then request a walkthrough of any private case study.
               </p>
             </div>
             <a
@@ -107,6 +127,38 @@ export default function Projects() {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1.75rem;
+        }
+
+        .project-trust-strip {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1px;
+          margin: 2rem 0 3.5rem;
+          background: var(--border-color);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          overflow: hidden;
+        }
+
+        .project-trust-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          padding: 1.1rem 1.25rem;
+          background: var(--bg-card);
+        }
+
+        .project-trust-item strong {
+          color: var(--accent-primary);
+          font-family: var(--font-heading);
+          font-size: 1.45rem;
+          font-weight: 500;
+        }
+
+        .project-trust-item span {
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
         }
 
         .project-group + .project-group {
@@ -202,6 +254,10 @@ export default function Projects() {
             text-align: center;
             padding: 1.75rem 1.5rem;
             gap: 1.25rem;
+          }
+
+          .project-trust-strip {
+            grid-template-columns: repeat(2, 1fr);
           }
 
           .github-more-btn {

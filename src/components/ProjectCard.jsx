@@ -70,6 +70,15 @@ export default function ProjectCard({ project, onOpenModal }) {
           </div>
         )}
 
+        {project.proofPoints?.length > 0 && (
+          <div className="project-proof-points" aria-label={`${project.title} verified scope`}>
+            <div className="proof-points-label">Verified scope</div>
+            {project.proofPoints.slice(0, 2).map((point) => (
+              <span key={point} className="proof-point">{point}</span>
+            ))}
+          </div>
+        )}
+
         <ul className="project-features-list">
           {project.features.slice(0, 3).map((feat, idx) => (
             <li key={idx} className="feature-item">
@@ -319,6 +328,32 @@ export default function ProjectCard({ project, onOpenModal }) {
           font-size: 0.8rem;
           line-height: 1.5;
           margin: 0;
+        }
+
+        .project-proof-points {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+          margin-bottom: 1.1rem;
+          padding: 0.8rem 0.9rem;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+        }
+
+        .proof-points-label {
+          color: var(--accent-primary);
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .proof-point {
+          color: var(--text-secondary);
+          font-size: 0.78rem;
+          line-height: 1.45;
         }
 
         .project-features-list {

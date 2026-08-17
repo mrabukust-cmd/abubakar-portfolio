@@ -189,6 +189,20 @@ export default function ProjectModal({ project, onClose }) {
               <p className="modal-text">{project.shortDescription}</p>
             </div>
 
+            {project.proofPoints?.length > 0 && (
+              <div className="modal-section modal-proof-section">
+                <h3 className="modal-section-title">Proof Points & Scope</h3>
+                <div className="modal-proof-grid">
+                  {project.proofPoints.map((point) => (
+                    <div key={point} className="modal-proof-item">
+                      <FaCheckCircle className="check-icon" />
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Problem & Solution Grid */}
             <div className="modal-grid-2">
               <div className="card modal-card problem-card">
@@ -469,6 +483,32 @@ export default function ProjectModal({ project, onClose }) {
           font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.7;
+        }
+
+        .modal-proof-section {
+          padding: 1rem 1.1rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+        }
+
+        .modal-proof-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem 1rem;
+        }
+
+        .modal-proof-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.5rem;
+          color: var(--text-secondary);
+          font-size: 0.875rem;
+          line-height: 1.5;
+        }
+
+        .modal-proof-item .check-icon {
+          margin-top: 0.2rem;
         }
 
         .modal-contribution-panel {

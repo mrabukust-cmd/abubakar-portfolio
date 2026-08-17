@@ -22,8 +22,13 @@ export const projectsData = [
     githubUrl: "",
     liveUrl: "",
     demoType: "apk", // Options: "live" | "video" | "apk" | "none"
-    githubStatus: "private", // Options: "public" | "private" | "case-study"
-    githubStatusNote: "Private Repository (APK Available Upon Request)",
+    githubStatus: "case-study", // Options: "public" | "private" | "case-study"
+    githubStatusNote: "Private academic repository (architecture walkthrough and APK available upon request)",
+    proofPoints: [
+      "2 sign-in paths: email and Google",
+      "4 core flows: profiles, skills, matching, requests",
+      "Firestore + Storage integration"
+    ],
     modalData: {
       problem: "In campus peer learning data flows, skills added by users would save to backend records but fail to reflect dynamically on MySkillsScreen due to UI state sync mismatches and initial Firestore security permission issues.",
       solution: "Resolved security rules and re-architected state listener flows across Firebase Auth, Cloud Firestore, and Provider so user skills, profile updates, and study requests refresh reliably.",
@@ -66,6 +71,11 @@ export const projectsData = [
     demoType: "video",
     githubStatus: "private",
     githubStatusNote: "Private Client Repository",
+    proofPoints: [
+      "4 live/social systems: streams, rankings, wallet, levels",
+      "Deep pull-to-refresh interaction tuned for intentional use",
+      "REST API timeouts and FCM edge cases handled"
+    ],
     modalData: {
       problem: "Over-sensitive default pull-to-refresh gestures triggered accidental profile reloads during routine scrolling, while dynamic layout feeds triggered RenderViewport/RenderSliver runtime errors and network timeouts.",
       solution: "Customized pull gesture thresholds to require an intentional deep pull (matching YouTube/TikTok profile UX), fixed sliver viewport constraints, and stabilized Boost Now ranking and coin deduction persistence.",
@@ -108,6 +118,11 @@ export const projectsData = [
     demoType: "none",
     githubStatus: "private",
     githubStatusNote: "Private Team Repository",
+    proofPoints: [
+      "Flutter UI contribution",
+      "Reusable interface patterns",
+      "Node.js and MongoDB integration context"
+    ],
     modalData: {
       problem: "The product needed a consistent and usable mobile interface that could connect cleanly with the team’s backend work.",
       solution: "Implemented the Flutter UI and collaborated with the backend contributors to keep the interface aligned with the product requirements.",
@@ -149,6 +164,11 @@ export const projectsData = [
     demoType: "none",
     githubStatus: "private",
     githubStatusNote: "Private Team Repository",
+    proofPoints: [
+      "Flutter UI contribution",
+      "Responsive mobile layouts",
+      "Consistent styling across screens"
+    ],
     modalData: {
       problem: "The product needed a clear and consistent Flutter interface for its mobile users.",
       solution: "Contributed to the Flutter UI and helped shape a cohesive mobile experience within the team workflow.",
@@ -190,6 +210,11 @@ export const projectsData = [
     demoType: "none",
     githubStatus: "private",
     githubStatusNote: "Private Team Repository",
+    proofPoints: [
+      "React.js admin panel contribution",
+      "Management-focused navigation",
+      "Firebase-backed product context"
+    ],
     modalData: {
       problem: "The project needed a focused administrative interface for managing the product’s operational workflows.",
       solution: "Built the admin panel interface and organized the management experience around the project requirements.",
@@ -230,8 +255,13 @@ export const projectsData = [
     githubUrl: "",
     liveUrl: "",
     demoType: "apk",
-    githubStatus: "private",
-    githubStatusNote: "Repository & APK Available",
+    githubStatus: "case-study",
+    githubStatusNote: "Private academic repository (architecture walkthrough and APK available upon request)",
+    proofPoints: [
+      "4 access roles: Parent, Student, Teacher, Admin",
+      "3 workflows: attendance, grades, schedules",
+      "Solo full-stack mobile implementation"
+    ],
     modalData: {
       problem: "Parents lacked direct visibility into their child's actual daily school attendance and extra class schedules, having to rely solely on unverified verbal reports from students.",
       solution: "Built a unified 4-role portal enabling teachers to log attendance and grades directly, providing parents and students with real-time schedule visibility.",
