@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import App from '../../App';
+import ErrorBoundary from '../ErrorBoundary';
 import { EMAIL_REGEX } from '../Contact';
 import { projectsData } from '../../data/projects';
 
@@ -12,6 +13,23 @@ describe('Portfolio App Smoke Test', () => {
     expect(nameElements.length).toBeGreaterThan(0);
     expect(nameElements[0]).toBeInTheDocument();
     expect(screen.getByText(/Building in Public/i)).toBeInTheDocument();
+  });
+
+  it('shows a recovery screen when a child component crashes', () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const BrokenChild = () => {
+      throw new Error('test render failure');
+    };
+
+    render(
+      <ErrorBoundary>
+        <BrokenChild />
+      </ErrorBoundary>
+    );
+
+    expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Refresh Portfolio/i })).toBeInTheDocument();
+    consoleError.mockRestore();
   });
 });
 

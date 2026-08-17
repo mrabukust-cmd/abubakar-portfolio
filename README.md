@@ -117,6 +117,10 @@ Edit `src/data/skills.js`.
    - **Output Directory**: `dist`
 4. Click **Deploy**. Your website will be live at a custom `.vercel.app` URL.
 
+### Contact Form Configuration
+
+For production form delivery, add `VITE_WEB3FORMS_KEY` to the Vercel project environment variables and redeploy. If the key is unavailable, the form presents a direct email fallback instead of silently failing.
+
 ---
 
 ## 📄 License

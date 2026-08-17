@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abubakar-siddique.vercel.app/sitemap.xml
