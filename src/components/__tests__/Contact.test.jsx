@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Contact, { EMAIL_REGEX } from '../Contact';
 
@@ -10,6 +10,21 @@ describe('Contact component', () => {
   it('renders the "Send A Message" heading', () => {
     render(<Contact />);
     expect(screen.getByText(/Send A Message/i)).toBeInTheDocument();
+  });
+
+  it('marks incomplete submissions as invalid without sending', () => {
+    render(<Contact />);
+
+    fireEvent.submit(screen.getByRole('button', { name: /Send Message/i }).closest('form'));
+
+    expect(screen.getByRole('alert')).toHaveTextContent(/valid email address/i);
+  });
+
+  it('limits message length to keep contact requests manageable', () => {
+    render(<Contact />);
+
+    expect(screen.getByLabelText(/Message/i)).toHaveAttribute('maxLength', '2000');
+    expect(screen.getByLabelText(/Your Name/i)).toHaveAttribute('maxLength', '80');
   });
 });
 
