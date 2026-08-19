@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaGithub, FaLinkedin, FaCheckCircle, FaExclamationCircle, FaCopy, FaCheck } from 'react-icons/fa';
 import { profileData } from '../data/profile';
@@ -16,11 +16,21 @@ export default function Contact() {
 
   const [status, setStatus] = useState('idle');
   const [emailCopied, setEmailCopied] = useState(false);
+  const copyResetTimeoutRef = useRef(null);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profileData.email);
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
+  useEffect(() => () => {
+    if (copyResetTimeoutRef.current) clearTimeout(copyResetTimeoutRef.current);
+  }, []);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard?.writeText(profileData.email);
+      setEmailCopied(true);
+      if (copyResetTimeoutRef.current) clearTimeout(copyResetTimeoutRef.current);
+      copyResetTimeoutRef.current = setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      setEmailCopied(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -42,12 +52,16 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    if (!name || !email || !message) {
       setStatus('error');
       return;
     }
 
-    if (!EMAIL_REGEX.test(formData.email.trim())) {
+    if (!EMAIL_REGEX.test(email)) {
       setStatus('error');
       return;
     }
@@ -66,10 +80,10 @@ export default function Contact() {
           },
           body: JSON.stringify({
             access_key: apiKey,
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject || `Portfolio Contact from ${formData.name}`,
-            message: formData.message
+            name,
+            email,
+            subject: formData.subject.trim() || `Portfolio Contact from ${name}`,
+            message
           })
         });
 
@@ -223,6 +237,8 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Jane Doe"
                     className="form-input"
+                    autoComplete="name"
+                    maxLength={80}
                     aria-invalid={status === 'error' && !formData.name}
                     required
                   />
@@ -237,6 +253,8 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="jane@example.com"
                     className="form-input"
+                    autoComplete="email"
+                    maxLength={120}
                     aria-invalid={status === 'error' && !EMAIL_REGEX.test(formData.email.trim())}
                     required
                   />
@@ -253,6 +271,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Internship / Flutter Project Query"
                   className="form-input"
+                  maxLength={120}
                 />
               </div>
 
@@ -266,6 +285,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
                     className="form-input form-textarea"
+                    maxLength={2000}
                     aria-invalid={status === 'error' && !formData.message}
                     required
                 />
