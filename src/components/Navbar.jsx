@@ -154,6 +154,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`capsule-nav-link ${isActive ? 'active' : ''}`}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  aria-current={isActive ? 'page' : undefined}
                 >
                   <IconComp className="nav-item-icon" />
                   <span>{link.name}</span>
@@ -230,6 +231,7 @@ export default function Navbar() {
                       <a
                         href={link.href}
                         className="mobile-nav-link"
+                        aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
                         onClick={(e) => {
                           setMobileMenuOpen(false);
                           handleNavClick(e, link.href);
