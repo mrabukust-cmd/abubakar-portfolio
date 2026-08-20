@@ -104,11 +104,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section contact-section">
+    <section id="contact" className="section contact-section" aria-labelledby="contact-title">
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">Get In Touch</span>
-          <h2 className="section-title">Ready to Build? Hire Me.</h2>
+          <h2 id="contact-title" className="section-title">Ready to Build? Hire Me.</h2>
           <p className="section-description">
             Tell me what you are building, what is blocked, or what needs to improve. I work with founders and teams on focused Flutter and Firebase projects.
           </p>
@@ -189,8 +189,9 @@ export default function Contact() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.34, 1.2, 0.64, 1] }}
           >
-            <form className="card contact-form" onSubmit={handleSubmit} noValidate>
+            <form className="card contact-form" onSubmit={handleSubmit} noValidate aria-describedby="contact-form-help">
               <h3 className="form-heading">Send A Message</h3>
+              <p id="contact-form-help" className="form-help">Share a little context and I’ll get back to you within 24 hours.</p>
 
               {status === 'success' && (
                 <div className="form-alert alert-success" role="status" aria-live="polite">
@@ -271,6 +272,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Internship / Flutter Project Query"
                   className="form-input"
+                  autoComplete="off"
                   maxLength={120}
                 />
               </div>
@@ -453,6 +455,13 @@ export default function Contact() {
           color: var(--text-primary);
           margin-bottom: 0.5rem;
           font-family: var(--font-heading);
+        }
+
+        .form-help {
+          margin-top: -0.75rem;
+          color: var(--text-muted);
+          font-size: 0.85rem;
+          line-height: 1.5;
         }
 
         .form-alert {
