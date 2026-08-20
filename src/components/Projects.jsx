@@ -36,11 +36,11 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="section projects-section">
+    <section id="projects" className="section projects-section" aria-labelledby="projects-title">
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">My Works & Contributions</span>
-          <h2 className="section-title">Selected Projects</h2>
+          <h2 id="projects-title" className="section-title">Selected Projects</h2>
           <p className="section-description">
             A transparent view of the products I built or contributed to, with clear ownership, verified scope, technical decisions, and available evidence for each project.
           </p>

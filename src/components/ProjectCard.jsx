@@ -33,7 +33,7 @@ export default function ProjectCard({ project, onOpenModal }) {
     >
       <div className="project-image-container">
         {project.image ? (
-          <img src={project.image} alt={`${project.title} App Mockup`} className="project-img" width="600" height="340" loading="lazy" />
+          <img src={project.image} alt={`${project.title} app preview`} className="project-img" width="600" height="340" loading="lazy" decoding="async" />
         ) : (
           <div className="project-image-placeholder" aria-label={`${project.title} project preview placeholder`}>
             <span className="placeholder-monogram">{project.title.slice(0, 2).toUpperCase()}</span>
