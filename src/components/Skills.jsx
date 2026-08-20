@@ -11,11 +11,11 @@ export default function Skills() {
     : skillCategories.filter(cat => cat.id === activeTab);
 
   return (
-    <section id="skills" className="section skills-section">
+    <section id="skills" className="section skills-section" aria-labelledby="skills-title">
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">Technical Proficiency</span>
-          <h2 className="section-title">Skills & Technologies</h2>
+          <h2 id="skills-title" className="section-title">Skills & Technologies</h2>
           <p className="section-description">
             Organized tools and software engineering methodologies I utilize to build robust mobile products.
           </p>

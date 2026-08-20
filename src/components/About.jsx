@@ -5,11 +5,11 @@ import { profileData } from '../data/profile';
 
 export default function About() {
   return (
-    <section id="about" className="section about-section">
+    <section id="about" className="section about-section" aria-labelledby="about-title">
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">Background & Mindset</span>
-          <h2 className="section-title">About Me</h2>
+          <h2 id="about-title" className="section-title">About Me</h2>
           <p className="section-description">
             I build reliable Flutter products that help ideas move from concept to launch.
           </p>
@@ -34,6 +34,7 @@ export default function About() {
                   width="400"
                   height="400"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="profile-photo-gradient" />
                 <div className="profile-photo-info">
