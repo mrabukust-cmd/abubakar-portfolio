@@ -17,6 +17,24 @@ Designed specifically for **Abubakar Siddique** (Software Engineering Student & 
 - **Icons**: React Icons (FontAwesome & Simple Icons)
 - **Deployment**: Vercel ready
 
+## 🛠️ Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+Available quality checks:
+
+```bash
+npm run lint
+npm test
+npm run build
+```
+
+The contact form uses the mail client fallback by default. To enable Web3Forms,
+copy `.env.example` to `.env.local` and add `VITE_WEB3FORMS_KEY`.
+
 ---
 
 ## 📁 Project Architecture
