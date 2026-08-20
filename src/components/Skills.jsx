@@ -22,8 +22,12 @@ export default function Skills() {
         </div>
 
         {/* Category Tabs Filter */}
-        <div className="skills-tab-bar">
+        <div className="skills-tab-bar" role="tablist" aria-label="Filter skills by category">
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'all'}
+            aria-controls="skills-panel"
             className={`skills-tab ${activeTab === 'all' ? 'active' : ''}`}
             onClick={() => setActiveTab('all')}
             style={{ position: 'relative' }}
@@ -39,6 +43,10 @@ export default function Skills() {
           </button>
           {skillCategories.map(cat => (
             <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === cat.id}
+              aria-controls="skills-panel"
               key={cat.id}
               className={`skills-tab ${activeTab === cat.id ? 'active' : ''}`}
               onClick={() => setActiveTab(cat.id)}
@@ -58,7 +66,7 @@ export default function Skills() {
         </div>
 
         {/* Category Cards Grid */}
-        <motion.div layout className="skills-grid">
+        <motion.div id="skills-panel" role="tabpanel" aria-live="polite" layout className="skills-grid">
           {filteredCategories.map((category, idx) => (
             <motion.div
               key={category.id}
