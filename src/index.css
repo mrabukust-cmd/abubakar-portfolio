@@ -413,6 +413,16 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #E11D48;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
