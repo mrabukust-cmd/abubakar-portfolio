@@ -12,6 +12,17 @@
   <meta name="application-name" content="Abubakar Siddique Portfolio" />
   <meta name="format-detection" content="telephone=no" />
 
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch {
+      // Theme defaults to dark when storage is unavailable.
+    }
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>Abubakar Siddique | Flutter App Developer & Firebase Engineer</title>
   <meta name="title" content="Abubakar Siddique | Flutter App Developer & Firebase Engineer" />
