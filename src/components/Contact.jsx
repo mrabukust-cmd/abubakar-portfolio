@@ -52,6 +52,9 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Quietly discard submissions that fill the hidden bot-trap field.
+    if (e.currentTarget.elements.website?.value) return;
+
     const name = formData.name.trim();
     const email = formData.email.trim();
     const message = formData.message.trim();
@@ -193,6 +196,11 @@ export default function Contact() {
               <h3 className="form-heading">Send A Message</h3>
               <p id="contact-form-help" className="form-help">Share a little context and I’ll get back to you within 24 hours.</p>
 
+              <div className="contact-honeypot" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input id="website" name="website" type="text" tabIndex="-1" autoComplete="off" />
+              </div>
+
               {status === 'success' && (
                 <div className="form-alert alert-success" role="status" aria-live="polite">
                   <FaCheckCircle />
@@ -307,6 +315,15 @@ export default function Contact() {
       </div>
 
       <style>{`
+        .contact-honeypot {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        }
+
         .contact-section {
           background: var(--bg-secondary);
         }
