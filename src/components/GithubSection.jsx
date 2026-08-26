@@ -14,7 +14,7 @@ export default function GithubSection() {
   };
 
   return (
-    <section className="section github-section">
+    <section id="github" className="section github-section" aria-labelledby="github-title">
       <div className="container">
         <motion.div
           className="card github-card"
@@ -29,7 +29,7 @@ export default function GithubSection() {
               <span>Version Control & Source Code</span>
             </div>
 
-            <h2 className="github-title">Building in Public</h2>
+            <h2 id="github-title" className="github-title">Building in Public</h2>
 
             <div className="github-prose">
               <p>
