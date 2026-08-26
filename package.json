@@ -5,6 +5,10 @@
   "description": "A responsive portfolio showcasing Abubakar Siddique's Flutter and software engineering work.",
   "author": "Abubakar Siddique",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mrabukust-cmd/abubakar-portfolio"
