@@ -32,8 +32,15 @@ npm test
 npm run build
 ```
 
+The repository targets Node.js 20 or newer. If you use `nvm`, run `nvm use`
+from the project root to select the version recorded in `.nvmrc`.
+
 The contact form uses the mail client fallback by default. To enable Web3Forms,
 copy `.env.example` to `.env.local` and add `VITE_WEB3FORMS_KEY`.
+
+Never commit `.env.local` or expose the Web3Forms key in documentation. Vite
+only exposes variables prefixed with `VITE_`, so keep production secrets in
+your hosting provider's environment settings.
 
 ---
 
