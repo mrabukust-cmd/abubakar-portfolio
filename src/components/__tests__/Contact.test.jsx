@@ -26,6 +26,15 @@ describe('Contact component', () => {
     expect(screen.getByLabelText(/Message/i)).toHaveAttribute('maxLength', '2000');
     expect(screen.getByLabelText(/Your Name/i)).toHaveAttribute('maxLength', '80');
   });
+
+  it('silently ignores submissions that trigger the bot trap', () => {
+    render(<Contact />);
+
+    fireEvent.change(screen.getByLabelText('Website'), { target: { value: 'https://spam.example' } });
+    fireEvent.submit(screen.getByRole('button', { name: /Send Message/i }).closest('form'));
+
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
 });
 
 // ---------------------------------------------------------------------------
