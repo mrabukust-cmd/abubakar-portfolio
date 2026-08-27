@@ -20,6 +20,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "test": "npx vitest run --pool=forks",
+    "check": "npm run lint && npm test && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
