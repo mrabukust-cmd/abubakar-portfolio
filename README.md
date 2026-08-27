@@ -32,6 +32,9 @@ npm test
 npm run build
 ```
 
+The CI workflow runs these same checks for every pull request and push to
+`main`, so changes are validated before deployment.
+
 The repository targets Node.js 20 or newer. If you use `nvm`, run `nvm use`
 from the project root to select the version recorded in `.nvmrc`.
 
