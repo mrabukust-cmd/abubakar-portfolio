@@ -11,4 +11,8 @@ describe('social link helpers', () => {
     expect(formatSocialDisplay('https://github.com/mrabukust-cmd/')).toBe('github.com/mrabukust-cmd');
     expect(formatSocialDisplay('')).toBe('');
   });
+
+  it('normalizes accidental whitespace around a profile URL', () => {
+    expect(formatSocialDisplay('  https://github.com/mrabukust-cmd/  ')).toBe('github.com/mrabukust-cmd');
+  });
 });
