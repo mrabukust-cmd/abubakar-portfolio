@@ -23,11 +23,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Linter (Oxlint)
-        run: npm run lint
-
-      - name: Run Unit & Smoke Tests (Vitest)
-        run: npm run test
-
-      - name: Build Application (Vite)
-        run: npm run build
+      - name: Run Project Verification
+        run: npm run check
