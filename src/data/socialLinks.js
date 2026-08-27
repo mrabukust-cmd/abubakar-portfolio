@@ -7,6 +7,6 @@ export const socialLinks = {
 
 export const formatSocialDisplay = (url) => {
   if (!url) return '';
-  return url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  return url.trim().replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 };
 
