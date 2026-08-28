@@ -247,6 +247,7 @@ export default function Contact() {
                     placeholder="Jane Doe"
                     className="form-input"
                     autoComplete="name"
+                    autoCapitalize="words"
                     maxLength={80}
                     aria-invalid={status === 'error' && !formData.name}
                     required
