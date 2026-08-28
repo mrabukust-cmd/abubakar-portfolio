@@ -220,7 +220,13 @@ export default function Contact() {
                     </a>
                     <div className="fallback-copy-wrapper">
                       <span className="fallback-email-text">{profileData.email}</span>
-                      <button type="button" className="contact-copy-btn" onClick={handleCopyEmail} title="Copy Email">
+                      <button
+                        type="button"
+                        className="contact-copy-btn"
+                        onClick={handleCopyEmail}
+                        title="Copy Email"
+                        aria-label={emailCopied ? 'Email copied' : 'Copy email address'}
+                      >
                         {emailCopied ? <FaCheck /> : <FaCopy />}
                       </button>
                     </div>
