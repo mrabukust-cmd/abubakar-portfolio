@@ -35,7 +35,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="footer-nav">
+          <nav className="footer-nav" aria-label="Footer navigation">
             <h4 className="footer-heading">Navigation</h4>
             <ul className="footer-links">
               {navLinks.map((link) => (
@@ -46,7 +46,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           <div className="footer-socials-col">
             <h4 className="footer-heading">Connect</h4>
