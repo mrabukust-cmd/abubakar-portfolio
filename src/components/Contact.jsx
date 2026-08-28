@@ -192,7 +192,13 @@ export default function Contact() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.34, 1.2, 0.64, 1] }}
           >
-            <form className="card contact-form" onSubmit={handleSubmit} noValidate aria-describedby="contact-form-help">
+            <form
+              className="card contact-form"
+              onSubmit={handleSubmit}
+              noValidate
+              aria-describedby="contact-form-help"
+              aria-busy={status === 'submitting'}
+            >
               <h3 className="form-heading">Send A Message</h3>
               <p id="contact-form-help" className="form-help">Share a little context and I’ll get back to you within 24 hours.</p>
 
