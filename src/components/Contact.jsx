@@ -263,6 +263,7 @@ export default function Contact() {
                     placeholder="jane@example.com"
                     className="form-input"
                     autoComplete="email"
+                    inputMode="email"
                     maxLength={120}
                     aria-invalid={status === 'error' && !EMAIL_REGEX.test(formData.email.trim())}
                     required
