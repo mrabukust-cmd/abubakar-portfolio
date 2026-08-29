@@ -46,9 +46,9 @@ export default function ProjectCard({ project, onOpenModal }) {
             {project.githubStatus === 'public' ? (
               <>Open Source</>
             ) : project.githubStatus === 'case-study' ? (
-              <><FaBookOpen className="badge-icon" /> Case Study</>
+              <><FaBookOpen className="badge-icon" aria-hidden="true" /> Case Study</>
             ) : (
-              <><FaLock className="badge-icon" /> Private Repo</>
+              <><FaLock className="badge-icon" aria-hidden="true" /> Private Repo</>
             )}
           </span>
         </div>
