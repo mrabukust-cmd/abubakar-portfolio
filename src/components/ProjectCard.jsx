@@ -82,7 +82,7 @@ export default function ProjectCard({ project, onOpenModal }) {
         <ul className="project-features-list">
           {project.features.slice(0, 3).map((feat, idx) => (
             <li key={idx} className="feature-item">
-              <FaCheck className="feature-check" />
+              <FaCheck className="feature-check" aria-hidden="true" />
               <span>{feat}</span>
             </li>
           ))}
