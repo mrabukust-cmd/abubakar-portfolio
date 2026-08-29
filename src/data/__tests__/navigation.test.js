@@ -10,4 +10,12 @@ describe('navigation data', () => {
     expect(new Set(targets).size).toBe(targets.length);
     expect(targets.every((href) => href.startsWith('#'))).toBe(true);
   });
+
+  it('keeps the primary portfolio sections in navigation', () => {
+    const targets = navLinks.map(({ href }) => href);
+
+    expect(targets).toEqual(expect.arrayContaining([
+      '#home', '#about', '#projects', '#services', '#skills', '#experience', '#contact',
+    ]));
+  });
 });
