@@ -133,7 +133,7 @@ export default function ProjectModal({ project, onClose }) {
             {/* Banner Image Container */}
             <div className="modal-image-wrapper">
               {project.image ? (
-                <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" width="800" height="400" loading="lazy" />
+                <img src={project.image} alt={`${project.title} Screenshot`} className="modal-banner-img" width="800" height="400" loading="lazy" decoding="async" />
               ) : (
                 <div className="modal-image-placeholder">
                   <span>{project.title.slice(0, 2).toUpperCase()}</span>
