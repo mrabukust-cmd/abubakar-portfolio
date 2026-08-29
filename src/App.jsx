@@ -16,7 +16,7 @@ export default function App() {
     <div className="portfolio-app">
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <Navbar />
-      <main id="main-content" tabIndex="-1">
+      <main id="main-content" tabIndex="-1" aria-label="Portfolio content">
         <Hero />
         <About />
         <Projects />
