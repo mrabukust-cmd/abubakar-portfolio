@@ -96,6 +96,7 @@ export default function ProjectCard({ project, onOpenModal }) {
 
         <div className="project-card-actions">
           <button
+            type="button"
             className="btn btn-primary btn-sm flex-1"
             onClick={() => onOpenModal(project)}
             aria-label={`View details for ${project.title}`}
