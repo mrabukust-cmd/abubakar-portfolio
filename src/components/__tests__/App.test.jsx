@@ -5,6 +5,8 @@ import App from '../../App';
 import ErrorBoundary from '../ErrorBoundary';
 import { EMAIL_REGEX } from '../Contact';
 import { projectsData } from '../../data/projects';
+import { profileData } from '../../data/profile';
+import { socialLinks } from '../../data/socialLinks';
 
 describe('Portfolio App Smoke Test', () => {
   it('renders App without crashing and mounts key section headings', () => {
@@ -64,5 +66,12 @@ describe('Project Filter Logic (Projects)', () => {
     );
 
     expect(matches.length).toBeGreaterThan(0);
+  });
+});
+
+describe('Profile Contact Data', () => {
+  it('uses the shared public email address', () => {
+    expect(profileData.email).toBe(socialLinks.email);
+    expect(profileData.socials).toBe(socialLinks);
   });
 });
