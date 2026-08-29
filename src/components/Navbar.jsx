@@ -100,7 +100,7 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+  const toggleMobileMenu = () => setMobileMenuOpen((isOpen) => !isOpen);
 
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
