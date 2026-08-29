@@ -9,4 +9,8 @@ describe('profile data', () => {
     expect(profileData.socials.github).toMatch(/^https:\/\//);
     expect(profileData.journey.length).toBeGreaterThan(0);
   });
+
+  it('keeps every highlighted statistic displayable', () => {
+    expect(profileData.stats.every(({ label, count, suffix }) => label && Number.isFinite(count) && suffix)).toBe(true);
+  });
 });
