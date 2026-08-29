@@ -6,7 +6,7 @@ export const socialLinks = {
 };
 
 export const formatSocialDisplay = (url) => {
-  if (!url) return '';
+  if (typeof url !== 'string') return '';
   return url.trim().replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 };
 
