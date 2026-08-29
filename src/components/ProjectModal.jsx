@@ -123,7 +123,7 @@ export default function ProjectModal({ project, onClose }) {
                 {project.githubStatus === 'public' ? 'Open Source' : project.githubStatus === 'case-study' ? 'Academic Case Study' : 'Private Repository'}
               </span>
             </div>
-            <button className="shared-modal-close-btn" onClick={onClose} aria-label="Close project modal">
+            <button type="button" className="shared-modal-close-btn" onClick={onClose} aria-label="Close project modal">
               <FaTimes />
             </button>
           </div>
@@ -279,7 +279,7 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="modal-footer">
-            <button className="btn btn-outline" onClick={onClose} aria-label="Close case study details">
+            <button type="button" className="btn btn-outline" onClick={onClose} aria-label="Close case study details">
               Close Details
             </button>
           </div>
