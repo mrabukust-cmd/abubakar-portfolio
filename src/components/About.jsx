@@ -47,7 +47,7 @@ export default function About() {
             {/* Philosophy Card */}
             <div className="card philosophy-card">
               <div className="quote-icon-bg">
-                <FaQuoteLeft />
+                <FaQuoteLeft aria-hidden="true" />
               </div>
 
               <h3 className="philosophy-title">{profileData.philosophy.heading}</h3>
