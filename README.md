@@ -37,6 +37,12 @@ The CI workflow runs these same checks for every pull request and push to
 
 For a single local verification command, run `npm run check`.
 
+### Accessibility
+
+The portfolio includes a skip link, visible keyboard focus styles, semantic
+navigation landmarks, and reduced-motion support. Check the site with keyboard
+navigation after making UI changes to preserve these safeguards.
+
 The repository targets Node.js 20 or newer. If you use `nvm`, run `nvm use`
 from the project root to select the version recorded in `.nvmrc`.
 
