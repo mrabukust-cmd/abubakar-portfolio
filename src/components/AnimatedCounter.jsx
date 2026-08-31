@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView, useReducedMotion } from 'framer-motion';
 
 export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix = '', prefix = '' }) {
   const [count, setCount] = useState(from);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!isInView) return;
@@ -12,6 +13,11 @@ export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix =
     let startTimestamp = null;
     let animationFrameId = null;
     const numericTo = parseFloat(to);
+
+    if (shouldReduceMotion) {
+      setCount(numericTo);
+      return undefined;
+    }
 
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -37,7 +43,7 @@ export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix =
         window.cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [isInView, from, to, duration]);
+  }, [isInView, from, to, duration, shouldReduceMotion]);
 
   return (
     <span ref={ref} className="animated-counter-value" aria-live="off">
