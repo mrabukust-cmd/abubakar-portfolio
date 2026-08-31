@@ -53,22 +53,22 @@ export default function ResumeModal({ isOpen, onClose }) {
           {/* Modal Top Toolbar */}
           <div className="resume-toolbar no-print">
             <div className="toolbar-title">
-              <FaBriefcase className="toolbar-icon" />
+              <FaBriefcase className="toolbar-icon" aria-hidden="true" />
               <span>Developer Curriculum Vitae</span>
             </div>
             <div className="toolbar-actions">
               <button type="button" className="btn btn-secondary btn-sm toolbar-action-btn" onClick={handleCopyEmail} title="Copy Email" aria-label="Copy email address">
-                {copied ? <FaCheck style={{ color: '#10B981' }} /> : <FaCopy />}
+                {copied ? <FaCheck aria-hidden="true" style={{ color: '#10B981' }} /> : <FaCopy aria-hidden="true" />}
                 <span className="toolbar-btn-text">{copied ? 'Copied!' : 'Copy Email'}</span>
               </button>
 
               <button type="button" className="btn btn-primary btn-sm toolbar-action-btn" onClick={handlePrint} title="Print or Save as PDF" aria-label="Print or save resume as PDF">
-                <FaPrint />
+                <FaPrint aria-hidden="true" />
                 <span className="toolbar-btn-text">Print / Save PDF</span>
               </button>
 
               <button type="button" className="shared-modal-close-btn resume-close-btn" onClick={onClose} aria-label="Close Resume Modal">
-                <FaTimes />
+                <FaTimes aria-hidden="true" />
               </button>
             </div>
           </div>
