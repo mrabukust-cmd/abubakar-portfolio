@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/modal-shared.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -12,6 +12,7 @@ import { socialLinks, formatSocialDisplay } from '../data/socialLinks';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
+  const copyResetTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -27,13 +28,18 @@ export default function ResumeModal({ isOpen, onClose }) {
     };
   }, [isOpen, onClose]);
 
+  useEffect(() => () => {
+    if (copyResetTimeoutRef.current) clearTimeout(copyResetTimeoutRef.current);
+  }, []);
+
   if (!isOpen) return null;
 
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard?.writeText(profileData.email);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (copyResetTimeoutRef.current) clearTimeout(copyResetTimeoutRef.current);
+      copyResetTimeoutRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
     }
