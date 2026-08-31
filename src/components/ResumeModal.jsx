@@ -101,11 +101,11 @@ export default function ResumeModal({ isOpen, onClose }) {
                   </div>
                   <div className="contact-meta-item">
                     <FaGithub className="meta-icon" />
-                    <a href={socialLinks.github} target="_blank" rel="noreferrer">{formatSocialDisplay(socialLinks.github)}</a>
+                    <a href={socialLinks.github} target="_blank" rel="noopener noreferrer">{formatSocialDisplay(socialLinks.github)}</a>
                   </div>
                   <div className="contact-meta-item">
                     <FaLinkedin className="meta-icon" />
-                    <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn Profile</a>
+                    <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
                   </div>
                 </div>
               </header>
