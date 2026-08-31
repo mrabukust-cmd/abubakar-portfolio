@@ -40,7 +40,7 @@ export default function AnimatedCounter({ from = 0, to, duration = 1.5, suffix =
   }, [isInView, from, to, duration]);
 
   return (
-    <span ref={ref} className="animated-counter-value">
+    <span ref={ref} className="animated-counter-value" aria-live="off">
       {prefix}{count}{suffix}
     </span>
   );
