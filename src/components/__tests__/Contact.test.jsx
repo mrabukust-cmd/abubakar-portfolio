@@ -32,8 +32,23 @@ describe('Contact component', () => {
 
     fireEvent.change(screen.getByLabelText('Website'), { target: { value: 'https://spam.example' } });
     fireEvent.submit(screen.getByRole('button', { name: /Send Message/i }).closest('form'));
-
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  });
+
+  it('updates real-time character count as user types in message', () => {
+    render(<Contact />);
+    const textarea = screen.getByLabelText(/Message/i);
+    expect(screen.getByText(/0 \/ 2000/)).toBeInTheDocument();
+
+    fireEvent.change(textarea, { target: { name: 'message', value: 'Hello Abubakar!' } });
+    expect(screen.getByText(/15 \/ 2000/)).toBeInTheDocument();
+  });
+
+  it('provides accessible copy email button with initial state', () => {
+    render(<Contact />);
+    const copyBtn = screen.getByRole('button', { name: /Copy Email Address/i });
+    expect(copyBtn).toHaveAttribute('type', 'button');
+    expect(copyBtn).toBeInTheDocument();
   });
 });
 
