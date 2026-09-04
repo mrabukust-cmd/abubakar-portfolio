@@ -1,21 +1,26 @@
 # Abubakar Siddique — Developer Portfolio
 
 [![CI Pipeline](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mrabukust-cmd/abubakar-portfolio/actions/workflows/ci.yml)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-8.1-646CFF?logo=vite&logoColor=white)](https://vite.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-C29B7F.svg)](LICENSE)
 
-A production-ready, dark/light themed personal portfolio website built with **React.js**, **Vite**, **Framer Motion**, and **React Icons**. 
+A production-ready, high-performance personal portfolio website built with **React 19**, **Vite 8**, **Framer Motion**, and **React Icons**. 
 
-Designed specifically for **Abubakar Siddique** (Software Engineering Student & Flutter Developer) to showcase real-world mobile applications, technical skills, academic journey, and contact options.
+Designed specifically for **Abubakar Siddique** (Software Engineering Student & Flutter Developer) to showcase real-world mobile applications, technical skills, academic journey, and freelance contact options.
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Tech Stack & Performance
 
-- **Framework**: React.js (Vite)
-- **Styling**: Nordic Architectural Design System (Vanilla CSS3 Tokens & Theme Switcher)
-- **Animations**: Framer Motion
+- **Framework**: React.js 19 (Vite 8 + Rolldown)
+- **Styling**: Nordic Architectural Design System (Vanilla CSS3 Tokens, Zero Bloat)
+- **Animations**: Framer Motion 12 (Reduced-motion accessible)
 - **Typography**: Instrument Serif, Syne, DM Sans, Space Mono
-- **Icons**: React Icons (FontAwesome & Simple Icons)
-- **Deployment**: Vercel ready
+- **Testing**: Vitest 4 + React Testing Library
+- **Linting**: Oxlint (Sub-20ms ultra-fast AST linting)
+- **Bundle Optimization**: Rollup manual chunks splitting (`react-vendor`, `motion-vendor`, `icons-vendor`)
+- **Deployment**: Vercel ready with automated CI workflow
 
 ## 🛠️ Local Development
 
@@ -85,6 +90,11 @@ portfolio/
 │   │   │   └── Contact.test.jsx # Contact component tests
 │   │   └── Footer.jsx        # Footer branding & quick links
 │   ├── data/
+│   │   ├── __tests__/
+│   │   │   ├── journey.test.js   # Milestone and process pipeline validation
+│   │   │   ├── navigation.test.js # Nav link coverage
+│   │   │   ├── profile.test.js   # Profile statistics test
+│   │   │   └── projects.test.js  # Project records and metadata tests
 │   │   ├── profile.js        # Bio, stats, journey timeline & engineering approach
 │   │   ├── projects.js       # Mentora, ZiloLive, School Management System
 │   │   ├── skills.js         # Skill categories & tech stack items
