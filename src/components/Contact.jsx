@@ -300,7 +300,12 @@ export default function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="message" className="form-label">Message <span className="req">*</span></label>
+                <div className="form-label-row">
+                  <label htmlFor="message" className="form-label">Message <span className="req">*</span></label>
+                  <span className="char-count" id="message-char-count" aria-live="polite">
+                    {formData.message.length} / 2000
+                  </span>
+                </div>
                 <textarea
                   id="message"
                   name="message"
@@ -310,6 +315,7 @@ export default function Contact() {
                     placeholder="Hi Abubakar, I'd like to discuss a mobile app project..."
                     className="form-input form-textarea"
                     maxLength={2000}
+                    aria-describedby="message-char-count"
                     aria-invalid={status === 'error' && !formData.message}
                     required
                 />
@@ -603,6 +609,18 @@ export default function Contact() {
           display: flex;
           flex-direction: column;
           gap: 0.4rem;
+        }
+
+        .form-label-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .char-count {
+          font-size: 0.75rem;
+          color: var(--text-muted);
+          font-family: var(--font-mono);
         }
 
         .form-label {
