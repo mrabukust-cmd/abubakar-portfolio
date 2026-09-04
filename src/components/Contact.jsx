@@ -137,12 +137,20 @@ export default function Contact() {
                 </a>
               </div>
               <button
+                type="button"
                 className="contact-copy-btn"
                 onClick={handleCopyEmail}
-                title="Copy Email Address"
-                aria-label="Copy Email Address"
+                title={emailCopied ? "Email copied to clipboard" : "Copy Email Address"}
+                aria-label={emailCopied ? "Email copied to clipboard" : "Copy Email Address"}
               >
-                {emailCopied ? <FaCheck style={{ color: 'var(--accent-primary)' }} /> : <FaCopy />}
+                {emailCopied ? (
+                  <FaCheck style={{ color: 'var(--accent-primary)' }} aria-hidden="true" />
+                ) : (
+                  <FaCopy aria-hidden="true" />
+                )}
+                <span className="sr-only" aria-live="polite">
+                  {emailCopied ? "Email copied to clipboard" : ""}
+                </span>
               </button>
             </div>
 
