@@ -1,0 +1,18 @@
+{
+  "name": "Abubakar Siddique | Flutter App Developer",
+  "short_name": "Abubakar",
+  "description": "Portfolio of Abubakar Siddique, a Flutter App Developer and Firebase Engineer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D11",
+  "theme_color": "#0D0D11",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}
